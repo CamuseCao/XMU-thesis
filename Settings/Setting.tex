@@ -1,0 +1,363 @@
+% !TeX root = ../Main/XMU.tex
+\usepackage{ctex}
+\ctexset{today=big,}
+\ctexset{
+	contentsname = { \heiti \xiaosan 目录},
+	%	abstractname = {本文概要},
+	%	bibname = {文\quad 献}
+	space = {auto},
+	chapter = {
+		format =\vspace{4ex} \centering \heiti \erhao,
+%		pagestyle = fancy,
+		beforeskip = 5pt ,afterskip =25pt,
+		%	fixskip = true,
+		tocline = \CTEXifname{\protect\numberline{\CTEXthechapter\hspace{.3em}}}{}#2\dotfill,
+	},
+	section={
+		name={ },
+		format = \sihao \heiti  ,
+		%	number=\arabic{section},
+	},
+	subsection={
+	name={ },
+	format = \xiaosi \heiti  ,
+	%	number=\arabic{section},
+},
+}
+\usepackage{amsmath,amsthm}
+\usepackage{amsfonts}
+\usepackage{verbatim}
+\usepackage{ifthen}
+\usepackage{xcolor}
+\usepackage[a4paper,
+%bindingoffset=1cm,
+left=2.5cm,
+right=2.5cm,
+top=3cm,
+bottom=4cm,
+footskip=1.5cm,
+%twoside,
+]{geometry}
+\usepackage{graphicx}
+\usepackage{multirow}
+\usepackage{longtable}
+\usepackage[para]{threeparttable}
+\usepackage{array,booktabs,longtable,tabularx}
+\usepackage[font={small,bf}]{caption}
+\usepackage{setspace}
+\usepackage{zhspacing}
+%\linespread{1.3}
+\usepackage{pifont}
+\renewcommand\thefootnote{\ding{\numexpr171+\value{footnote}}} %改变注脚的格式
+
+
+%设置代码的插入
+\usepackage{listings}
+\def\lstbasicfont{\fontfamily{pcr}\selectfont\footnotesize}
+\lstset{%
+	numbers=left,
+	numberstyle=\tiny,
+	basicstyle=\small,
+	backgroundcolor=\color{white},      % choose the background color
+	basicstyle=\footnotesize\ttfamily,  % size of fonts used for the code
+	columns=fullflexible,
+	tabsize=4,
+	breaklines=true,               % automatic line breaking only at whitespace
+	captionpos=b,                  % sets the caption-position to bottom
+	commentstyle=\color{green},  % comment style
+	escapeinside={\%*}{*)},        % if you want to add LaTeX within your code
+	keywordstyle=\color{blue},     % keyword style
+	stringstyle=\color{purple}\ttfamily,  % string literal style
+	frame=single,
+	rulesepcolor=\color{red!20!green!20!blue!20},
+}
+\lstloadlanguages{C,C++,Java,Matlab,Mathematica}
+
+%算法的插入宏包
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
+
+\makeatletter
+\def\BState{\State\hskip-\ALG@thistlm}
+\makeatother
+
+
+%font
+\usepackage{fontspec} 
+
+
+\usepackage{xeCJK}%中文字体
+
+\setCJKmainfont[ItalicFont={楷体}, BoldFont={黑体}]{宋体}%衬线字体 缺省中文字体为
+\setCJKsansfont{黑体}
+\setCJKmonofont{楷体}%中文等宽字体
+\setmainfont{Times New Roman} %西文部分默认使用的字体
+\setsansfont{Times New Roman} %西文默认无衬线字体
+\setmonofont{Times New Roman}%西文默认的等宽字体
+
+%\usepackage[numbers]{gbt7714}
+\usepackage[super]{gbt7714}
+\usepackage{natbib}
+\usepackage{fancyhdr}
+\fancyhf{}
+\fancyhead[CE]{\xiaowu \songti \xmutitle}
+\fancyhead[CO]{\xiaowu \songti \CTEXthechapter\quad \leftmark}
+\fancyfoot[C]{\thepage}
+%\lhead{\textnormal{\kaishu\leftmark}}
+%\chead{\textnormal{\kaishu\rightmark}}
+%\rhead{--\ \thepage\ --}
+%\pagestyle{fancy}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 重定义字号命令
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\xiaochu}{\fontsize{30pt}{40pt}\selectfont}    % 小初, 1.5倍行距
+\newcommand{\yihao}{\fontsize{26pt}{36pt}\selectfont}    % 一号, 1.4倍行距
+\newcommand{\erhao}{\fontsize{22pt}{28pt}\selectfont}    % 二号, 1.25倍行距
+\newcommand{\xiaoer}{\fontsize{18pt}{18pt}\selectfont}    % 小二, 单倍行距
+\newcommand{\sanhao}{\fontsize{16pt}{24pt}\selectfont}    % 三号, 1.5倍行距
+\newcommand{\xiaosan}{\fontsize{15pt}{22pt}\selectfont}    % 小三, 1.5倍行距
+\newcommand{\sihao}{\fontsize{14pt}{21pt}\selectfont}    % 四号, 1.5倍行距
+\newcommand{\banxiaosi}{\fontsize{13pt}{19.5pt}\selectfont}    % 半小四, 1.5倍行距
+\newcommand{\xiaosi}{\fontsize{12pt}{18pt}\selectfont}    % 小四, 1.5倍行距
+\newcommand{\dawuhao}{\fontsize{11pt}{11pt}\selectfont}    % 大五号, 单倍行距
+\newcommand{\wuhao}{\fontsize{10.5pt}{10.5pt}\selectfont}    % 五号, 单倍行距
+\newcommand{\xiaowu}{\fontsize{9pt}{9pt}\selectfont}    % 小五号, 单倍行距
+
+
+
+
+
+\makeatletter
+
+\newcommand\Dotfill{\leavevmode\cleaders\hb@xt@ .68em{\hss .\hss }\hfill\kern\z@}
+
+% for chapter
+\newcommand\@chaplable[1]{第\zhnumber{#1}章}
+\renewcommand\chapter{\if@openright\cleardoublepage\else\clearpage\fi
+%	\thispagestyle{fancy}
+	\global\@topnum\z@
+%	\@afterindentfalse
+	\secdef\@chapter\@schapter}
+\renewcommand\@chapter[3][default]{%
+	\ifnum \c@secnumdepth >\m@ne
+	\if@mainmatter
+	\refstepcounter{chapter}%
+	\typeout{第\thechapter 章}% 
+	\addcontentsline{toc}{chapter}%
+	{\protect\numberline{\@chaplable{\thechapter}}\hspace{-2.5em}#1 \Dotfill }%
+	\addcontentsline{eoc}{chapter}%
+	{\protect\numberline{\chaptername\ \thechapter }\hspace{-1.8em}#3 \Dotfill }%
+	\else
+	\addcontentsline{toc}{chapter}{#1}%
+	\addcontentsline{eoc}{chapter}{#3}%
+	\fi
+	\else
+	\addcontentsline{toc}{chapter}{#1}%
+	\addcontentsline{eoc}{chapter}{#3}%
+	\fi
+	\chaptermark{#1}%
+	\addtocontents{lof}{\protect\addvspace{10\p@}}%
+	\addtocontents{lot}{\protect\addvspace{10\p@}}%
+	\if@twocolumn
+	\@topnewpage[\@makechapterhead{#2}]%
+	\else
+	\@makechapterhead{#2}%
+	\@afterheading
+	\fi}
+\def\@makechapterhead#1{%
+	\vspace*{10\p@}%
+	{\parindent \z@ \raggedright \normalfont
+		\ifnum \c@secnumdepth >\m@ne
+		\if@mainmatter
+		\vspace{-4ex}
+		\centering \sffamily \bfseries \xiaosan  \@chaplable{\thechapter}\hspace{2ex} \vspace{2ex}
+		\fi
+		\fi
+		\interlinepenalty\@M
+		#1\par\nobreak
+		\vskip 10\p@
+}}
+
+\def\@schapter#1{%
+	\if@twocolumn
+	\@topnewpage[\@makeschapterhead{#1}]%
+	\else
+	\@makeschapterhead{#1}%
+	\@afterheading
+	\fi%
+}
+
+\def\@makeschapterhead#1{%
+	\vspace*{10\p@}%
+	{\parindent \z@ \raggedright
+		\interlinepenalty\@M
+		\centering \sffamily \bfseries \xiaosan #1\par\nobreak
+		\vskip 10\p@
+	}%
+}
+
+\renewcommand*\l@chapter[2]{%
+	\ifnum \c@tocdepth >\m@ne
+	\addpenalty{-\@highpenalty}%
+	\vskip -0.7em \@plus\p@  %目录章的间距
+	\setlength\@tempdima{7em}%
+	\begingroup
+	\parindent \z@ \rightskip \@pnumwidth
+	\parfillskip -\@pnumwidth
+	\leavevmode \sffamily\sihao
+	\advance\leftskip\@tempdima
+	\hskip -\leftskip
+	#1\nobreak\hfil \nobreak\hb@xt@\@pnumwidth{\hss\rmfamily #2}\par
+	\penalty\@highpenalty
+	\endgroup
+	\fi%
+}
+\renewcommand*\l@section[2]{\@dottedtocline{1}{1.5em}{2.3em}%
+	{\sffamily %\heiti
+		 \xiaosi #1}{#2}}
+\renewcommand*\l@subsection[2]{\@dottedtocline{2}{3.8em}{3.2em}%
+	{\rmfamily  %\songti 
+		\xiaosi #1}{#2}}
+% for section
+\renewcommand\section[2]{%
+	\refstepcounter{section}
+	\addcontentsline{toc}{section}%
+	{\protect\numberline{\thesection}#1}%
+	\addcontentsline{eoc}{section}%
+	{\protect\numberline{\thesection}#2}%
+	\sectionmark{#1}%
+	\par\vspace{3.5ex \@plus 1ex \@minus -.2ex}%
+	{%
+		\parindent \z@ \raggedright
+		\interlinepenalty\@M
+		\sffamily %\heiti 
+		\sihao \thesection \hspace{1em}#1\par\nobreak%
+	}%
+	\vspace{2.3ex \@plus 0.2ex}
+}
+%
+\renewcommand\subsection[2]{%
+	\refstepcounter{subsection}
+	\addcontentsline{toc}{subsection}%
+	{\protect\numberline{\thesubsection}#1}%
+	\addcontentsline{eoc}{subsection}%
+	{\protect\numberline{\thesubsection}#2}%
+	\par\vspace{3.25ex\@plus 1ex \@minus -.2ex}%
+	{%
+		\parindent \z@ \raggedright
+		\interlinepenalty\@M
+		\sffamily \bfseries %\heiti  
+		\xiaosi \thesubsection \hspace{1em}#1\par\nobreak%
+	}%
+	\vspace{1.5ex \@plus 0.2ex}
+}
+%
+\renewcommand\subsubsection{\@startsection{subsubsection}{3}{\z@}%
+	{-3.25ex\@plus -1ex \@minus -.2ex}%
+	{1.5ex \@plus .2ex}%
+	{\sffamily%\songti
+		\xiaosi}}
+%
+
+\renewcommand\cleardoublepage{\clearpage\if@twoside \ifodd\c@page\else
+	\thispagestyle{empty}%
+	\hbox{}\newpage\if@twocolumn\hbox{}\newpage\fi\fi\fi}
+
+
+%%用于产生没有编号但在目录中列出的章。
+%% \phantomsection is the anchor hyperref needed to make a bookmark,
+%% without it, hyerref would throw out warnings.
+%% typeset Chinese Chapter, then list it in toc and eoc
+\newcommand\CNchapter[2]{%
+	\chapter*{\phantomsection %
+		\center{#1}}%
+	\markboth{#1}{}%
+	\addcontentsline{toc}{chapter}{#1}%
+	\addcontentsline{eoc}{chapter}{#2}%
+}
+%% typeset English Chapter, then list it in toc and eoc
+\newcommand\ENchapter[2]{%
+	\chapter*{\phantomsection %
+		\center{#2}}%
+	\markboth{#2}{}%
+	\addcontentsline{toc}{chapter}{#1}%
+	\addcontentsline{eoc}{chapter}{#2}%
+}
+%% Chinese Chapter only in toc
+\newcommand\Cchapter[1]{%
+	\chapter*{\phantomsection %
+		\center{#1}}%
+	\markboth{#1}{}%
+	\addcontentsline{toc}{chapter}{#1}%
+}
+%% English Chapter only in eoc
+\newcommand\Echapter[1]{%
+	\chapter*{\phantomsection %
+		\center{#1}}%
+	\markboth{#1}{}%
+	\addcontentsline{eoc}{chapter}{#1}%
+}
+%
+
+%%===========================目录==============================%%
+
+%%设置目录格式。
+\renewcommand\tableofcontents{%
+	\thispagestyle{plain}
+	\if@twocolumn
+	\@restonecoltrue\onecolumn
+	\else
+	\@restonecolfalse
+	\fi
+	\begingroup
+	\parskip 0pt
+	%    \Cchapter{\texorpdfstring{\contentsname}{目录}}%
+	\begin{center}
+		\heiti{\xiaosan{\textbf{目录}}}
+	\end{center}
+	\@starttoc{toc}% 
+	\newpage
+	%   \ENchapter{英文目录}{\econtentsname}%
+	\thispagestyle{plain}
+	\begin{center}
+		\xiaosan{ \textbf{Table of Contents}}
+	\end{center}
+	\@starttoc{eoc}%
+	\endgroup
+	\if@restonecol\twocolumn\fi%
+	\cleardoublepage%
+}
+
+%%============================摘要===========================%%
+
+%%中文摘要。
+%\newenvironment{abstract}
+%{\thispagestyle{plain}  \begin{center}
+%		\heiti \xiaosan 摘要
+%	\end{center}  \xiaosi  \vspace{2ex} }{}
+%%中文关键词。
+\newcommand\keywords[1]{%
+	\vspace{2ex}\noindent{\sffamily \bfseries 关键词：} #1}
+
+%%英文摘要。
+%\newenvironment{englishabstract}
+%{\thispagestyle{plain} \begin{center}
+%		\xiaosan \textbf{Abstract}
+%	\end{center} \xiaosi \vspace{2ex} }%
+%{}
+%%英文关键词。
+\newcommand\englishkeywords[1]{%
+	\vspace{2ex}\noindent{\sffamily \bfseries Keywords:} #1}
+
+\makeatother
+
+
+
+\usepackage[bookmarks=true,bookmarksnumbered=false,
+colorlinks,linkcolor=black,
+citecolor=blue,urlcolor=green]{hyperref}
+\usepackage{cleveref}
+\def\lq{`}\def\rq{'}
