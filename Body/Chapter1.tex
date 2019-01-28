@@ -1,0 +1,209 @@
+% !TeX root = ../Main/XMU.tex
+\chapter{正文的基本要求}{Basic requirements}
+
+正文从另右页开始。每一章应另起页，并从奇数页开始。正文一般从引言（绪论）开始，以结论或讨论结束。引言（绪论）应包括论文的研究目的、流程和方法等。研究领域的历史回顾、文献回溯、理论分析等内容应独立成章，用足够的文字叙述。结论应包含论文的核心观点，阐述自己的创造性成果及其在本研究领域中的意义、作用，交代研究工作的局限，提出未来工作的意见和建议。
+
+正文由于涉及的学科、选题、研究方法、结果表达方式等有很大的差异，不作统一的规定，但要求自然科学论文应提供实验数据和图片资料真实，推理正确、结论清晰；人文和社会学科的论文应把握论点正确、论证充分、论据可靠，恰当运用系统分析和比较研究的方法进行模型或方案设计，注重实证研究和案例分析。
+
+正文一般不少于 6000 字（不含图表、程序和计算数字）。用外国语言撰写的，字数参照 4 个英文单词折算 1 个中文字数进行计数。\footnote{以上内容仅供参考，详见《厦门大学本科毕业论文（设计）规范》}
+
+
+\section{学术名词}{Terminology}
+
+\begin{itemize}
+	\item  科学技术名词术语采用全国自然科学名词审定委员会公布的规范词或国家标准、部标准中规定的名称，尚未统一规定或有争议的名词术语，可采用惯用的名称。
+	\item 特定含义的名词术语或新名词、以及使用外文缩写代替某一名词术语时，首次出现时应在括号内注明其含义，如：OECD（Organization for Economic Co-operation and Development）
+代替经济合作发展组织。
+\item  外国人名一般采用英文原名，可不译成中文，英文人名按名前姓后的原则书写。一般很熟知的外国人名(如牛顿、爱因斯坦、达尔文、马克思等)可按通常标准译法写译名。
+
+\end{itemize}
+
+
+
+\section{物理量名称、符号与计量}{Physical quantity name, symbol and measurement}
+
+
+\begin{itemize}
+	\item  论文中某一物理量的名称和符号应统一，一律采用国务院发布的《中华人民共和国法定计量单位》或者国际公认的计量单位。单位名称和符号的书写方式，应采用国际通用符号。
+	\item 在不涉及具体数据表达时允许使用中文计量单位如“千克”。
+	\item 表达时间使用“2014 年 6 月”，不能使用“14 年 6 月”或“2014.6”。不能使用 80 年代，而应为上世纪 80 年代或 20 世纪80 年代。表达时刻应采用中文计量单位，如“下午 3 点 10 分”，不能写成“3h10min”，在表格中可以用“3:10PM”表示。
+	\item 物理量符号、物理量常量、变量符号用斜体，计量单位符号均用正体。
+\end{itemize}
+
+\section{数字}{Number }
+
+\begin{enumerate}
+	\item 无特别约定情况下，一般均采用阿拉伯数字表示。
+	\item 小数的表示方法：一般情形下，小于 1 的数，需在小数点之前加 0。但当某些特殊数字不可能大于 1 时（如相关系数、比率、概率值），小数点之前的 0 可去掉，如  $ r=.26,p<.05 $  。
+	\item  统计符号的格式：一般除  $ \alpha , \beta , \lambda , \epsilon \text{以及} V $ 等符号外，其余统计符号一律以斜体字呈现，如\textit{ANCOVA，ANOVA，MANOVA，N，nl，M，SD，F，p，r } 等。
+\end{enumerate}
+
+
+\section{公式}{Equation}
+
+\begin{enumerate}
+	\item 公式应另起一行缩略书写，居于中央（注意行首无缩进），与周围文字留足够的空间区分开。
+	\item 公式的编号用英文圆括号括起，放在公式右边行末，在公式和编号之间不加虚线。子公式可不编序号，需要引用时可加编 a、b、c……，重复引用的公式不得另编新序号。公式较多时，可分章编号，但应与表格、图的编序方式统一。
+	\item 较长的公式最好在等号处转行，或在运算符号（如“+”、“-”号）处转行，等号或运算符号应在转行后的行首。公式中分数线的横线，其长度应等于或略大于分子和分母中较长的一方。
+\end{enumerate}
+
+\begin{equation}
+1+1=2 \label{eq1}
+\end{equation}
+
+\cref{eq1} 是大家所熟知的。我们可以用这两种方式进行引用：\verb|\cref{eq1} 和 \eqref{eq1}| ，两种都可以。
+
+不想要编号的公式就用这样的方式：
+
+ \[ 2\times 2=4 \]
+
+ 行内公式就是  $ \alpha ^2= \beta $
+
+\subsection{多行公式示例}{Multiline equation}
+
+\begin{align}
+a ={} & b + c \\
+={} & d + e + f + g + h + i
++ j + k + l \notag \\
+& + m + n + o \\
+={} & p + q + r + s
+\end{align}
+
+\begin{equation}
+\begin{aligned}
+a &= b + c \\
+d &= e + f + g \\
+h + i &= j + k \\
+l + m &= n
+\end{aligned} \label{eq3}
+\end{equation}
+
+\begin{theory}[Energy–momentum relation]
+The relationship of energy,
+momentum and mass is
+\[E^2 = m_0^2 c^4 + p^2 c^2\]
+where $c$ is the light speed.
+\end{theory}
+
+\begin{law}\label{law:box}
+Don’t hide in the witness box.
+\end{law}
+
+
+\begin{proof}
+For simplicity, we use
+\[
+E=mc^2
+\]
+That’s it.
+\end{proof}
+
+\section{算法}{Algorithm}
+
+这是算法的插入示例，可能软件学院、信息科学学院这类的同学用得上吧。
+
+\begin{algorithm}
+	\caption{My algorithm}\label{euclid}
+	\begin{algorithmic}[1]
+		\Procedure{MyProcedure}{}
+		\State $\textit{stringlen} \gets \text{length of }\textit{string}$
+		\State $i \gets \textit{patlen}$
+		\BState \emph{top}:
+		\If {$i > \textit{stringlen}$} \Return false
+		\EndIf
+		\State $j \gets \textit{patlen}$
+		\BState \emph{loop}:
+		\If {$\textit{string}(i) = \textit{path}(j)$}
+		\State $j \gets j-1$.
+		\State $i \gets i-1$.
+		\State \textbf{goto} \emph{loop}.
+		\State \textbf{close};
+		\EndIf
+		\State $i \gets i+\max(\textit{delta}_1(\textit{string}(i)),\textit{delta}_2(j))$.
+		\State \textbf{goto} \emph{top}.
+		\EndProcedure
+	\end{algorithmic}
+\end{algorithm}
+
+
+\section{表格}{Table}
+
+\begin{enumerate}
+	\item 表格要有：表号，表名，单位。表号和表名居表上方正中（注意行首无缩进）；表格只有一个单位时，单位在表右上方。表较多时，可分章编号，但须与插图、公式的编序方式统一。
+	\item 表格应优先采用三线表，三线表头尾两条线宽 1 磅，中间线宽 0.75 磅。也可根据需要使用其他格式。
+	\item 表格如参考其他资料，应标明“作者、来源名称、时间”，置表格左下方。
+	\item 表格允许下页接写，接写时应重复表号，表号后跟表名（可省略）和“（续）”，置于表上方。续表应重复表头。
+	\item 表格应放在离正文首次出现处最近的地方，不应超前和过分拖后。表与上下正文之间各空一行。
+\end{enumerate}
+
+
+
+\begin{table}[h!]
+			\centering
+	\begin{threeparttable}[b]
+		\footnotesize
+		\caption{表格示例}
+		\begin{tabular}{lrr}
+			\toprule
+			& \multicolumn{1}{c}{ABS} & \multicolumn{1}{c}{CB} \\
+			\midrule
+			(Intercept) & 5.482 & 3.4871 \\
+			ABC & 1.1173 & 1.1933 \\
+			DEF & 8.1752* & 2.6836 \\
+			\bottomrule
+			\multicolumn{3}{c}{*p<0.1; **p<0.05; ***p<0.01} \\
+			\bottomrule
+		\end{tabular}%
+		\label{tab:mlogit}%
+		\begin{tablenotes}
+			\footnotesize
+			Note: These are estimates of multinomial logit model.
+		\end{tablenotes}
+	\end{threeparttable}
+\end{table}%
+
+%这个示例的\cref{law:box}，应该是符合规定。
+
+\section{插图}{Figure}
+
+\begin{enumerate}
+	\item 图包括曲线图、构造图、示意图、框图、流程图、记录图、地图、照片等。图应与文字内容相符，技术内容正确。所有制图应符合国家标准和专业标准，对无规定符号的图形应采用该行业的常用画法。
+	\item 图要有：图号，图名，单位。图号和图名要居图下方的正中（注意行首无缩进）。图较多时，可分章编号，但须与表格、公式的编序方式统一。
+	\item 图如参考其他资料，要示明“作者、来源名称、时间”，置图左下方。
+	\item 由若干分图组成的插图，分图用 a、b、c……标序。分图的图名以及图中各种代号的意义，以图注形式写在图题下方，先写分图名，另起行写代号的意义。
+	\item 图与图标题、图序号为一个整体，不得拆开排版为两页。当页空白不够排版该图整体时，可将其后文字部分提前，将图移至次页最前面。
+\end{enumerate}
+
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=0.5]{xmu-flag}
+\caption{Our flag} \label{fig1}
+\end{figure}
+
+这 \cref{fig1} 就是这样了。 图片等的引用都可以用 \verb|\cref{label}| 来完成。
+
+
+\section{注释}{Exegesis}
+
+当文中的字、词或短语需要进一步加以说明，而又没有具体的文献来源时，用注释。注释不宜过多。
+篇名、作者注置于当页地脚。对文内有关特定内容的注释可夹在文内（加圆括号），也可排在当页地脚，注释序号以“\textcircled{1}、\textcircled{2}”等数字形式标示在被注释词条的右上角。注脚的命令如下\verb|\footnote{注脚内容}|\footnote{一个注脚}。
+
+\section{参看文献与引用}{Reference and citation}
+
+一下是一些参考文献的引用。应该能有合适的。不合适可以修改。
+
+
+
+%\cite{陈高峰2011-230-232}
+
+%\citet{陈高峰2011-230-232}
+
+%\citep{陈高峰2011-230-232}
+
+%\citealt{陈高峰2011-230-232}
+
+%\citealt*{陈高峰2011-230-232}
+
+%\citeauthor{陈高峰2011-230-232}
+
+%\citeyearpar{陈高峰2011-230-232}
