@@ -1,0 +1,36 @@
+% !TeX TS-program = pdflatex
+\documentclass{article}
+\usepackage[paperwidth=29.7cm, paperheight=44cm, landscape,
+left=0cm, right=0cm,
+top=0cm, bottom=0cm]{geometry}
+\usepackage{graphicx}
+\usepackage{calc}
+\usepackage{pdfpages}
+
+\pagestyle{empty}
+%% length and commands for calculate spine thick and offset we need
+\newlength{\totalthick}
+\newlength{\pagedelta}
+\newlength{\pageoffset}
+\newcommand{\addtothick}[2]{%
+  \addtolength{\totalthick}{0.001346mm * #1 *#2}}
+%
+\newcommand{\updateoffset}{%
+  \setlength{\pagedelta}{\maxof{\totalthick - 15pt}{0pt} / 2}%
+  \setlength{\pageoffset}{\maxof{\totalthick - 15pt}{0pt} / 4 + 7.5pt}}
+\begin{document}
+
+%% use \addtothick to tell me the paper and pages we have,
+%% e.g, we have 45 sheets 80g/m^2 paper (which is 90 pages in fact),
+%%    and 10 sheets 100g/m^2 paper:
+\addtothick{80}{45}
+\addtothick{100}{10}
+
+%% calculate the offset we need for spine and cover page
+\updateoffset
+
+%% last merge pages
+\includepdfmerge[nup=2x1, noautoscale, offset=\pageoffset{} 0,
+delta=\pagedelta{} 0, pages={last-last,1}]{spine.pdf, ../Main/XMU.pdf, 1 }
+
+\end{document}
