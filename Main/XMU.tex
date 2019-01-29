@@ -1,20 +1,15 @@
 % !TeX TXS−program = xelatex
-\documentclass[UTF8,openany,12pt,]{ctexbook}  %linespread=1.3
-%\documentclass[openany,12pt]{ctexbook}
+%\documentclass[UTF8,openany,12pt,]{ctexbook}  
+\documentclass[openany,12pt]{ctexbook}
 
 \input{../Settings/Setting}
 \input{../Settings/Information}
 \graphicspath{{../Figures/}}
 
-%\renewcommand
 \let\oldeqref\eqref
 \renewcommand{\eqref}{\songti{公式}\oldeqref}
 \renewcommand{\citep}[1]{{\color{blue}\citeauthor{#1}(\citeyearpar{#1})}}
 
-%\renewcommand\thefootnote{\textcircled{\arabic{footnote}}
-
-
-%\renewcommand{\caption}[1]{\wuhao \caption{#1}}
 \crefname{figure}{图}{}
 \crefname{table}{表}{}
 \crefname{equation}{公式}{}
@@ -24,14 +19,10 @@
 \newtheorem{theory}{定理}[section]
 \theoremstyle{definition}\newtheorem{law}{定律}[section]
 
-%\usepackage[toc,page]{appendix}
-
-
-
 \begin{document}
 
 \input{../Settings/Titlepage}
-\zhspacing 
+
 %\listfigurename
 %\listtablename
 \pagestyle{plain}
@@ -39,18 +30,17 @@
 \input{../Settings/Promise}
 
 \setstretch{1.5}
+%\zhspacing 
 
 \input{../Body/Thanks}
 \input{../Body/Abstract}
 \newpage
 
-%\setstretch{1}
-
 \tableofcontents
 
 \pagestyle{fancy}
 
-\mainmatter  \xiaosi  \setstretch{1.5}
+\mainmatter  \xiaosi  
 
 \input{../Body/Chapter1}
 
@@ -59,11 +49,12 @@
 
 
 \backmatter
-\fancyhead[CO]{\xiaowu \leftmark}
+
 \addcontentsline{toc}{chapter}{参考文献 \Dotfill }
 \addcontentsline{eoc}{chapter}{Reference \Dotfill }
-%\nocite{*}%添加此处
-%\bibliography{example}
+\fancyhead[CO]{\xiaowu 参考文献}
+\nocite{*}%添加此处
+\bibliography{../Body/Reference}
 
 \appendix
 \fancyhead[CO]{\xiaowu 附录}

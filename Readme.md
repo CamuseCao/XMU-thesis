@@ -7,6 +7,9 @@
 
 为了使用该模板，需要安装一个`TeX`的发行版本。可以选择`Texlive`或者`Miktex`,他们都是跨平台的。而`Texlive`打包了比较多的宏包，较为庞大，`Miktex`则是临时下载没有的宏包。这里我推荐使用`Miktex`。但是对于Mac，推荐使用`MacTeX`，它是为Mac定制的发行版本，应该比较合适。特别提醒`CTeX`套装无法运行该模板。你可以选择卸载`CTeX`套装，安装我推荐的发行版本，或者不使用该模板。关于编译方式需选择`XeLaTeX`,否则无法正常编译该模板。
 
+## 模板使用说明
+
+为了正确使用该模板，请按照提示安装好可使用的TeX发行版本。因为论文内容比较多，因此采取了分文件的方式来构成该文档。主文档`XMU.tex`的位置位于`Main`下，正确编译后所得的pdf文件就在这里。`Figure`文件夹是存放图片的文件夹，该文件夹已经加入图片文件夹的位置，插入图片是无需多加路径，直接用文件名即可。关于`Setting`文件夹只需要把里面的`Information.tex`正确填入即可。而你需要编辑的仅有`Body`文件夹下的文件。
 
 ## 几点说明
 
@@ -20,6 +23,6 @@
 
 ## 联系方式
 
-邮箱： camusecao@gmail.com
+邮箱： [camusecao@gmail.com](mailto:camusecao@gmail.com)
 
-github项目的地址是 :
+github项目的地址是 : [Link](https://github.com/CamuseCao/XMU-Undergraduate-thesis-template)
