@@ -1,3 +1,3 @@
 git add .
-git commit -m "fix some" 
+git commit -m "Add cover" 
 git push origin master 

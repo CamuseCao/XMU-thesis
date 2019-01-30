@@ -1,0 +1,19 @@
+% !TeX TS-program = pdflatex
+\documentclass{article}
+\usepackage[paperwidth=29.7cm, paperheight=44cm, landscape,
+left=0cm, right=0cm,
+top=0cm, bottom=0cm]{geometry}
+\usepackage{graphicx}
+\usepackage{pdfpages}
+
+\begin{document}
+%choose the one you like.
+\hspace{20cm}
+\includegraphics[page=1,]{../Main/XMU.pdf}
+\newpage
+
+\includepdfmerge[nup=2x1, noautoscale,]{Empty.pdf, ../Main/XMU.pdf, 1 }
+
+\includepdf[pages=1-5]{../Main/XMU.pdf}
+	
+\end{document}
