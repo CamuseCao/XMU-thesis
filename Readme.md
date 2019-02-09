@@ -1,4 +1,10 @@
-![](https://img.shields.io/badge/Language-TeX-yellow.svg) ![](https://img.shields.io/badge/version-0.1-red.svg) ![](https://img.shields.io/github/last-commit/CamuseCao/XMU-Undergraduate-thesis-template.svg) ![](https://img.shields.io/github/repo-size/CamuseCao/XMU-Undergraduate-thesis-template.svg) ![](https://img.shields.io/github/languages/code-size/CamuseCao/XMU-Undergraduate-thesis-template.svg) ![](https://img.shields.io/github/followers/CamuseCao.svg?label=Follow)
+![](https://img.shields.io/badge/Language-TeX-yellow.svg) ![](https://img.shields.io/badge/version-0.1-red.svg) ![](https://img.shields.io/github/last-commit/CamuseCao/XMU-Undergraduate-thesis-template.svg) ![](https://img.shields.io/github/repo-size/CamuseCao/XMU-Undergraduate-thesis-template.svg) ![](https://img.shields.io/github/languages/code-size/CamuseCao/XMU-Undergraduate-thesis-template.svg) ![](https://img.shields.io/github/followers/CamuseCao.svg?label=Follow) ![](https://img.shields.io/github/downloads/CamuseCao/XMU-Undergraduate-thesis-template/v0.1/total.svg) ![](https://img.shields.io/github/manifest-json/v/CamuseCao/XMU-Undergraduate-thesis-template.svg)
+
+
+![](https://img.shields.io/github/tag/CamuseCao/XMU-Undergraduate-thesis-template.svg?style=flat)
+
+
+
 # 厦门大学模板使用说明
 
 [TOC]
@@ -6,7 +12,7 @@
 
 ## 使用的前提
 
-为了使用该模板，需要安装一个`TeX`的发行版本。可以选择`Texlive`或者`Miktex`,他们都是跨平台的。而`Texlive`打包了比较多的宏包，较为庞大，`Miktex`则是临时下载没有的宏包。这里我推荐使用`Miktex`。但是对于Mac，推荐使用`MacTeX`，它是为Mac定制的发行版本，应该比较合适。特别提醒`CTeX`套装无法运行该模板。你可以选择卸载`CTeX`套装，安装我推荐的发行版本，或者不使用该模板。关于编译方式需选择`XeLaTeX`,否则无法正常编译该模板。
+为了使用该模板，需要安装一个`TeX`的发行版本。可以选择`Texlive`或者`Miktex`,他们都是跨平台的。而`Texlive`打包了比较多的宏包，较为庞大，`Miktex`则是临时下载没有的宏包。这里我推荐使用`Miktex`。但是对于Mac，推荐使用`MacTeX`，它是为Mac定制的发行版本，应该比较合适。特别提醒`CTeX`套装无法运行该模板。你可以选择卸载`CTeX`套装，安装我推荐的发行版本，或者不使用该模板。关于编译方式需选择`XeLaTeX`,否则无法正常编译该模板,如果熟悉`latexmk`的可以用它来编译，这更好。
 
 ## 模板使用说明
 
@@ -26,7 +32,7 @@
 
 -  在使用该模板之前，请把原始编译出来的文档读一下，对于你的使用是很有帮助的。
 
-- 由于本人水平有限，因此该模板写的并不好，但是应该勉强能够满足毕业论文的要求。但是仍然可能有许多错误的地方，希望各位使用者如果能发现错误之处能够提出。可以给我法邮件或者直接在github上面提issue。欢迎大家的参与，共同完善母校的模板。
+- 由于本人水平有限，因此该模板写的并不好，但是应该勉强能够满足毕业论文的要求。但是仍然可能有许多错误的地方，希望各位使用者如果能发现错误之处能够提出。可以给我法邮件或者直接在 `github`上面提`issue`。欢迎大家的参与，共同完善母校的模板。
 
 - 由于本人是一名理科生，对文科的同学毕业论文的额外需求可能了解不多。虽说文科生用这个模板的可能性比较小，如果有人用，有额外的需求也可以提出。
 
