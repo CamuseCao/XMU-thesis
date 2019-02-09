@@ -1,3 +1,3 @@
 git add .
-git commit -m "correct page number" 
-git push origin master 
+git commit -m "correct page number"
+git push origin master
