@@ -1,3 +1,3 @@
 git add .
-git commit -m "correct page number"
+git commit -m "change readme.md"
 git push origin master
