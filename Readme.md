@@ -1,7 +1,16 @@
-![](https://img.shields.io/badge/Language-TeX-yellow.svg) ![](https://img.shields.io/badge/version-0.1-red.svg) ![](https://img.shields.io/github/last-commit/CamuseCao/XMU-Undergraduate-thesis-template.svg) ![](https://img.shields.io/github/repo-size/CamuseCao/XMU-Undergraduate-thesis-template.svg) ![](https://img.shields.io/github/languages/code-size/CamuseCao/XMU-Undergraduate-thesis-template.svg) ![](https://img.shields.io/github/followers/CamuseCao.svg?label=Follow) ![](https://img.shields.io/github/downloads/CamuseCao/XMU-Undergraduate-thesis-template/v0.1/total.svg) ![](https://img.shields.io/github/manifest-json/v/CamuseCao/XMU-Undergraduate-thesis-template.svg)
+![](https://img.shields.io/badge/Language-TeX-red.svg) ![](https://img.shields.io/github/stars/CamuseCao/XMU-Undergraduate-thesis-template.svg?style=social) ![](https://img.shields.io/github/release/CamuseCao/XMU-Undergraduate-thesis-template.svg?label=version)  ![](https://img.shields.io/github/last-commit/CamuseCao/XMU-Undergraduate-thesis-template.svg?style=social&logo=Tinder) ![](https://img.shields.io/github/repo-size/CamuseCao/XMU-Undergraduate-thesis-template.svg) ![](https://img.shields.io/github/languages/code-size/CamuseCao/XMU-Undergraduate-thesis-template.svg) ![](https://img.shields.io/github/followers/CamuseCao.svg?label=Followers) ![](https://img.shields.io/github/downloads/CamuseCao/XMU-Undergraduate-thesis-template/v0.11/total.svg?style=plastic) 
 
 
-![](https://img.shields.io/github/tag/CamuseCao/XMU-Undergraduate-thesis-template.svg?style=flat)
+
+![]()
+
+
+
+
+
+
+
+
 
 
 
