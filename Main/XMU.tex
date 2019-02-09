@@ -1,5 +1,6 @@
-% !TeX TXS−program = xelatex
-%\documentclass[UTF8,openright,12pt,]{ctexbook}  %When you need to print the pdf ,choose this one. If it still can't satisfiled you, you may turn to Cover and reconsitution/reconsitution.tex .I'm sure it will.
+%% !TeX TXS-program:compile = txs:///latexmk/{}[-xelatex -synctex=1 -interaction=nonstopmode]
+
+%\documentclass[UTF8,openright,12pt,]{ctexbook}  %When you need to print the pdf ,choose this one. If it still can't satisfied you, you may turn to Cover and reconsitution/reconsitution.tex .I'm sure it will.
 \documentclass[openany,12pt]{ctexbook} %When you want to submit the pdf , then choose this one.
 
 \input{../Settings/Setting}
@@ -26,11 +27,10 @@
 %\listfigurename
 %\listtablename
 \pagestyle{plain}
-
+\pagenumbering{roman}
 \input{../Settings/Promise}
-
 \setstretch{1.5}
-%\zhspacing 
+%\zhspacing
 
 \input{../Body/Thanks}
 \input{../Body/Abstract}
@@ -40,13 +40,12 @@
 
 \pagestyle{fancy}
 
-\mainmatter  \xiaosi  
+\mainmatter  \xiaosi
+
 
 \input{../Body/Chapter1}
 
 \input{../Body/Chapter2}
-
-
 
 \backmatter
 
@@ -62,9 +61,6 @@
 \addcontentsline{toc}{chapter}{附录A \Dotfill }
 \addcontentsline{eoc}{chapter}{Appendix A \Dotfill}
 
-
 \input{../Body/Appendix}
-
-
 
 \end{document}
