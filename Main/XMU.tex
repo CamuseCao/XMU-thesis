@@ -1,4 +1,4 @@
-%% !TeX TXS-program:compile = txs:///latexmk/{}[-xelatex -synctex=1 -interaction=nonstopmode]
+% !TeX TXS-program:compile = txs:///latexmk/{}[-xelatex -synctex=1 -interaction=nonstopmode]
 
 %\documentclass[UTF8,openright,12pt,]{ctexbook}  %When you need to print the pdf ,choose this one. If it still can't satisfied you, you may turn to Cover and reconsitution/reconsitution.tex .I'm sure it will.
 \documentclass[openany,12pt]{ctexbook} %When you want to submit the pdf , then choose this one.
@@ -23,21 +23,22 @@
 \begin{document}
 
 \input{../Settings/Titlepage}
-
+\zhspacing
 %\listfigurename
 %\listtablename
 \pagestyle{plain}
 \pagenumbering{roman}
+\begin{spacing}{1.5}
 \input{../Settings/Promise}
-\setstretch{1.5}
-%\zhspacing
+%\setstretch{1.5}
+
 
 \input{../Body/Thanks}
 \input{../Body/Abstract}
 \newpage
 
 \tableofcontents
-
+\end{spacing}
 \pagestyle{fancy}
 
 \mainmatter  \xiaosi
@@ -54,7 +55,7 @@
 \fancyhead[CO]{\xiaowu 参考文献}
 \nocite{*}%添加此处
 \bibliography{../Body/Reference}
-
+\newpage
 \appendix
 \fancyhead[CO]{\xiaowu 附录}
 \chapter*{附录}
@@ -64,3 +65,4 @@
 \input{../Body/Appendix}
 
 \end{document}
+
