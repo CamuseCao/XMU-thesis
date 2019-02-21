@@ -23,6 +23,8 @@
 
 为了使用该模板，需要安装一个`TeX`的发行版本。可以选择`Texlive`或者`Miktex`,他们都是跨平台的。而`Texlive`打包了比较多的宏包，较为庞大，`Miktex`则是临时下载没有的宏包。这里我推荐使用`Miktex`。但是对于Mac，推荐使用`MacTeX`，它是为Mac定制的发行版本，应该比较合适。特别提醒`CTeX`套装无法运行该模板。你可以选择卸载`CTeX`套装，安装我推荐的发行版本，或者不使用该模板。关于编译方式需选择`XeLaTeX`,否则无法正常编译该模板,如果熟悉`latexmk`的可以用它来编译，这更好。
 
+如果你不想在本地安装`TeX`的发行版本，其实可以使用 [Overleaf](mailto:camusecao@gmail.com) 在线编译平台，同样请使用`XeLaTeX`编译。如果想在线编译请选择我的另外一个项目去编译。我会在最后附上地址。能在Overleaf编译多亏了他们支持人员 LianTze Lim 的帮助，在此表示感谢。 大家如果在这个平台上使用遇到什么技术问题可以发邮件向[支持人员](support@overleaf.com)请教，很可能回复的是林前辈哦，请大家不要发邮件问怎么样才能访问该网站。~~关于打开该网址的正确姿势是找到一个靠谱的梯子，然后爬上去。~~
+
 ## 模板使用说明
 
 为了正确使用该模板，请按照提示安装好可使用的TeX发行版本。因为论文内容比较多，因此采取了分文件的方式来构成该文档。主文档`XMU.tex`的位置位于`Main`下，正确编译后所得的pdf文件就在这里。`Figure`文件夹是存放图片的文件夹，该文件夹已经加入图片文件夹的位置，插入图片是无需多加路径，直接用文件名即可。关于`Setting`文件夹只需要把里面的`Information.tex`正确填入即可。而你需要编辑的仅有`Body`文件夹下的文件。
@@ -49,4 +51,8 @@
 
 邮箱： [camusecao@gmail.com](mailto:camusecao@gmail.com)
 
-github项目的地址是 : [Link](https://github.com/CamuseCao/XMU-Undergraduate-thesis-template)
+该项目github项目的地址是 : [Link](https://github.com/CamuseCao/XMU-Undergraduate-thesis-template)
+
+`Overleaf`在线编译的项目的地址 ：[Githu下载](https://github.com/CamuseCao/XMU-Thesis-Overleaf)    [Overleaf查看与下载]() 
+
+(`Overleaf`项目的地址请勿随意编辑，方便大家的观看。你可以把它拷到你自己的项目下尽情玩耍。 )
