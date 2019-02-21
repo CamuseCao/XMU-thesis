@@ -44,6 +44,6 @@
 
 该项目github项目的地址是 : [Link](https://github.com/CamuseCao/XMU-Undergraduate-thesis-template)
 
-`Overleaf`在线编译的项目的地址 ：[Githu下载](https://github.com/CamuseCao/XMU-Thesis-Overleaf)    [Overleaf查看与下载](https://www.overleaf.com/project/5c519694c8b0af0eb612532c) 
+`Overleaf`在线编译的项目的地址 ：[Githu下载](https://github.com/CamuseCao/XMU-Thesis-Overleaf)    [Overleaf查看与下载](https://www.overleaf.com/2128697983jhmpkzxdzmry) 
 
 (`Overleaf`项目的地址请勿随意编辑，方便大家的观看。你可以把它拷到你自己的项目下尽情玩耍。 )
