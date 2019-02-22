@@ -91,6 +91,11 @@ footskip=1.5cm,
 \setCJKmainfont[ItalicFont={楷体}, BoldFont={黑体}]{宋体}%衬线字体 缺省中文字体为
 \setCJKsansfont{黑体}
 \setCJKmonofont{楷体}%中文等宽字体
+
+%\setCJKmainfont[ItalicFont={Kai}, BoldFont={Hei}]{STSong}%衬线字体 缺省中文字体为
+%\setCJKsansfont{Hei}
+%\setCJKmonofont{Kai}%中文等宽字体
+
 \setmainfont{Times New Roman} %西文部分默认使用的字体
 \setsansfont{Times New Roman} %西文默认无衬线字体
 \setmonofont{Times New Roman}%西文默认的等宽字体
@@ -100,8 +105,8 @@ footskip=1.5cm,
 \usepackage{natbib}
 \usepackage{fancyhdr}
 \fancyhf{}
-\fancyhead[CE]{\xiaowu \songti \xmutitle}
-\fancyhead[CO]{\xiaowu \songti \CTEXthechapter\quad \leftmark}
+\fancyhead[CE]{\xiaowu \sffamily  \xmutitle}
+\fancyhead[CO]{\xiaowu \sffamily  \CTEXthechapter\quad \leftmark}
 \fancyfoot[C]{\thepage}
 %\lhead{\textnormal{\kaishu\leftmark}}
 %\chead{\textnormal{\kaishu\rightmark}}
@@ -219,7 +224,7 @@ footskip=1.5cm,
 	{\sffamily %\heiti
 		 \xiaosi #1}{#2}}
 \renewcommand*\l@subsection[2]{\@dottedtocline{2}{3.8em}{3.2em}%
-	{\rmfamily  %\songti 
+	{\rmfamily  %\sffamily  
 		\xiaosi #1}{#2}}
 % for section
 \renewcommand\section[2]{%
@@ -258,7 +263,7 @@ footskip=1.5cm,
 \renewcommand\subsubsection{\@startsection{subsubsection}{3}{\z@}%
 	{-3.25ex\@plus -1ex \@minus -.2ex}%
 	{1.5ex \@plus .2ex}%
-	{\sffamily%\songti
+	{\sffamily%\sffamily 
 		\xiaosi}}
 %
 
