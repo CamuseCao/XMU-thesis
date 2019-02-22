@@ -1,3 +1,4 @@
+% !TeX document-id = {182a71a9-0e53-4007-bbd0-360f73891856}
 % !TeX TXS-program:compile = txs:///latexmk/{}[-xelatex -synctex=1 -interaction=nonstopmode]
 
 %\documentclass[UTF8,openright,12pt,]{ctexbook}  %When you need to print the pdf ,choose this one. If it still can't satisfied you, you may turn to Cover and reconsitution/reconsitution.tex .I'm sure it will.
@@ -7,14 +8,13 @@
 \input{../Settings/Information}
 \graphicspath{{../Figures/}}
 
-\let\oldeqref\eqref
-\renewcommand{\eqref}{\songti{公式}\oldeqref}
-\renewcommand{\citep}[1]{{\color{blue}\citeauthor{#1}(\citeyearpar{#1})}}
+%\let\oldeqref\eqref
+%\renewcommand{\eqref}{公式}\oldeqref}
+%\renewcommand{\citep}[1]{{\color{blue}\citeauthor{#1}(\citeyearpar{#1})}}
 
 \crefname{figure}{图}{}
 \crefname{table}{表}{}
 \crefname{equation}{公式}{}
-%\crefname{equation}{\songti{公式}}{}
 %equation, chapter, section, etc.
 %\creflabelformat{htypei}{hformati}
 \newtheorem{theory}{定理}[section]
@@ -23,7 +23,6 @@
 \begin{document}
 
 \input{../Settings/Titlepage}
-\zhspacing
 %\listfigurename
 %\listtablename
 \pagestyle{plain}
