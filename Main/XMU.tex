@@ -6,45 +6,29 @@
 
 \input{../Settings/Setting}
 \input{../Settings/Information}
-\graphicspath{{../Figures/}}
-
-%\let\oldeqref\eqref
-%\renewcommand{\eqref}{公式}\oldeqref}
-%\renewcommand{\citep}[1]{{\color{blue}\citeauthor{#1}(\citeyearpar{#1})}}
-
-\crefname{figure}{图}{}
-\crefname{table}{表}{}
-\crefname{equation}{公式}{}
-%equation, chapter, section, etc.
-%\creflabelformat{htypei}{hformati}
-\newtheorem{theory}{定理}[section]
-\theoremstyle{definition}\newtheorem{law}{定律}[section]
 
 \begin{document}
-
+\frontmatter
 \input{../Settings/Titlepage}
 %\listfigurename
 %\listtablename
 \pagestyle{plain}
 \pagenumbering{roman}
-\begin{spacing}{1.5}
-\input{../Settings/Promise}
-%\setstretch{1.5}
+%\setcounter{page}{1}
+\begin{spacing}{1.7}
+	\input{../Settings/Promise}
+	\input{../Body/Thanks}
+	\input{../Body/Abstract}
+		\newpage
 
-
-\input{../Body/Thanks}
-\input{../Body/Abstract}
-\newpage
-
-\tableofcontents
+	\tableofcontents
 \end{spacing}
+
 \pagestyle{fancy}
 
 \mainmatter  \xiaosi
 
-
 \input{../Body/Chapter1}
-
 \input{../Body/Chapter2}
 
 \backmatter

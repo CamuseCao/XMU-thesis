@@ -1,34 +1,19 @@
 % !TeX root = ../Main/XMU.tex
 \usepackage{ctex}
 \ctexset{today=big,}
-%\ctexset{
-%	contentsname = { \heiti \xiaosan 目录},
-%	%	abstractname = {本文概要},
-%	%	bibname = {文\quad 献}
-%	space = {auto},
-%	chapter = {
-%		format =\vspace{4ex} \centering \heiti \erhao,
-%%		pagestyle = fancy,
-%		beforeskip = 5pt ,afterskip =25pt,
-%		%	fixskip = true,
-%		tocline = \CTEXifname{\protect\numberline{\CTEXthechapter\hspace{.3em}}}{}#2\dotfill,
-%	},
-%	section={
-%		name={ },
-%		format = \sihao \heiti  ,
-%		%	number=\arabic{section},
-%	},
-%	subsection={
-%	name={ },
-%	format = \xiaosi \heiti  ,
-%	%	number=\arabic{section},
-%},
-%}
+
 \usepackage{amsmath,amsthm}
 \usepackage{amsfonts}
 \usepackage{verbatim}
 \usepackage{ifthen}
 \usepackage{xcolor}
+\usepackage{multirow}
+\usepackage{longtable}
+\usepackage[para]{threeparttable}
+\usepackage{array,booktabs,longtable,tabularx}
+\usepackage[font={small,bf}]{caption}
+\usepackage{setspace}
+
 \usepackage[a4paper,
 %bindingoffset=1cm,
 left=2.5cm,
@@ -36,20 +21,16 @@ right=2.5cm,
 top=3cm,
 bottom=4cm,
 footskip=1.5cm,
-%twoside,
+twoside,
 ]{geometry}
+
 \usepackage{graphicx}
-\usepackage{multirow}
-\usepackage{longtable}
-\usepackage[para]{threeparttable}
-\usepackage{array,booktabs,longtable,tabularx}
-\usepackage[font={small,bf}]{caption}
-\usepackage{setspace}
-\usepackage{zhspacing}
-%\linespread{1.3}
+\graphicspath{{../Figures/}}%设定图片的存放路径
+\usepackage{tikz}
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+		\node[shape=circle,draw,inner sep=1pt] (char) {#1};}}
 \usepackage{pifont}
 \renewcommand\thefootnote{\ding{\numexpr171+\value{footnote}}} %改变注脚的格式
-
 
 %设置代码的插入
 \usepackage{listings}
@@ -98,9 +79,10 @@ footskip=1.5cm,
 \setsansfont{Times New Roman} %西文默认无衬线字体
 \setmonofont{Times New Roman}%西文默认的等宽字体
 
-%\usepackage[numbers]{gbt7714}
 \usepackage[super]{gbt7714}
-\usepackage{natbib}
+\usepackage[sort&compress]{natbib}
+\renewcommand{\citep}[1]{{\color{blue}\citeauthor{#1}(\citeyearpar{#1})}}
+
 \usepackage{fancyhdr}
 \fancyhf{}
 \fancyhead[CE]{\xiaowu \sffamily  \xmutitle}
@@ -111,6 +93,21 @@ footskip=1.5cm,
 %\rhead{--\ \thepage\ --}
 %\pagestyle{fancy}
 
+\usepackage[bookmarks=true,bookmarksnumbered=false,
+colorlinks,linkcolor=black,
+citecolor=blue,urlcolor=green]{hyperref}
+\usepackage{cleveref}
+%\let\oldeqref\eqref
+%\renewcommand{\eqref}{公式}\oldeqref}
+
+\crefname{figure}{图}{}
+\crefname{table}{表}{}
+\crefname{equation}{公式}{}
+%equation, chapter, section, etc.
+%\creflabelformat{htypei}{hformati}
+\newtheorem{theory}{定理}[section]
+\theoremstyle{definition}\newtheorem{law}{定律}[section]
+\def\lq{`}\def\rq{'}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -218,10 +215,10 @@ footskip=1.5cm,
 	\endgroup
 	\fi%
 }
-\renewcommand*\l@section[2]{\@dottedtocline{1}{1.5em}{2.3em}%
-	{\sffamily %\heiti
+\renewcommand*\l@section[2]{\@dottedtocline{1}{1.5em}{3.0em}%
+	{\sffamily 
 		 \xiaosi #1}{#2}}
-\renewcommand*\l@subsection[2]{\@dottedtocline{2}{3.8em}{3.2em}%
+\renewcommand*\l@subsection[2]{\@dottedtocline{2}{3.8em}{3.0em}%
 	{\rmfamily  %\sffamily  
 		\xiaosi #1}{#2}}
 % for section
@@ -236,7 +233,7 @@ footskip=1.5cm,
 	{%
 		\parindent \z@ \raggedright
 		\interlinepenalty\@M
-		\sffamily %\heiti 
+		\sffamily 
 		\sihao \thesection \hspace{1em}#1\par\nobreak%
 	}%
 	\vspace{2.3ex \@plus 0.2ex}
@@ -252,7 +249,7 @@ footskip=1.5cm,
 	{%
 		\parindent \z@ \raggedright
 		\interlinepenalty\@M
-		\sffamily \bfseries %\heiti  
+		\sffamily \bfseries 
 		\xiaosi \thesubsection \hspace{1em}#1\par\nobreak%
 	}%
 	\vspace{1.5ex \@plus 0.2ex}
@@ -261,7 +258,7 @@ footskip=1.5cm,
 \renewcommand\subsubsection{\@startsection{subsubsection}{3}{\z@}%
 	{-3.25ex\@plus -1ex \@minus -.2ex}%
 	{1.5ex \@plus .2ex}%
-	{\sffamily%\sffamily 
+	{\sffamily
 		\xiaosi}}
 %
 
@@ -319,10 +316,14 @@ footskip=1.5cm,
 	\parskip 0pt
 	%    \Cchapter{\texorpdfstring{\contentsname}{目录}}%
 	\begin{center}
-		\heiti{\xiaosan{\textbf{目录}}}
+          \textbf{\sffamily \xiaosan 目录}
 	\end{center}
 	\@starttoc{toc}% 
-	\newpage
+	\if@openright
+\cleardoublepage
+	\else
+\clearpage
+	\fi
 	%   \ENchapter{英文目录}{\econtentsname}%
 	\thispagestyle{plain}
 	\begin{center}
@@ -334,33 +335,15 @@ footskip=1.5cm,
 	\cleardoublepage%
 }
 
-%%============================摘要===========================%%
+%%============================关键词===========================%%
 
-%%中文摘要。
-%\newenvironment{abstract}
-%{\thispagestyle{plain}  \begin{center}
-%		\heiti \xiaosan 摘要
-%	\end{center}  \xiaosi  \vspace{2ex} }{}
 %%中文关键词。
 \newcommand\keywords[1]{%
 	\vspace{2ex}\noindent{\sffamily \bfseries 关键词：} #1}
 
-%%英文摘要。
-%\newenvironment{englishabstract}
-%{\thispagestyle{plain} \begin{center}
-%		\xiaosan \textbf{Abstract}
-%	\end{center} \xiaosi \vspace{2ex} }%
-%{}
+
 %%英文关键词。
 \newcommand\englishkeywords[1]{%
 	\vspace{2ex}\noindent{\sffamily \bfseries Keywords:} #1}
 
 \makeatother
-
-
-
-\usepackage[bookmarks=true,bookmarksnumbered=false,
-colorlinks,linkcolor=black,
-citecolor=blue,urlcolor=green]{hyperref}
-\usepackage{cleveref}
-\def\lq{`}\def\rq{'}
