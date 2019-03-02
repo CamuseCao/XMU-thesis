@@ -1,3 +1,3 @@
 git add .
-git commit -m "添加Mac平台支持"
+git commit -m "修改目录以及一些其它细节"
 git push origin master
