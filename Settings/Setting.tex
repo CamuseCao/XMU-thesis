@@ -75,10 +75,10 @@ twoside,
 %\setCJKsansfont{Hei}
 %\setCJKmonofont{Kai}%中文等宽字体
 
-\setmainfont{Times New Roman} %西文部分默认使用的字体
+\setmainfont{Times New Roman} %西文部分默认使用的字体 [BoldFont=Nimbus Sans L, ItalicFont={Nimbus Roman No9 L}]
 \setsansfont{Times New Roman} %西文默认无衬线字体
 \setmonofont{Times New Roman}%西文默认的等宽字体
-
+%\usepackage{mathptmx}
 \usepackage[super]{gbt7714}
 \usepackage[sort&compress]{natbib}
 \renewcommand{\citep}[1]{{\color{blue}\citeauthor{#1}(\citeyearpar{#1})}}
@@ -149,14 +149,14 @@ citecolor=blue,urlcolor=green]{hyperref}
 	\addcontentsline{toc}{chapter}%
 	{\protect\numberline{\@chaplable{\thechapter}}\hspace{-2.5em}#1 \Dotfill }%
 	\addcontentsline{eoc}{chapter}%
-	{\protect\numberline{\chaptername\ \thechapter }\hspace{-1.8em}#3 \Dotfill }%
+	{\protect\numberline{\bfseries \chaptername \bfseries \thechapter }\hspace{-1.7em} \textbf{#3} \Dotfill }%
 	\else
 	\addcontentsline{toc}{chapter}{#1}%
-	\addcontentsline{eoc}{chapter}{#3}%
+	\addcontentsline{eoc}{chapter}{\textbf{#3}}%
 	\fi
 	\else
 	\addcontentsline{toc}{chapter}{#1}%
-	\addcontentsline{eoc}{chapter}{#3}%
+	\addcontentsline{eoc}{chapter}{\textbf{#3}}%
 	\fi
 	\chaptermark{#1}%
 	\addtocontents{lof}{\protect\addvspace{10\p@}}%
@@ -207,19 +207,19 @@ citecolor=blue,urlcolor=green]{hyperref}
 	\begingroup
 	\parindent \z@ \rightskip \@pnumwidth
 	\parfillskip -\@pnumwidth
-	\leavevmode \sffamily\sihao
+	\leavevmode \heiti \sihao %\sffamily
 	\advance\leftskip\@tempdima
 	\hskip -\leftskip
-	#1\nobreak\hfil \nobreak\hb@xt@\@pnumwidth{\hss\rmfamily #2}\par
+	#1\nobreak\hfil \nobreak\hb@xt@\@pnumwidth{\hss #2}\par % \rmfamily
 	\penalty\@highpenalty
 	\endgroup
 	\fi%
 }
 \renewcommand*\l@section[2]{\@dottedtocline{1}{1.5em}{3.0em}%
-	{\sffamily 
-		 \xiaosi #1}{#2}}
+	{\heiti %\sffamily 
+		 \xiaosi #1}{\bfseries #2}}
 \renewcommand*\l@subsection[2]{\@dottedtocline{2}{3.8em}{3.0em}%
-	{\rmfamily  %\sffamily  
+	{%\heiti %\sffamily  %\rmfamily 
 		\xiaosi #1}{#2}}
 % for section
 \renewcommand\section[2]{%
@@ -227,7 +227,7 @@ citecolor=blue,urlcolor=green]{hyperref}
 	\addcontentsline{toc}{section}%
 	{\protect\numberline{\thesection}#1}%
 	\addcontentsline{eoc}{section}%
-	{\protect\numberline{\thesection}#2}%
+	{\protect\numberline{\bfseries \thesection \quad \;\; #2}}%
 	\sectionmark{#1}%
 	\par\vspace{3.5ex \@plus 1ex \@minus -.2ex}%
 	{%
@@ -249,8 +249,8 @@ citecolor=blue,urlcolor=green]{hyperref}
 	{%
 		\parindent \z@ \raggedright
 		\interlinepenalty\@M
-		\sffamily \bfseries 
-		\xiaosi \thesubsection \hspace{1em}#1\par\nobreak%
+		\sffamily
+		\xiaosi \thesubsection\phantom{mmmm} #1\par\nobreak%
 	}%
 	\vspace{1.5ex \@plus 0.2ex}
 }
@@ -298,7 +298,7 @@ citecolor=blue,urlcolor=green]{hyperref}
 	\chapter*{\phantomsection %
 		\center{#1}}%
 	\markboth{#1}{}%
-	\addcontentsline{eoc}{chapter}{#1}%
+	\addcontentsline{eoc}{chapter}{\textbf{#1}}%
 }
 %
 
