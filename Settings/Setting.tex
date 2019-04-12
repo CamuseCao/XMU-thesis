@@ -88,17 +88,12 @@ twoside,
 \fancyhead[CE]{\xiaowu \sffamily  \xmutitle}
 \fancyhead[CO]{\xiaowu \sffamily  \CTEXthechapter\quad \leftmark}
 \fancyfoot[C]{\thepage}
-%\lhead{\textnormal{\kaishu\leftmark}}
-%\chead{\textnormal{\kaishu\rightmark}}
-%\rhead{--\ \thepage\ --}
-%\pagestyle{fancy}
 
 \usepackage[bookmarks=true,bookmarksnumbered=false,
 colorlinks,linkcolor=black,
 citecolor=blue,urlcolor=green]{hyperref}
+\pdfstringdefDisableCommands{\def\Dotfill{ }}
 \usepackage{cleveref}
-%\let\oldeqref\eqref
-%\renewcommand{\eqref}{公式}\oldeqref}
 
 \crefname{figure}{图}{}
 \crefname{table}{表}{}
@@ -126,13 +121,10 @@ citecolor=blue,urlcolor=green]{hyperref}
 \newcommand{\wuhao}{\fontsize{10.5pt}{10.5pt}\selectfont}    % 五号, 单倍行距
 \newcommand{\xiaowu}{\fontsize{9pt}{9pt}\selectfont}    % 小五号, 单倍行距
 
-
-
-
-
 \makeatletter
 
 \newcommand\Dotfill{\leavevmode\cleaders\hb@xt@ .68em{\hss .\hss }\hfill\kern\z@}
+%\newcommand\Dotfill{}
 
 % for chapter
 \newcommand\@chaplable[1]{第\zhnumber{#1}章}
