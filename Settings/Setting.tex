@@ -85,8 +85,8 @@ twoside,
 
 \usepackage{fancyhdr}
 \fancyhf{}
-\fancyhead[CE]{\xiaowu \sffamily  \xmutitle}
-\fancyhead[CO]{\xiaowu \sffamily  \CTEXthechapter\quad \leftmark}
+\fancyhead[CE]{\xiaowu \xmutitle}
+\fancyhead[CO]{\xiaowu \CTEXthechapter\quad\leftmark}
 \fancyfoot[C]{\thepage}
 
 \usepackage[bookmarks=true,bookmarksnumbered=false,
@@ -102,7 +102,7 @@ citecolor=blue,urlcolor=green]{hyperref}
 %\creflabelformat{htypei}{hformati}
 \newtheorem{theory}{定理}[section]
 \theoremstyle{definition}\newtheorem{law}{定律}[section]
-\def\lq{`}\def\rq{'}
+%\def\lq{`}\def\rq{'}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -225,10 +225,10 @@ citecolor=blue,urlcolor=green]{hyperref}
 	{%
 		\parindent \z@ \raggedright
 		\interlinepenalty\@M
-		\sffamily 
+	\heiti	%\sffamily 
 		\sihao \thesection \hspace{1em}#1\par\nobreak%
 	}%
-	\vspace{2.3ex \@plus 0.2ex}
+	\vspace{1.5ex}
 }
 %
 \renewcommand\subsection[2]{%
@@ -241,10 +241,10 @@ citecolor=blue,urlcolor=green]{hyperref}
 	{%
 		\parindent \z@ \raggedright
 		\interlinepenalty\@M
-		\sffamily
+	\heiti	%\sffamily
 		\xiaosi \thesubsection\phantom{mmmm} #1\par\nobreak%
 	}%
-	\vspace{1.5ex \@plus 0.2ex}
+	\vspace{1.5ex}
 }
 %
 \renewcommand\subsubsection{\@startsection{subsubsection}{3}{\z@}%
