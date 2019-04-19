@@ -207,10 +207,10 @@ citecolor=blue,urlcolor=green]{hyperref}
 	\endgroup
 	\fi%
 }
-\renewcommand*\l@section[2]{\@dottedtocline{1}{1.5em}{3.0em}%
+\renewcommand*\l@section[2]{\@dottedtocline{1}{2.0em}{3.0em}%
 	{\heiti %\sffamily 
 		 \xiaosi #1}{\bfseries #2}}
-\renewcommand*\l@subsection[2]{\@dottedtocline{2}{3.8em}{3.0em}%
+\renewcommand*\l@subsection[2]{\@dottedtocline{2}{2.0em}{3.0em}%
 	{%\heiti %\sffamily  %\rmfamily 
 		\xiaosi #1}{#2}}
 % for section
@@ -226,9 +226,9 @@ citecolor=blue,urlcolor=green]{hyperref}
 		\parindent \z@ \raggedright
 		\interlinepenalty\@M
 	\heiti	%\sffamily 
-		\sihao \thesection \hspace{1em}#1\par\nobreak%
-	}%
-	\vspace{1.5ex}
+		\sihao \thesection \hspace{1.2em}#1\par\nobreak%
+	}% section 标题设置
+	\vspace{1.5ex}% section 标题后的间距
 }
 %
 \renewcommand\subsection[2]{%
@@ -237,14 +237,14 @@ citecolor=blue,urlcolor=green]{hyperref}
 	{\protect\numberline{\thesubsection}#1}%
 	\addcontentsline{eoc}{subsection}%
 	{\protect\numberline{\thesubsection}#2}%
-	\par\vspace{3.25ex\@plus 1ex \@minus -.2ex}%
+	\par\vspace{2.25ex\@plus 1ex \@minus -.2ex}%
 	{%
 		\parindent \z@ \raggedright
 		\interlinepenalty\@M
 	\heiti	%\sffamily
-		\xiaosi \thesubsection\phantom{mmmm} #1\par\nobreak%
-	}%
-	\vspace{1.5ex}
+		\xiaosi \thesubsection\phantom{m} #1\par\nobreak%
+	}%  subsection 标题设置
+	\vspace{1.5ex}% subsection 标题后的间距
 }
 %
 \renewcommand\subsubsection{\@startsection{subsubsection}{3}{\z@}%
