@@ -209,10 +209,10 @@ citecolor=blue,urlcolor=green]{hyperref}
 }
 \renewcommand*\l@section[2]{\@dottedtocline{1}{2.0em}{3.0em}%
 	{\heiti %\sffamily 
-		 \xiaosi #1}{\bfseries #2}}
+	\hspace{\xmusectionskip}	 \xiaosi #1}{\bfseries #2}}
 \renewcommand*\l@subsection[2]{\@dottedtocline{2}{2.0em}{3.0em}%
 	{%\heiti %\sffamily  %\rmfamily 
-		\xiaosi #1}{#2}}
+	\hspace{\xmusubsectionskip}	\xiaosi #1}{#2}}
 % for section
 \renewcommand\section[2]{%
 	\refstepcounter{section}
