@@ -48,10 +48,32 @@
 \end{enumerate}
 
 \begin{equation}
-1+1=2 \label{eq1}
+1+1=2 \label{eq:1}
 \end{equation}
 
-\cref{eq1} 是大家所熟知的。我们可以用这种方式进行引用：\verb|\cref{eq1}| 。
+\begin{equation}
+2+2=4 \label{eq:2}
+\end{equation}
+
+\begin{equation}
+3+3=6 \label{eq:3}
+\end{equation}
+
+\begin{equation}
+4+4=8 \label{eq:4}
+\end{equation}
+
+单引用：\cref{eq:1}，引用代码：\verb|\cref{eq:1}|。
+
+范围引用：\crefrange{eq:1}{eq:2}，引用代码：\verb|\crefrange{eq:1}{eq:2}|。
+
+连续多引用：\cref{eq:1,eq:3,eq:2}，引用代码：\verb|\cref{eq:1,eq:2,eq:3}|。等同于\verb|\crefrange{eq:1}{eq:2}|
+
+不连续多引用：\cref{eq:1,eq:2,eq:4}，引用代码：\verb|\cref{eq:1,eq:2,eq:4}|。
+
+
+
+假如你想引用的``公式"是一个方程或者就叫式xx.xx，那么就这样引用方程~\eqref{eq:1}或者式~\eqref{eq:1}。引用代码是:\verb|方程~\eqref{eq:1}|,\verb|式~\eqref{eq:1}|。
 
 不想要编号的公式就用这样的方式：
 
@@ -75,7 +97,7 @@ a &= b + c \\
 d &= e + f + g \\
 h + i &= j + k \\
 l + m &= n
-\end{aligned} \label{eq3}
+\end{aligned} \label{eq:5}
 \end{equation}
 
 \begin{theory}[Energy–momentum relation]
@@ -162,6 +184,7 @@ That's it.
 		\end{tablenotes}
 	\end{threeparttable}
 \end{table}%
+
 
 %这个示例的\cref{law:box}，应该是符合规定。
 

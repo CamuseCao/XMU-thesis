@@ -1,39 +1,47 @@
 % !TeX root = ../Main/XMU.tex
-\usepackage{ctex}
-\ctexset{today=big,}
+% \usepackage{ctex}  XMU.tex has already import ctex package
+\usepackage{amsmath,amsthm,amsfonts}  % 数学公式和字体
+\usepackage{verbatim}  % 插入代码或注释
+\usepackage{ifthen}  % 逻辑判断
+\usepackage{xcolor}  % 加颜色
+\usepackage{multirow}  % 做表格，合并多列表  
+\usepackage[para]{threeparttable}  %  三段表
+\usepackage{array,booktabs,longtable,tabularx}  % 做表格
+\usepackage[font={small,bf}]{caption}  % 表名
+\usepackage{graphicx}  % 插图(pdf)
+\usepackage{listings}  %设置代码的插入
+\usepackage{setspace}  % 使用间距宏包
+\usepackage{pifont}  % 为了改变注脚
+\usepackage[a4paper,left=2.5cm,right=2.5cm,top=3cm,bottom=4cm,footskip=1.5cm,twoside]{geometry} % bindingoffset=1cm
+\usepackage{tikz}  % 画图包
+\usepackage{algorithm}  % 算法包
+\usepackage[noend]{algpseudocode}  % 算法包
+\usepackage{fontspec} 
+% \usepackage{xeCJK}
+\usepackage[super]{gbt7714}
+\usepackage[sort&compress]{natbib}
+\usepackage{fancyhdr}
+\usepackage[bookmarks=true,bookmarksnumbered=false,colorlinks,linkcolor=black,citecolor=blue,urlcolor=green]{hyperref}
+\usepackage{cleveref}
 
-\usepackage{amsmath,amsthm}
-\usepackage{amsfonts}
-\usepackage{verbatim}
-\usepackage{ifthen}
-\usepackage{xcolor}
-\usepackage{multirow}
-\usepackage{longtable}
-\usepackage[para]{threeparttable}
-\usepackage{array,booktabs,longtable,tabularx}
-\usepackage[font={small,bf}]{caption}
-\usepackage{setspace}
 
-\usepackage[a4paper,
-%bindingoffset=1cm,
-left=2.5cm,
-right=2.5cm,
-top=3cm,
-bottom=4cm,
-footskip=1.5cm,
-twoside,
-]{geometry}
 
-\usepackage{graphicx}
-\graphicspath{{../Figures/}}%设定图片的存放路径
-\usepackage{tikz}
-\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
-		\node[shape=circle,draw,inner sep=1pt] (char) {#1};}}
-\usepackage{pifont}
+% --------------------------- resources settings ----------------------
+\graphicspath{{../Figures/} } %设定图片的存放路径
+
+% --------------------------- circled text settings ----------------------
+% required package(s):
+% - tikz
+\newcommand*{\circled}[1]{\tikz[baseline=(char.base)]{\node[shape=circle,draw,inner sep=1pt] (char) {#1};}}  % define a new command for circled text since \textcircled is very sloppy
+
+% --------------------------- endnotes settings ----------------------
+% required package(s):
+% - pifont
 \renewcommand\thefootnote{\ding{\numexpr171+\value{footnote}}} %改变注脚的格式
 
-%设置代码的插入
-\usepackage{listings}
+% --------------------------- code inserting settings ----------------------
+% required package(s):
+% - listings
 \def\lstbasicfont{\fontfamily{pcr}\selectfont\footnotesize}
 \lstset{%
 	numbers=left,
@@ -52,62 +60,38 @@ twoside,
 	frame=single,
 	rulesepcolor=\color{red!20!green!20!blue!20},
 }
-\lstloadlanguages{C,C++,Java,Matlab,Mathematica}
+\lstloadlanguages{C,C++,Java,Matlab,Mathematica}  % supported languages
 
-%算法的插入宏包
-\usepackage{algorithm}
-\usepackage[noend]{algpseudocode}
-
+% --------------------------- algorithm inserting settings ----------------------
+% required packages:
+% - algorithm
+% - algpseudocode[noend]
 \makeatletter
-\def\BState{\State\hskip-\ALG@thistlm}
+\def\algbackskip{\hskip-\ALG@thistlm} %\def\BState{\State\hskip-\ALG@thistlm} % both works fine, but latter one redefines \BState
 \makeatother
 
 
-%font
-\usepackage{fontspec} 
-\usepackage{xeCJK}%中文字体
-%Windows请保留以下三行代码。而Mac用户请注释以下三行代码，开启后面三行代码。Linux用户请自行配置字体。
-\setCJKmainfont[ItalicFont={楷体}, BoldFont={黑体}]{宋体}%衬线字体 缺省中文字体为
-\setCJKsansfont{黑体}
-\setCJKmonofont{楷体}%中文等宽字体
+% --------------------------- font settings ----------------------
+% required packages
+% - fontspec
+% - xeCJK
+\ctexset{today=big}  % format date
+% Chinese Charactors Support
+%		Windows OS Reqiured, Mac users please commented out these codes
+\setCJKmainfont[ItalicFont={楷体}, BoldFont={黑体}]{宋体} %衬线字体 缺省中文字体为
+\setCJKsansfont{黑体}  % 中文无衬线字体，即\sffamily
+\setCJKmonofont{楷体}  % 中文等宽字体，即\ttfamily
+%		Mac OS Reqiured, Windows users please commented out these codes
+% \setCJKmainfont[ItalicFont={Kai}, BoldFont={Hei}]{STSong}%衬线字体 缺省中文字体为
+% \setCJKsansfont{Hei}
+% \setCJKmonofont{Kai}%中文等宽字体
 
-%\setCJKmainfont[ItalicFont={Kai}, BoldFont={Hei}]{STSong}%衬线字体 缺省中文字体为
-%\setCJKsansfont{Hei}
-%\setCJKmonofont{Kai}%中文等宽字体
-
+% English Charactors Support
 \setmainfont{Times New Roman} %西文部分默认使用的字体 [BoldFont=Nimbus Sans L, ItalicFont={Nimbus Roman No9 L}]
 \setsansfont{Times New Roman} %西文默认无衬线字体
-\setmonofont{Times New Roman}%西文默认的等宽字体
-%\usepackage{mathptmx}
-\usepackage[super]{gbt7714}
-\usepackage[sort&compress]{natbib}
-\renewcommand{\citep}[1]{{\color{blue}\citeauthor{#1}(\citeyearpar{#1})}}
+\setmonofont{Times New Roman} %西文默认的等宽字体
 
-\usepackage{fancyhdr}
-\fancyhf{}
-\fancyhead[CE]{\xiaowu \xmutitle}
-\fancyhead[CO]{\xiaowu \CTEXthechapter\quad\leftmark}
-\fancyfoot[C]{\thepage}
-
-\usepackage[bookmarks=true,bookmarksnumbered=false,
-colorlinks,linkcolor=black,
-citecolor=blue,urlcolor=green]{hyperref}
-\pdfstringdefDisableCommands{\def\Dotfill{ }}
-\usepackage{cleveref}
-
-\crefname{figure}{图}{}
-\crefname{table}{表}{}
-\crefname{equation}{公式}{}
-%equation, chapter, section, etc.
-%\creflabelformat{htypei}{hformati}
-\newtheorem{theory}{定理}[section]
-\theoremstyle{definition}\newtheorem{law}{定律}[section]
-%\def\lq{`}\def\rq{'}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% 重定义字号命令
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% -------------------------- redefine font size ----------------------
 \newcommand{\xiaochu}{\fontsize{30pt}{40pt}\selectfont}    % 小初, 1.5倍行距
 \newcommand{\yihao}{\fontsize{26pt}{36pt}\selectfont}    % 一号, 1.4倍行距
 \newcommand{\erhao}{\fontsize{22pt}{28pt}\selectfont}    % 二号, 1.25倍行距
@@ -121,6 +105,69 @@ citecolor=blue,urlcolor=green]{hyperref}
 \newcommand{\wuhao}{\fontsize{10.5pt}{10.5pt}\selectfont}    % 五号, 单倍行距
 \newcommand{\xiaowu}{\fontsize{9pt}{9pt}\selectfont}    % 小五号, 单倍行距
 
+
+% --------------------------- cite settings ----------------------
+% required packages:
+% - xcolor
+% - natbib[sort&compress]
+% - hyperref[bookmarks=true,bookmarksnumbered=false,colorlinks,linkcolor=black,citecolor=blue,urlcolor=green]
+\renewcommand{\citep}[1]{{\color{blue}\citeauthor{#1}(\citeyearpar{#1})}}
+
+% --------------------------- reference settings ------------------------
+% required packages:
+% - cleveref
+% \crefname params: 
+% first: type
+% second: singular cross reference
+% third: plural cross reference
+\crefformat{figure}{#2图#1#3}
+\crefrangeformat{figure}{图(#3#1#4)\;$\sim$\;(#5#2#6)}
+\crefmultiformat{figure}{图~(#2#1#3)}{和~(#2#1#3)}{，(#2#1#3)}{和~(#2#1#3)}
+
+\crefformat{table}{#2表#1#3}
+\crefrangeformat{table}{表(#3#1#4)\;$\sim$\;(#5#2#6)}
+\crefmultiformat{table}{表~(#2#1#3)}{和~(#2#1#3)}{，(#2#1#3)}{和~(#2#1#3)}
+
+\crefformat{equation}{公式(#2#1#3)}
+\crefrangeformat{equation}{公式(#3#1#4)\;$\sim$\;(#5#2#6)}
+\crefmultiformat{equation}{公式~(#2#1#3)}{ 和~(#2#1#3)}{，(#2#1#3)}{ 和~(#2#1#3)}
+% equation, chapter, section, etc.
+% \creflabelformat{htypei}{hformati}
+
+% --------------------------- equations&principles settings ------------------------
+% required packages:
+% - amsthm
+\newtheorem{theory}{定理}[section]
+\newtheorem{law}{定律}[section]
+\theoremstyle{definition}
+%\def\lq{`}\def\rq{'}
+
+
+% --------------------------- header&footer settings ----------------------
+% required packages:
+% - fancyhdr
+% \pagestyle{fancy}
+\fancyhf{}  % cleans original header&footer
+\fancyhead[CE]{\xiaowu \xmutitle}
+\fancyhead[CO]{\xiaowu \CTEXthechapter\quad\leftmark}  %
+\fancyfoot[C]{\thepage}  % adds number of current page as footer
+
+
+% --------------------------- TOC settings ---------------------------
+% required packages:
+% - hyperref[bookmarks=true,bookmarksnumbered=false,colorlinks,linkcolor=black,citecolor=blue,urlcolor=green]
+\pdfstringdefDisableCommands{  % disable some definations
+	\def\Dotfill{ }  % disable \Dotfill in toc of 
+}
+
+
+
+
+
+
+
+
+% --------------------------- TOC Arrangements ------------------------
 \makeatletter
 
 \newcommand\Dotfill{\leavevmode\cleaders\hb@xt@ .68em{\hss .\hss }\hfill\kern\z@}
