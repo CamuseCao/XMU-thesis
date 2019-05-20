@@ -249,14 +249,14 @@
 	\leavevmode \heiti \sihao %\sffamily
 	\advance\leftskip\@tempdima
 	\hskip -\leftskip
-	#1\nobreak\hfil \nobreak\hb@xt@\@pnumwidth{\hss #2}\par % \rmfamily
+	#1\nobreak\hfil\xiaosi \heiti \nobreak\hb@xt@\@pnumwidth{\hss  #2}\par % \rmfamily
 	\penalty\@highpenalty
 	\endgroup
 	\fi%
 }
 \renewcommand*\l@section[2]{\@dottedtocline{1}{2.0em}{3.0em}%
 	{\heiti %\sffamily 
-	\hspace{\xmusectionskip}	 \xiaosi #1}{\bfseries #2}}
+	\hspace{\xmusectionskip}	 \xiaosi #1}{ #2}}
 \renewcommand*\l@subsection[2]{\@dottedtocline{2}{2.0em}{3.0em}%
 	{%\heiti %\sffamily  %\rmfamily 
 	\hspace{\xmusubsectionskip}	\xiaosi #1}{#2}}
