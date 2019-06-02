@@ -1,23 +1,48 @@
-% !TeX root = ../Main/XMU.tex
-\newcommand\xmudate{\today}
-\newcommand\xmuauthor{曹声根}
-\newcommand\xmutitle{毕业论文}
-\newcommand\class{2015级}
-\newcommand\studentnumber{19720152203410}
-\newcommand\department{物理科学与技术学院}
-\newcommand\major{微电子科学与工程}
-\newcommand\advisor{李明哲 \quad 教授}
-\newcommand\otheradvisor{校外指导老师 \quad 头衔}
-\newcommand\team{物理科学与技术学院~理论物理}
-\newcommand\fundteam{物理科学与技术学院~理论物理}
-\newcommand\degree{本\quad 科}
-\newcommand\englishtitle{Your Thesis}
-\newcommand\majorordouble{主修/辅修}
-\newcommand\lab{实验室}
+% !TeX root = ../XMU.tex
+%\newcommand\xmudate{二〇一九年二月二十八日}
+%\newcommand\xmuauthor{曹声根}
+%\newcommand\xmutitle{量子时间晶体}
+%\newcommand\class{2015级}
+%\newcommand\studentnumber{19720152203410}
+%\newcommand\department{物理科学与技术学院}
+%\newcommand\major{微电子科学与工程}
+%\newcommand\advisor{李明哲 \quad 教授}
+%\newcommand\otheradvisor{}
+%\newcommand\team{物理科学与技术学院~理论物理}
+%\newcommand\fundteam{物理科学与技术学院~理论物理}
+%\newcommand\degree{本\quad 科}
+%\newcommand\englishtitle{Quantum Time Crystals}
+%\newcommand\majorordouble{主修}
+%\newcommand\lab{实验室}
+%
+%\author{\xmuauthor}
+%\title{\xmutitle}
+%\date{\xmutitle}
 
-\author{\xmuauthor}
-\title{\xmutitle}
-\date{\xmutitle}
+\author{曹声根}
+\title{量子时间晶体}
+\date{\today} %二〇一九年二月二十八日
+\class{2015级}
+\studentnumber{19720152203410}
+\department{物理科学与技术学院}
+\major{微电子科学与工程}
+\advisor{李明哲 \quad 教授}
+\otheradvisor{校外指导老师 \quad 职称}
+\team{物理科学与技术学院~理论物理}
+\fundteam{物理科学与技术学院~理论物理}
+\degree{本\quad 科}
+\englishtitle{Quantum Time Crystals}
+\majorordouble{主修}
+\lab{实验室}
 
-\newcommand\xmusectionskip{0cm}%目录中section的缩进
-\newcommand\xmusubsectionskip{0cm}%目录中subsection的缩进
+
+
+\makeatletter
+\let\xmutitle\@title
+\let\xmuauthor\@author
+\let\xmudate\@date
+\makeatother
+
+%\xmudate{\date}
+%\xmuauthor{\author}
+%\xmutitle{\title}
