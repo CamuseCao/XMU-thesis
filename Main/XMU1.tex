@@ -15,9 +15,9 @@
 \pagenumbering{roman}
 %\setcounter{page}{1}
 \begin{spacing}{1.7}
-	\input{../Settings/Promise}
-	\input{../Body/Thanks}
-	\input{../Body/Abstract}
+%	\input{../Settings/Promise}
+%	\input{../Body/Thanks}
+%	\input{../Body/Abstract}
 		\newpage
 
 	\tableofcontents
@@ -26,17 +26,31 @@
 \pagestyle{fancy}
 
 \mainmatter  \xiaosi
-
-\input{../Body/Chapter1}
-\input{../Body/Chapter2}
+\chapter{中文测试}{English Test}
+\section{中文节}{English section}
+\subsubsection{中文小节}{English subsection}
+\chapter{另一个章节}{Another chapter}
+\section{另一个小节}{Another section}
+\section{又来了一个小节}{Again another section}
+\subsection{另一个小节}{Again another subsection}
+\chapter*{另一个章节}{Another chapter}
+\section*{另一个小节}{Another section}
+\section*{又来了一个小节}{Again another section}
+\subsection*{另一个小节}{Again another subsection}
+\chapter{最后一章}{The lasr chapter}
+\section{最后一节}{The last section}
+\subsection{最后一小节}{The last subsection}
+%\input{../Body/Chapter1}
+%\input{../Body/Chapter2}
 
 \backmatter
 
 \addcontentsline{toc}{chapter}{参考文献 \Dotfill }
 \addcontentsline{eoc}{chapter}{\bfseries Reference \Dotfill }
 \fancyhead[CO]{\xiaowu 参考文献}
-\nocite{*}%添加此处
-\bibliography{../Body/Reference}
+%\nocite{*}%添加此处
+%\bibliography{../Body/Reference}
+这里是参考文献的地方啊。
 \newpage
 \appendix
 \fancyhead[CO]{\xiaowu 附录}
@@ -44,7 +58,11 @@
 \addcontentsline{toc}{chapter}{附录A\Dotfill}
 \addcontentsline{eoc}{chapter}{\bfseries Appendix A\Dotfill}
 
-\input{../Body/Appendix}
+下面是一个Matlab的代码的插入，还可以插入其它类型的代码。有额外需求可以添加。
+
+
+附录里面还可以放其它需要的内容，它们是文章的补充。
+%\input{../Body/Appendix}
 
 \end{document}
 
