@@ -1,4 +1,4 @@
-% !TeX root = ../Main/XMU.tex
+% !TeX root = ../XMU.tex
 \chapter{正文的基本要求}{Basic requirements}
 
 正文从另右页开始。每一章应另起页，并从奇数页开始。正文一般从引言（绪论）开始，以结论或讨论结束。引言（绪论）应包括论文的研究目的、流程和方法等。研究领域的历史回顾、文献回溯、理论分析等内容应独立成章，用足够的文字叙述。结论应包含论文的核心观点，阐述自己的创造性成果及其在本研究领域中的意义、作用，交代研究工作的局限，提出未来工作的意见和建议。
@@ -67,13 +67,18 @@
 
 范围引用：\crefrange{eq:1}{eq:2}，引用代码：\verb|\crefrange{eq:1}{eq:2}|。
 
-连续多引用：\cref{eq:1,eq:3,eq:2}，引用代码：\verb|\cref{eq:1,eq:2,eq:3}|。等同于\verb|\crefrange{eq:1}{eq:2}|
+连续多引用：\cref{eq:1,eq:3,eq:2}，引用代码：\verb|\cref{eq:1,eq:2,eq:3}|。
+
+这等同于\verb|\crefrange{eq:1}{eq:2}|
 
 不连续多引用：\cref{eq:1,eq:2,eq:4}，引用代码：\verb|\cref{eq:1,eq:2,eq:4}|。
 
 
 
-假如你想引用的``公式"是一个方程或者就叫式xx.xx，那么就这样引用方程~\eqref{eq:1}或者式~\eqref{eq:1}。引用代码是:\verb|方程~\eqref{eq:1}|,\verb|式~\eqref{eq:1}|。
+当想引用的``公式"是一个方程或者就叫式xx.xx，
+那么就这样引用方程~\eqref{eq:1}或者式~\eqref{eq:1}。
+
+引用代码是:\verb|方程~\eqref{eq:1}|,\verb|式~\eqref{eq:1}|。
 
 不想要编号的公式就用这样的方式：
 
@@ -161,7 +166,7 @@ That's it.
 
 
 
-\begin{table}[h!]
+\begin{table}[!ht]
 			\centering
 	\begin{threeparttable}[b]
 		\footnotesize
@@ -198,7 +203,7 @@ That's it.
 	\item 图与图标题、图序号为一个整体，不得拆开排版为两页。当页空白不够排版该图整体时，可将其后文字部分提前，将图移至次页最前面。
 \end{enumerate}
 
-\begin{figure}[h!]
+\begin{figure}[!ht]
 \centering
 \includegraphics[scale=0.5]{xmu-flag}
 \caption{Our flag} \label{fig11}
@@ -210,23 +215,23 @@ That's it.
 \section{注释}{Exegesis}
 
 当文中的字、词或短语需要进一步加以说明，而又没有具体的文献来源时，用注释。注释不宜过多。
-篇名、作者注置于当页地脚。对文内有关特定内容的注释可夹在文内（加圆括号），也可排在当页地脚，注释序号以“\circled{1}、\circled{2}”等数字形式标示在被注释词条的右上角。注脚的命令如下\verb|\footnote{注脚内容}|\footnote{一个注脚}。
+%篇名、作者注置于当页地脚。对文内有关特定内容的注释可夹在文内（加圆括号），也可排在当页地脚，注释序号以“\circled{1}、\circled{2}”等数字形式标示在被注释词条的右上角。注脚的命令如下\verb|\footnote{注脚内容}|\footnote{一个注脚}。
 
 \section{参看文献与引用}{Reference and citation}
 
 一下是一些参考文献的引用。应该能有合适的。不合适可以修改。
 
 
-\cite{刘海洋2013latex,CTEX}
+\cite{liuhaiyang2013latex,CTEX}
 
 \cite{XMU}
 
-\citet{刘海洋2013latex}
+\citet{liuhaiyang2013latex}
 
-\citep{刘海洋2013latex}
+\citep{liuhaiyang2013latex}
 
-\citealt{刘海洋2013latex}
+\citealt{liuhaiyang2013latex}
 
-\citeauthor{刘海洋2013latex}
+\citeauthor{liuhaiyang2013latex}
 
-\citeyearpar{刘海洋2013latex}
+\citeyearpar{liuhaiyang2013latex}
