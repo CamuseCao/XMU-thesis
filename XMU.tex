@@ -1,6 +1,6 @@
-% !TeX TXS-program:compile = txs:///latexmk/{}[-pdf -synctex=1 -interaction=nonstopmode -silent -outdir=Temp %.tex] 
+% !TeX TXS-program:compile = txs:///latexmk/{}[-pdfxe -synctex=1 -interaction=nonstopmode -silent -outdir=Temp %.tex] 
 %
-\documentclass[bibstyle=numbers]{Settings/XMUthesis}
+\documentclass[bibstyle=super,font=empty]{Settings/XMUthesis}
 \input{Settings/Information}
 \begin{document}
 
@@ -18,8 +18,14 @@
 \backmatter
 \nocite{*} 
 \bibliography{Body/Reference}
-\chapter{附录A}{Appendix A}
 
+\chapter{附录A}{Appendix A}
+\input{Body/Appendix}
+\chapter{附录B}{Appendix B}
+
+\begin{center}
+\textbf{字体展示}
+\end{center}
 
 \( \hbar ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxuy \)
 
@@ -61,138 +67,5 @@
 \itshape ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxuy 
  
  中文字体
- 
-
-
-\begin{comment}
-\frontmatter
-\maketitle
-
-
-\pagestyle{plain}
-\chapter*{承诺书}
-承诺书 中文第一章看看效果 English Capitulo de prueba uno
-{\the\xmudate} {\the\xmuauthor} \the\major
-\sffamily 承诺书 中文第一章看看效果 English Capitulo de prueba uno
-%\chapter*{致谢}
-%致谢
-%\chapter*{摘要}
-%摘要
-
-\xmutableofcontents
-
-
-
-\mainmatter
-\pagestyle{fancy}
-\chapter{中文第一章看看效果 English}
-\captce{Capitulo de prueba uno}
-死几个人哪里上课的vv
-\chapter{双语的中文}{Double English}
-
-\section{来一个节 Section}{Seccion de prueba uno uno}
-看能否附属机构v
-\section{Test section one two}{Seccion de prueba uno dos}
-\newpage
-\subsection{一个小结 English}{Subseccion de prueba uno dos uno}
-看能否附属机构v
-\chapter{Test chapter two}{Capitulo de prueba dos}
-
-
-\section{Test section two one}{Seccion de prueba dos uno}
-
-
-\subsection{Test subsection two one one}{Subseccion de prueba dos uno uno}
-
-
-\subsection{Test subsection two one two}{Subseccion de prueba dos uno dos}
-
-\chapter{中文第一章看看效果 English}
-\captce{Capitulo de prueba uno}
-死几个人哪里上课的vv
-\chapter{双语的中文}{Double English}
-
-\section{来一个节 Section}{Seccion de prueba uno uno}
-看能否附属机构v
-\section{Test section one two}{Seccion de prueba uno dos}
-
-\subsection{一个小结 English}{Subseccion de prueba uno dos uno}
-看能否附属机构v
-\chapter{Test chapter two}{Capitulo de prueba dos}
-
-
-\section{Test section two one}{Seccion de prueba dos uno}
-
-
-\subsection{Test subsection two one one}{Subseccion de prueba dos uno uno}
-
-
-\subsection{Test subsection two one two}{Subseccion de prueba dos uno dos}
-
-\backmatter
-
-\chapter{参考文献}
-\captce{Reference}
-
-\( \hbar ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxuy \)
-
-%$\symbf{\hbar ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxuy} $
-
- ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxuy 中文字体
-
- \textbf{ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxuy 中文字体}
-
- \textit{ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxuy 中文字体}
-
-\sffamily ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxuy 中文字体
-
- \textbf{ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxuy 中文字体}
-\newpage
-
- \textit{ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxuy 中文字体}
-
-\ttfamily ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxuy 中文字体
-
- \textbf{ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxuy 中文字体}
-
- \textit{ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxuy 中文字体}
- 
-ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxuy
-
-\chapter{附录A}
-\captce{Appendix A}
-
-
-\( \hbar ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxuy \)
-
-%$\symbf{\hbar ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxuy} $
-
- ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxuy 中文字体
-
- \textbf{ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxuy 中文字体}
-
- \textit{ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxuy 中文字体}
-
-\sffamily ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxuy 中文字体
-
- \textbf{ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxuy 中文字体}
-\newpage
-
- \textit{ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxuy 中文字体}
-
-\ttfamily ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxuy 中文字体
-
- \textbf{ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxuy 中文字体}
-
- \textit{ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxuy 中文字体}
- 
-ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxuy
-
-来啊\cite{lshort-zh-cn}
-
-
-\nocite{*} 
-\bibliography{Body/Reference}
-\end{comment}
 
 \end{document}
