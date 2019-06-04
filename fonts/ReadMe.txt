@@ -25,3 +25,10 @@ For font=adobe, download them and install them to your system.
 ├── AdobeSongStd-Lightotf
 
 For font=founder, download them and install them to your system.
+├──  FZXH1K.TTF
+├──  FZSSK.TTF
+├──  FZKTK.TTF
+├──  FZXBSK.TTF
+├──  FZHTK.TTF
+├──  FZFSK.TTF
+and so on. texdoc ctex , page 122 see more detail.
