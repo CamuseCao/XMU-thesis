@@ -29,6 +29,21 @@
 	\item 物理量符号、物理量常量、变量符号用斜体，计量单位符号均用正体。
 \end{itemize}
 
+以下单位书写手段是 \verb|siunitx| 宏包提供的，本人推荐使用。
+
+\SI[inter-unit-product =\ensuremath{\cdot}]{1.0}{\newton\meter}z\quad  \si{kg.m.s^{-1}} \quad \si{\kilogram\metre\per\second} \quad  \si[per-mode=symbol]{\kilogram\metre\per\second} \quad \si[per-mode=symbol]{\kilogram\metre\per\ampere\per\second}
+
+\numlist{10;20;30} \quad \SIlist{0.13;0.67;0.80}{\milli\metre} \quad \numrange{10}{20} \quad \SIrange{0.13}{0.67}{\milli\metre}
+
+\num{.12345} \quad \num{3.45d-4} \quad \num{-e10}
+
+\ang{1;2;3} \quad \ang{;;1} \quad \ang{+10;;} \quad \ang{-0;1;}
+
+以下数学符号是 \verb|physical| 宏包提供，推荐使用。
+\[\abs{a} \abs{\frac{1}{3}} \norm{a} \eval{x}_0^\infty \comm{A}{B} \acomm{A}{B} \va{\theta} \va*{\theta} \grad \div \curl \laplacian \dd[3]{x} \dv{x} \dv[n]{f}{x} \pdv[n]{f}{x} \pdv{f}{x}{y} \]  
+\[\var(E-TS)  \bra{\phi}\ket{\psi} \dyad{\psi}{\xi} \expval{A}{\Psi} \mel{n}{A}{m}\]
+\[\mqty(a & b \\ c & d) \mdet{a & b \\ c & d} \smqty(\imat{3}) \]
+
 \section{数字}{Number }
 
 \begin{enumerate}
