@@ -1,16 +1,39 @@
-% !TeX root = ../Main/XMU.tex
+% !TeX root = ../XMU.tex
 \chapter{模板的使用说明}{The usage guide of this template}
 
 \section{使用的前提}{Prediction}
 
 为了使用该模板，需要安装一个TeX的发行版本。可以选择Texlive或者Miktex,他们都是跨平台的。而Texlive打包了比较多的宏包，较为庞大，Miktex则是临时下载没有的宏包。这里我推荐使用Miktex。但是对于Mac，推荐使用MacTeX，它是为Mac定制的发行版本，应该比较合适。特别提醒CTeX套装无法运行该模板。关于编译方式需选择XeLaTeX,否则无法正常编译该模板。
 
+参考文献使用 bibtex 的方式实现，根据 gbt7714-2015 的要求，有三种格式可以选择，分别是 super, numbers, authoryear 。大家根据学院的要求选择，本模板默认采用 super 的格式。可以通过  \verb|\documentclass[bibstyle=numbers]{Settings/XMUthesis}| 来进行选择。
+
+字体的话考虑到不同系统的问题，不同系统采用了不同的自己配置，本模板基本采用 ctex 文档类提供的接口来配置自己。通过 \verb|\documentclass[font=empty]{Settings/XMUthesis}| 的方式调用。可以选择的包括 \verb|empty, adobe, fandol, founder, mac, macnew, macold, | \\ \verb|ubuntu,windows, advance| 。选择 \verb|adobe, fandol, founder,advance| 的需要自行安装字体，不同选项所需的字体可以查看\verb|fonts/ReadMe.txt| 。 empty 选项可以自己根据系统判断自己的配置，该功能是 ctex 宏集实现的，本模板只是统一提供一个接口，其它几个可以根据自己的系统选择。详情可以通过 \verb|texdoc ctex| 第七页自行查看。在此推荐 advance 的选项。
+ 
+
+\begin{table}[bp!]
+  \centering
+  \caption{已加载的宏包}
+    \begin{tabular}{ccccc}
+    \toprule
+    algorithm     & etexcmds      & hopatch     & kvsetkeys      & refcount     \\\midrule
+    algorithmicx      & etoolbox      & hycolor    & letltxmacro      & rerunfilecheck      \\\midrule
+    algpseudocode      & filehook      & hyperref      & lstlang1      & stringenc      \\\midrule
+    atbegshi      & float      & ifluatex      & lstmisc      & unicode-math     \\\midrule
+    atveryend      & gbt7714      & ifthen      & ltxcmds      & unicode-math-xetex     \\\midrule
+    auxhook    & gettitlestring      & infwarerr      & nameref      & uniquecounter      \\\midrule
+    bigintcalc      & hobsub      & intcalc      & natbib      & url      \\\midrule
+    bitset      & hobsub-generic      & kvdefinekeys     & pdfescape      & xcolor-patch     \\\midrule
+    cleveref    & hobsub-hyperref      & kvoptions     & pdftexcmds      & xeCJK-listings   \\\midrule
+    ctex  &       &       &       &  \\\bottomrule
+    \end{tabular}%
+\end{table}%
+
 
 \section{几点说明}{Some notes}
 
-为了正确使用该模板，请按照提示安装好可使用的TeX发行版本。因为论文内容比较多，因此采取了分文件的方式来构成该文档。主文档XMU.tex的位置位于Main下，正确编译后所得的pdf文件就在这里。Figure文件夹是存放图片的文件夹，该文件夹已经加入图片文件夹的位置，插入图片是无需多加路径，直接用文件名即可。关于Setting文件夹只需要把里面的Information.tex正确填入即可。而你需要编辑的仅有Body文件夹下的文件。
+为了正确使用该模板，请按照提示安装好可使用的 \TeX{} 发行版本。因为论文内容比较多，因此采取了分文件的方式来构成该文档。主文档 XMU.tex 的位置位于 Main 下，正确编译后所得的 pdf 文件就在这里。 Figure 文件夹是存放图片的文件夹，该文件夹已经加入图片文件夹的位置，插入图片是无需多加路径，直接用文件名即可。关于 Setting 文件夹只需要把里面的 Information.tex 正确填入即可。而你需要编辑的仅有 Body 文件夹下的文件。
 
-该模板是在厦门大学博士学位论文模板的基础上修改得到的，因为本科论文与博士学位论文的要求差别比较的，所以定制了该模板。由于本人水平有限，因此该模板写的并不好，但是应该勉强能够满足毕业论文的要求。但是仍然可能有许多错误的地方，希望各位使用者如果能发现错误之处能够提出。可以给我法邮件或者直接在github上面提issue。欢迎大家的参与，共同完善母校的模板。
+该模板是在厦门大学博士学位论文模板的基础上修改得到的，因为本科论文与博士学位论文的要求差别比较的，所以定制了该模板。由于本人水平有限，因此该模板写的并不好，但是应该勉强能够满足毕业论文的要求。但是仍然可能有许多错误的地方，希望各位使用者如果能发现错误之处能够提出。可以给我法邮件或者直接在 github 上面提 issue 。欢迎大家的参与，共同完善母校的模板。
 
 由于本人是一名理科生，对文科的同学毕业论文的额外需求可能了解不多。虽说文科生用这个模板的可能性比较小，如果有人用，有额外的需求也可以提出。
 
