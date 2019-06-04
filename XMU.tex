@@ -1,0 +1,72 @@
+% !TeX TXS-program:compile = txs:///latexmk/{}[-pdfxe -synctex=1 -interaction=nonstopmode -silent -outdir=Temp %.tex] 
+%
+\documentclass[bibstyle=super,font=empty]{Settings/XMUthesis}
+\input{Settings/Information}
+\listfiles
+\begin{document}
+
+\frontmatter\xiaosi
+\maketitle
+%\input{Settings/Titlepage}
+\input{Settings/Promise}
+\input{Body/Thanks}
+\input{Body/Abstract}
+\xmutableofcontents
+\mainmatter%
+\pagestyle{fancy}
+\input{Body/Chapter1}
+\input{Body/Chapter2}
+\backmatter
+\nocite{*} 
+\bibliography{Body/Reference}
+
+\chapter{附录A}{Appendix A}
+\input{Body/Appendix}
+\chapter{附录B}{Appendix B}
+
+\begin{center}
+\textbf{字体展示}
+\end{center}
+
+\( \hbar ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxuy \)
+
+% $ \symbf{\hbar ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxuy} $
+
+ ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxuy 
+ 
+ 中文字体
+
+{\bfseries ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxuy 
+ 
+ 中文字体}
+
+\itshape ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxuy 
+ 
+ 中文字体
+
+\sffamily ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxuy 
+
+中文字体
+
+\bfseries ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxuy 
+ 
+ 中文字体
+\newpage
+
+\itshape ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxuy 
+ 
+ 中文字体
+
+\ttfamily ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxuy 
+
+中文字体
+
+\bfseries ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxuy 
+ 
+ 中文字体
+
+\itshape ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxuy 
+ 
+ 中文字体
+
+\end{document}

@@ -1,23 +1,25 @@
-% !TeX root = ../Main/XMU.tex
-\newcommand\xmudate{\today}
-\newcommand\xmuauthor{曹声根}
-\newcommand\xmutitle{毕业论文}
-\newcommand\class{2015级}
-\newcommand\studentnumber{19720152203410}
-\newcommand\department{物理科学与技术学院}
-\newcommand\major{微电子科学与工程}
-\newcommand\advisor{李明哲 \quad 教授}
-\newcommand\otheradvisor{校外指导老师 \quad 头衔}
-\newcommand\team{物理科学与技术学院~理论物理}
-\newcommand\fundteam{物理科学与技术学院~理论物理}
-\newcommand\degree{本\quad 科}
-\newcommand\englishtitle{Your Thesis}
-\newcommand\majorordouble{主修/辅修}
-\newcommand\lab{实验室}
+% !TeX root = ../XMU.tex
 
-\author{\xmuauthor}
-\title{\xmutitle}
-\date{\xmutitle}
+\author{酸奶}
+\title{你的论文题目}
+\date{\today} %二〇一九年二月二十八日
+\class{2015级}
+\studentnumber{1972015xxxxxx}
+\department{物理科学与技术学院}
+\major{微电子科学与工程}
+\advisor{校内指导老师 \quad 职称}
+\otheradvisor{校外指导老师 \quad 职称}
+\team{物理科学与技术学院~理论物理}
+\fundteam{物理科学与技术学院~理论物理}
+\degree{本\quad 科}
+\englishtitle{Your English Title}
+\majorordouble{主修}
+\lab{实验室}
 
-\newcommand\xmusectionskip{0cm}%目录中section的缩进
-\newcommand\xmusubsectionskip{0cm}%目录中subsection的缩进
+
+
+\makeatletter
+\let\xmutitle\@title
+\let\xmuauthor\@author
+\let\xmudate\@date
+\makeatother
