@@ -2,7 +2,7 @@
 \ProvidesPackage{XMU-logo}%[2019/6/7]
 
 \RequirePackage{xparse,tikz,xcolor}
-\usetikzlibrary{shapes,snakes}
+\usetikzlibrary{shapes,decorations.pathmorphing}%snakes
 
 \NewDocumentCommand\xmulogon{og}{%
 	\IfNoValueTF {#1}{
