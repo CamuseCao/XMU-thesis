@@ -1,7 +1,9 @@
 % !TeX TXS-program:compile = txs:///latexmk/{}[-pdfxe -synctex=1 -interaction=nonstopmode -silent -outdir=Temp %.tex] 
 %
 \documentclass[bibstyle=super,font=empty]{Settings/XMUthesis}
+%\documentclass[bibstyle=super,font=advance]{Settings/XMUthesis}
 \input{Settings/Information}
+\usepackage{Settings/XMU-logo}
 \listfiles
 \begin{document}
 
@@ -69,4 +71,15 @@
  
  中文字体
 
+\chapter{附录 C}{Appendix C}
+\begin{figure}[htbp!]
+\centering
+\caption{厦大校徽}
+\xmulogo[0.75]
+\end{figure}
+\begin{figure}[htbp!]
+\centering
+\caption{厦门大学}
+\xmulogon[0.75]
+\end{figure}
 \end{document}
