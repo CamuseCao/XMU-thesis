@@ -40,7 +40,7 @@
 \ang{1;2;3} \quad \ang{;;1} \quad \ang{+10;;} \quad \ang{-0;1;}
 
 以下数学符号是 \verb|physical| 宏包提供，推荐使用。
-\[\abs{a} \abs{\frac{1}{3}} \norm{a} \eval{x}_0^\infty \comm{A}{B} \acomm{A}{B} \va{\theta} \va*{\theta} \grad \div \curl \laplacian \dd[3]{x} \dv{x} \dv[n]{f}{x} \pdv[n]{f}{x} \pdv{f}{x}{y} \]  
+\[\abs{a} \abs{\frac{1}{3}} \norm{a} \eval{x}_0^\infty \comm{A}{B} \acomm{A}{B}  \va*{\theta} \grad \div \curl \laplacian \dd[3]{x} \dv{x} \dv[n]{f}{x} \pdv[n]{f}{x} \pdv{f}{x}{y} \]  
 \[\var(E-TS)  \bra{\phi}\ket{\psi} \dyad{\psi}{\xi} \expval{A}{\Psi} \mel{n}{A}{m}\]
 \[\mqty(a & b \\ c & d) \mdet{a & b \\ c & d} \smqty(\imat{3}) \]
 
@@ -87,9 +87,9 @@
 
 
 当想引用的``公式"是一个方程或者就叫式xx.xx，
-那么就这样引用方程~\eqref{eq:1}或者式~\eqref{eq:1}。
+那么就这样引用方程\cref{eq:1}或者式\cref{eq:1}。
 
-引用代码是:\verb|方程~\eqref{eq:1}|,\verb|式~\eqref{eq:1}|。
+引用代码是:\verb|方程\cref{eq:1}|,\verb|式\cref{eq:1}|。
 
 不想要编号的公式就用这样的方式：
  \[ 2\times 2=4 \]
@@ -221,7 +221,7 @@ That's it.
 \section{注释}{Exegesis}
 
 当文中的字、词或短语需要进一步加以说明，而又没有具体的文献来源时，用注释。注释不宜过多。
-篇名、作者注置于当页地脚。对文内有关特定内容的注释可夹在文内（加圆括号），也可排在当页地脚，注释序号以“\circled{1}、\circled{2}”等数字形式标示在被注释词条的右上角。注脚的命令如下\verb|\footnote{注脚内容}|\footnote{一个注脚}。
+篇名、作者注置于当页地脚。对文内有关特定内容的注释可夹在文内（加圆括号），也可排在当页地脚，注释序号以“\ding{172}、\ding{173}”等数字形式标示在被注释词条的右上角。注脚的命令如下\verb|\footnote{注脚内容}|\footnote{一个注脚}。%\circled{1}、\circled{2}
 
 \section{参看文献与引用}{Reference and citation}
 

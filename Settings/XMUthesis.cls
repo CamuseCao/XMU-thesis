@@ -245,10 +245,10 @@
 \renewcommand{\cftchapfont}{\sihao\sffamily}% Chapter font
 \renewcommand{\cftsecfont}{\xiaosi\sffamily}% Section font 
 \renewcommand{\cftsubsecfont}{\xiaosi\rmfamily}%subsection font
-\renewcommand{\cfttoctitlefont}{\hfill\xiaosan\sffamily \phantom{mmmmmmmmm} 目\quad 录\hfill}
+\renewcommand{\cfttoctitlefont}{\hfill\xiaosan\sffamily  目\quad 录\hfill}%\phantom{mmmmmmmmm}
 \renewcommand{\cftaftertoctitle}{\hfill}
 
-\renewcommand{\cfttcetitlefont}{\hfill\xiaosan\rmfamily\bfseries \phantom{mmmmmmm}Table~of~Contents\hfill}
+\renewcommand{\cfttcetitlefont}{\hfill\xiaosan\rmfamily\bfseries Table~of~Contents\hfill}%\phantom{mmmmmmm}
 \renewcommand{\cftaftertcetitle}{\hfill}
 
 \newcommand\captce[1]{%
@@ -355,7 +355,7 @@
 \makeatletter
 \def\algbackskip{\hskip-\ALG@thistlm} %\def\BState{\State\hskip-\ALG@thistlm} % both works fine, but latter one redefines \BState
 
-\renewcommand\maketitle{\thispagestyle{empty}
+\renewcommand\maketitle{\pagestyle{plain}
 \begin{center}
 \vskip \stretch{4}
 \includegraphics[width=8cm]{xmu-flag}\\
@@ -419,9 +419,9 @@
 \crefrangeformat{table}{表(#3#1#4)\;$\sim$\;(#5#2#6)}
 \crefmultiformat{table}{表~(#2#1#3)}{和~(#2#1#3)}{，(#2#1#3)}{和~(#2#1#3)}
 
-\crefformat{equation}{公式(#2#1#3)}
-\crefrangeformat{equation}{公式(#3#1#4)\;$\sim$\;(#5#2#6)}
-\crefmultiformat{equation}{公式~(#2#1#3)}{ 和~(#2#1#3)}{，(#2#1#3)}{ 和~(#2#1#3)}
+\crefformat{equation}{~(#2#1#3)}
+\crefrangeformat{equation}{~(#3#1#4)\;$\sim$\;(#5#2#6)}
+\crefmultiformat{equation}{~(#2#1#3)}{ 和~(#2#1#3)}{，(#2#1#3)}{ 和~(#2#1#3)}
 % equation, chapter, section, etc.
 % \creflabelformat{htypei}{hformati}
 
