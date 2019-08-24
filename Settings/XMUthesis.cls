@@ -49,7 +49,7 @@
 	font / windows .code:n = \PassOptionsToClass{fontset = #1}{ctexbook} ,
 	font / ubuntu  .code:n = \PassOptionsToClass{fontset = #1}{ctexbook} 
 		\msg_new:nnn { ubuntu font } { msg } {
-			You~are~using~the~default~fonts,~so~you~better~change~it~by~font=adobe,~or~advance.~If~you~choose~them,~you~should~download~the~necessary~font~and~put~them~in~the~right~palce.
+			You~are~using~the~default~fonts,~so~you~better~change~it~by~font=adobe,~or~advance.~If~you~choose~them,~you~should~download~the~necessary~font~and~put~them~in~the~right~place.
 			}
 			\msg_warning:nn { ubuntu font } { msg },
 	font / advance  .code:n    = \PassOptionsToClass{fontset =none}{ctexbook}
@@ -196,8 +196,6 @@
 \newcommand{\dawuhao}{\fontsize{11pt}{11pt}\selectfont}     % 大五号 , 单倍行距
 \newcommand{\wuhao}{\fontsize{10.5pt}{10.5pt}\selectfont}   % 五号   , 单倍行距
 \newcommand{\xiaowu}{\fontsize{9pt}{9pt}\selectfont}        % 小五号 , 单倍行距
-  
-\sys_if_engine_pdftex:TF {\usepackage{microtype}} {}
 
 
 \makeatletter
@@ -380,13 +378,13 @@
 	\vskip \stretch{1}
 	{ \rmfamily \sihao % \sffamily \heiti 
 		\begin{tabular}{rl} 
-			姓\qquad 名： & \xmuauthor \\
+			姓\qquad 名： & \xmuauthor         \\
 			学\qquad 号： & \the\studentnumber \\
-			学\qquad 院： & \the\department \\
-			专\qquad 业： & \the\major \\
-			年\qquad 级： & \the\class \\
-			校内指导教师： & \the\advisor \\
-			校外指导教师： & \the\otheradvisor\\
+			学\qquad 院： & \the\department    \\
+			专\qquad 业： & \the\major         \\
+			年\qquad 级： & \the\class         \\
+			校内指导教师： & \the\advisor       \\
+			校外指导教师： & \the\otheradvisor  \\
 		\end{tabular}%
 	}
 	\vskip \stretch{2}
@@ -411,8 +409,8 @@
 % second: singular cross reference
 % third: plural cross reference
 \renewcommand{\citep}[1]{{\color{blue}\citeauthor{#1}(\citeyearpar{#1})}}
-\crefformat{figure}{#2图#1#3}
-\crefrangeformat{figure}{图(#3#1#4)\;$\sim$\;(#5#2#6)}
+\crefformat{figure}{#2图~#1#3}
+\crefrangeformat{figure}{图~(#3#1#4)\;$\sim$\;(#5#2#6)}
 \crefmultiformat{figure}{图~(#2#1#3)}{和~(#2#1#3)}{，(#2#1#3)}{和~(#2#1#3)}
 
 \crefformat{table}{#2表#1#3}
