@@ -324,15 +324,14 @@
 \graphicspath{{Figures/},{../Figures/}, } %设定图片的存放路径
 
 % --------------------------- circled text settings ----------------------
-% required package(s):
-% - tikz
-\newcommand*\circled[1]{\raisebox{.5pt}{\textcircled{\raisebox{-.9pt} {#1}}}}
-%\newcommand*{\circled}[1]{\tikz[baseline=(char.base)]{\node[shape=circle,draw,inner sep=1pt] (char) {#1};}}
-%%\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
-%            \node[shape=circle,draw,inner sep=2pt] (char) {#1};}}  % define a new command for circled text since \textcircled is very sloppy
+\NewDocumentCommand\circled { m } {
+	\raisebox{.5pt}{
+		\textcircled{\raisebox{-.9pt}{#1}}
+	}
+} % define a new command for circled text since \textcircled is very sloppy
 
 % --------------------------- endnotes settings ----------------------
-\RenewDocumentCommand\thefootnote{}{\protect\textcircled{\zihao{8}\arabic{footnote}}} %改变注脚的格式
+\RenewDocumentCommand\thefootnote{}{\protect\circled{\arabic{footnote}}}
 
 \NewDocumentCommand\somewords{}{
 	ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxuy 
