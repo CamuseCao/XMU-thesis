@@ -30,8 +30,6 @@
 \PassOptionsToPackage{sort&compress}{natbib}
 
 
-% \RequirePackage{gbt7714}
-
 \newif\iffontadvance\fontadvancefalse % for font control
 \newif\ifcitenumbers\citenumbersfalse
 
@@ -72,14 +70,13 @@
 \ProcessKeysOptions { XMUthesis }
 
 
-\LoadClass [ zihao=-4 , openright,  ] {ctexbook} % twoside,
+\LoadClass [ zihao=-4 , openright,  ] {ctexbook}
 
 \sys_if_engine_pdftex:T {
 	\RequirePackage{microtype,amsfonts}
 }
 
 \RequirePackage{
-    amsmath        ,
     amsthm         ,
     physics        ,
     siunitx        ,
@@ -87,7 +84,6 @@
     multirow       ,
     geometry       ,
     fancyhdr       ,
-    footmisc       ,
     graphicx       ,
     longtable      ,
     booktabs       ,
@@ -98,9 +94,6 @@
     tocloft        ,
     xcolor         ,
     listings       ,
-    setspace       ,
-    pifont         ,
-	tikz           ,
 	gbt7714		   ,
     float          ,
     hyperref       ,
@@ -339,9 +332,7 @@
 %            \node[shape=circle,draw,inner sep=2pt] (char) {#1};}}  % define a new command for circled text since \textcircled is very sloppy
 
 % --------------------------- endnotes settings ----------------------
-% required package(s):
-% - pifont
-\RenewDocumentCommand\thefootnote{}{\ding{\numexpr171+\value{footnote}}} %改变注脚的格式
+\RenewDocumentCommand\thefootnote{}{\protect\textcircled{\zihao{8}\arabic{footnote}}} %改变注脚的格式
 
 \NewDocumentCommand\somewords{}{
 	ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxuy 
@@ -455,9 +446,8 @@
 \end{center}
 \chapter*{厦门大学本科学位论文诚信承诺书}
 \setcounter{page}{1}
-\begin{doublespace}
 
-{\zihao{4}
+{\fontsize{14pt}{28pt}\selectfont
 	
 	本人呈交的学位论文是在导师指导下独立完成的研究成果。本人在论文写作中参考其他个人或集体已经发表的研究成果，均在文中以适当方式明确标明，并符合相关法律规范及《厦门大学本科毕业论文（设计）规范》。
 	\par
@@ -476,9 +466,7 @@
 	\hfill 学生声明（签名）：\hspace*{4cm}
 	\par\vspace{2ex}
 	\hfill 年\hspace{26pt}月\hspace{26pt}日\hspace*{2cm}
-}	
-\end{doublespace}
-%\clearpage
+}
 }
 
 \makeatother
