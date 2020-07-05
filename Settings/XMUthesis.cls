@@ -428,17 +428,17 @@
 
 	{ \rmfamily \zihao{4}
 		\begin{tabular}{rl} 
-			姓\qquad 名： & \l__xmu_author_tl         \\
+			姓\qquad 名： & \l__xmu_author_tl        \\
 			学\qquad 号： & \l__xmu_studentnumber_tl \\
 			学\qquad 院： & \l__xmu_department_tl    \\
 			专\qquad 业： & \l__xmu_major_tl         \\
 			年\qquad 级： & \l__xmu_class_tl         \\
-			校内指导教师： & \l__xmu_advisor_tl       \\
-			校外指导教师： & \l__xmu_otheradvisor_tl  \\
+			校内指导教师： & \l__xmu_advisor_tl        \\
+			校外指导教师： & \l__xmu_otheradvisor_tl   \\
 		\end{tabular}%
 	}
 	\vspace{2ex}
-	\rmfamily\mdseries\zihao{4}
+	\rmfamily\zihao{4}%\mdseries
 	\par\vspace{7ex}
 	\l__xmu_date_tl
 	\vspace{2ex}
