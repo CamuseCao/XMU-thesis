@@ -8,9 +8,9 @@
 
 \IfXeTeXTF{
 %  \PassOptionsToClass{fontset=none}{ctexbook}
-  \PassOptionsToPackage{no-math}{fontspec}
-  \PassOptionsToPackage{utf8}{inputenc}
-  }{}
+	\PassOptionsToPackage{no-math}{fontspec}
+	\PassOptionsToPackage{utf8}{inputenc}
+}{}
 
 \sys_if_engine_pdftex:TF {
 	\PassOptionsToClass{UTF8}{ctexbook}
@@ -69,8 +69,7 @@
 
 \sys_if_engine_pdftex:TF {\RequirePackage{microtype,amsfonts}} {}
 
-\RequirePackage
-  {
+\RequirePackage{
     amsmath        ,
     amsthm         ,
     physics        ,
@@ -95,12 +94,11 @@
     tikz           ,
     float          ,
     gbt7714        ,
-%    natbib        ,
     hyperref       ,
     algorithm      ,
     algpseudocode  ,
     cleveref       ,
-    }
+}
 
 \IfXeTeXTF{
 \RequirePackage{unicode-math}
@@ -108,19 +106,19 @@
 \setsansfont{Arial}            % Arial  Source~Sans~Pro
 
 \unimathsetup{
-  math-style = ISO     ,
-  bold-style = ISO     ,
-  nabla      = upright ,
-  partial    = upright ,
-  }
+	math-style = ISO     ,
+	bold-style = ISO     ,
+	nabla      = upright ,
+	partial    = upright ,
+	}
 }{}
-
+	
 \geometry{	
 	left   = 2cm ,
 	right  = 2cm ,
 	top    = 4cm ,
 	bottom = 3cm ,
-	}  
+}  
 \captionsetup{font={small,bf}}
 \hypersetup{
 %	bookmarks=true            ,
@@ -129,9 +127,9 @@
 	citecolor         = blue  ,
 	urlcolor          = green ,
 	colorlinks                ,
-	}
+}
 
-  
+
 \keys_if_exist:nnTF { XMUthesis } { bibstyle } { 
 	\RequirePackage[sort&compress]{natbib}
 	\RequirePackage{gbt7714} 
@@ -140,70 +138,59 @@
 \iffontadvance
 
 %\keys_if_choice_exist:nnnTF { XMUthesis } { font } { advance }  {
-	  \setmonofont[
-	    Extension          = .otf      ,
+	\setmonofont[
+		Extension          = .otf      ,
 		Path               = fonts/    ,
 		UprightFont        = *-regular ,
 	    BoldFont           = *-bold    ,
 	    ItalicFont         = *-it      ,
 	    BoldItalicFont     = *-boldit] {SourceCodePro}	
-	  \setCJKmonofont[
+	\setCJKmonofont[
 		Extension          = .otf      ,
-	    Path               = fonts/    ,
+		Path               = fonts/    ,
 	    UprightFont        = *-Regular ,
 	    BoldFont           = *-Bold    ,
 	    ItalicFont         = *-Regular ,
 	    BoldItalicFont     = *-Bold    ,
-	    ItalicFeatures     = FakeSlant ,
-	    BoldItalicFeatures = FakeSlant] {NotoSansMonoCJKsc}  
-	  \setCJKmainfont[
+		ItalicFeatures     = FakeSlant ,
+		BoldItalicFeatures = FakeSlant] {NotoSansMonoCJKsc}  
+	\setCJKmainfont[
 		Extension          = .otf      ,
-	    Path               = fonts/    ,
+		Path               = fonts/    ,
 	    UprightFont        = *-Regular ,
 	    BoldFont           = *-Bold    ,
 	    ItalicFont         = *-Regular ,
 	    BoldItalicFont     = *-Bold    ,
-	    ItalicFeatures     = FakeSlant ,
-	    BoldItalicFeatures = FakeSlant] {NotoSerifCJKsc}
-	  \setCJKsansfont[
+		ItalicFeatures     = FakeSlant ,
+		BoldItalicFeatures = FakeSlant] {NotoSerifCJKsc}
+	\setCJKsansfont[
 		Extension          = .otf      ,
-	    Path               = fonts/    ,
+		Path               = fonts/    ,
 	    UprightFont        = *-Regular ,
 	    BoldFont           = *-Bold    ,
 	    ItalicFont         = *-Regular ,
 	    BoldItalicFont     = *-Bold    ,
-	    ItalicFeatures     = FakeSlant ,
-	    BoldItalicFeatures = FakeSlant] {NotoSansCJKsc}
-	  \setmathfont[
-	    Extension    	   = .otf          ,
-	    Path               = fonts/        ,
-	    BoldFont           = XITSMath-Bold ,
-	    StylisticSet       = 8] {XITSMath-Regular}
+		ItalicFeatures     = FakeSlant ,
+		BoldItalicFeatures = FakeSlant] {NotoSansCJKsc}
+	\setmathfont[
+		Extension    	   = .otf          ,
+		Path               = fonts/        ,
+		BoldFont           = XITSMath-Bold ,
+		StylisticSet       = 8] {XITSMath-Regular}
 %	    } { }
 
 \fi 
-  
 
-\newcommand{\xiaochu}{\fontsize{30pt}{40pt}\selectfont}     % 小初   , 1.5倍行距
-\newcommand{\yihao}{\fontsize{26pt}{36pt}\selectfont}       % 一号   , 1.4倍行距
-\newcommand{\erhao}{\fontsize{22pt}{28pt}\selectfont}       % 二号   , 1.25倍行距
-\newcommand{\xiaoer}{\fontsize{18pt}{18pt}\selectfont}      % 小二   , 单倍行距
-\newcommand{\sanhao}{\fontsize{16pt}{24pt}\selectfont}      % 三号   , 1.5倍行距
-\newcommand{\xiaosan}{\fontsize{15pt}{22pt}\selectfont}     % 小三   , 1.5倍行距
-\newcommand{\sihao}{\fontsize{14pt}{21pt}\selectfont}       % 四号   , 1.5倍行距
-\newcommand{\banxiaosi}{\fontsize{13pt}{19pt}\selectfont}   % 半小四 , 1.5倍行距
-\newcommand{\xiaosi}{\fontsize{12pt}{18pt}\selectfont}      % 小四   , 1.5倍行距
-\newcommand{\dawuhao}{\fontsize{11pt}{11pt}\selectfont}     % 大五号 , 单倍行距
-\newcommand{\wuhao}{\fontsize{10.5pt}{10.5pt}\selectfont}   % 五号   , 单倍行距
-\newcommand{\xiaowu}{\fontsize{9pt}{9pt}\selectfont}        % 小五号 , 单倍行距
+
+
 
 
 \makeatletter
 
 \renewcommand{\chaptermark}[1]{\markboth{#1}{#1}}
 \fancyhf{}  % cleans original header&footer
-\fancyhead[CE]{\xiaowu \xmutitle}
-\fancyhead[CO]{\xiaowu \leftmark }  %\leftmark \chaptermark
+\fancyhead[CE]{\zihao{-5} \xmutitle}
+\fancyhead[CO]{\zihao{-5} \leftmark }  %\leftmark \chaptermark
 \fancyfoot[C]{\thepage}
 
 \renewcommand{\headrulewidth}{0pt}
@@ -217,17 +204,17 @@
 	bibname        =	{参考文献},
 	contentsname   =	{},
 	chapter        = 	{
-	format         = 	\centering\xiaosan\sffamily,
+	format         = 	\centering\zihao{-3}\sffamily,
 	beforeskip     = 	-15pt,
 	afterskip      = 	30pt,
 	pagestyle      =  	fancy,},%
 	section        = 	{
-		format     = 	\sihao\sffamily,
+		format     = 	\zihao{4}\sffamily,
 		beforeskip = 	10pt,
 		afterskip  = 	10pt,
 						},
 	subsection 	   = 	{
-		format     = 	\xiaosi\sffamily,
+		format     = 	\zihao{-3}\sffamily,
 						},
 }
 
@@ -240,27 +227,27 @@
 \setlength{\cftbeforesubsecskip}{5pt}
 \setlength{\cftbeforetoctitleskip}{-30pt}
 \renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}} % for chapters
-\renewcommand{\cftchapfont}{\sihao\sffamily}% Chapter font
-\renewcommand{\cftsecfont}{\xiaosi\sffamily}% Section font 
-\renewcommand{\cftsubsecfont}{\xiaosi\rmfamily}%subsection font
-\renewcommand{\cfttoctitlefont}{\hfill\xiaosan\sffamily  目\quad 录\hfill}%\phantom{mmmmmmmmm}
+\renewcommand{\cftchapfont}{\zihao{4}\sffamily}% Chapter font
+\renewcommand{\cftsecfont}{\zihao{-3}\sffamily}% Section font 
+\renewcommand{\cftsubsecfont}{\zihao{-3}\rmfamily}%subsection font
+\renewcommand{\cfttoctitlefont}{\hfill\zihao{-3}\sffamily  目\quad 录\hfill}%\phantom{mmmmmmmmm}
 \renewcommand{\cftaftertoctitle}{\hfill}
 
-\renewcommand{\cfttcetitlefont}{\hfill\xiaosan\rmfamily\bfseries Table~of~Contents\hfill}%\phantom{mmmmmmm}
+\renewcommand{\cfttcetitlefont}{\hfill\zihao{-3}\rmfamily\bfseries Table~of~Contents\hfill}%\phantom{mmmmmmm}
 \renewcommand{\cftaftertcetitle}{\hfill}
 
 \newcommand\captce[1]{%
 \if@mainmatter
-   \addcontentsline{tce}{chapter}{
-    \rmfamily\bfseries \protect\makebox[5em][l]{Chapter~\thechapter}#1}
+	\addcontentsline{tce}{chapter}{
+		\rmfamily\bfseries \protect\makebox[5em][l]{Chapter~\thechapter}#1}
     \else
-       \addcontentsline{tce}{chapter}{
+		\addcontentsline{tce}{chapter}{
 \rmfamily\bfseries\protect\makebox[0em][l]{}#1}
 \fi 
     }
 
 \newcommand\sectce[1]{%
-   \addcontentsline{tce}{section}{ \rmfamily\bfseries\protect\makebox[2.8em][l]{\thesection}#1}}
+	\addcontentsline{tce}{section}{ \rmfamily\bfseries\protect\makebox[2.8em][l]{\thesection}#1}}
 \newcommand\ssectce[1]{%
 \addcontentsline{tce}{subsection}{\protect\makebox[3em][l]{\thesubsection}#1}}
 
@@ -291,8 +278,8 @@
 
 \let\origdoublepage\cleardoublepage
 \newcommand{\clearemptydoublepage}{%
-  \clearpage
-  {\pagestyle{empty}\origdoublepage}%
+	\clearpage
+	{\pagestyle{empty}\origdoublepage}%
 }
 \let\cleardoublepage\clearemptydoublepage
 
@@ -359,24 +346,23 @@
 \includegraphics[width=8cm]{xmu-flag}\\
 \vskip \stretch{4}
 
-   {\rmfamily   \xiaoer %\bfseries
-   	 \the\degree  \quad 毕\quad 业\quad 论\quad 文\quad （~设\quad 计~）
-%   	 \quad 综\quad 述\quad 与\quad 翻\quad 译   
-}\\ \vskip \stretch{2} 
-   {\rmfamily   \sanhao %\bfseries
-   （\the\majorordouble） \\
+{
+	\rmfamily\zihao{-2}
+	\the\degree  \quad 毕\quad 业\quad 论\quad 文\quad （~设\quad 计~）
+}\\ \vskip\stretch{2} 
+{
+	\rmfamily\zihao{3}（\the\majorordouble） \\
 } \vskip \stretch{3}
 
-   {\sffamily  \erhao %\bfseries
-		 \xmutitle 
+{\sffamily\zihao{2}\xmutitle 
 }\vskip \stretch{3}
 
-	{ \rmfamily \bfseries \sanhao
-		 \the\englishtitle
+{ 
+	\rmfamily \bfseries \zihao{3}\the\englishtitle
 }\vskip \stretch{2}
 	
 	\vskip \stretch{1}
-	{ \rmfamily \sihao % \sffamily \heiti 
+	{ \rmfamily \zihao{4} % \sffamily \heiti 
 		\begin{tabular}{rl} 
 			姓\qquad 名： & \xmuauthor         \\
 			学\qquad 号： & \the\studentnumber \\
@@ -388,7 +374,7 @@
 		\end{tabular}%
 	}
 	\vskip \stretch{2}
-	\rmfamily\mdseries\sihao
+	\rmfamily\mdseries\zihao{4}
 	\vskip \stretch{5.5}
 	\xmudate
 	\vskip \stretch{2}
