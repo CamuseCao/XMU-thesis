@@ -2,70 +2,48 @@
 %
 \documentclass[bibstyle=numbers,font=empty]{Settings/XMUthesis}% numerical authoryear
 %\documentclass[bibstyle=numbers,font=advance]{Settings/XMUthesis}
-\input{Settings/Information}
+
+\XMUsetup{
+    author        = 酸奶                   ,
+    title         = 你的论文题目             ,
+    date          = \today                 , %二〇一九年二月二十八日
+    class         = 2015级                 ,
+    studentnumber = 1972015xxxxxx          ,
+    department    = 物理科学与技术学院        ,
+    major         = 微电子科学与工程          ,
+    advisor       = 校内指导老师 \quad 职称   ,
+    otheradvisor  = 校外指导老师 \quad 职称   ,
+    team          = 物理科学与技术学院~理论物理 ,
+    fundteam      = 物理科学与技术学院~理论物理 ,
+    degree        = 本\quad 科              ,
+    englishtitle  = Your English Title     ,
+    majorordouble = 主修                    , % 辅修
+    lab           = 实验室                   ,
+}
+
 \usepackage{Settings/XMU-logo}
 \listfiles
+
 \begin{document}
+
 \maketitle
+
 \input{Body/Thanks}
 \input{Body/Abstract}
 \xmutableofcontents
-\mainmatter
 \pagestyle{fancy}
 \input{Body/Chapter1}
 \input{Body/Chapter2}
+
 \backmatter
-\nocite{*} 
+% \nocite{*} 
 \bibliography{Body/Reference}
 
 \chapter{附录A}{Appendix A}
 \input{Body/Appendix}
 \chapter{附录B}{Appendix B}
 
-\begin{center}
-\textbf{字体展示}
-\end{center}
-
-\( \hbar ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxuy \)
-
-% $ \symbf{\hbar ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxuy} $
-
- ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxuy 
- 
- 中文字体
-
-{\bfseries ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxuy 
- 
- 中文字体}
-
-\itshape ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxuy 
- 
- 中文字体
-
-\sffamily ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxuy 
-
-中文字体
-
-\bfseries ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxuy 
- 
- 中文字体
-\newpage
-
-\itshape ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxuy 
- 
- 中文字体
-
-\ttfamily ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxuy 
-
-中文字体
-
-\bfseries ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxuy 
- 
- 中文字体
-
-\itshape ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxuy 
- 
- 中文字体
+\showfont
 
 \chapter{附录 C}{Appendix C}
 \begin{figure}[htbp!]
