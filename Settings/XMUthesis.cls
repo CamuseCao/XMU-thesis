@@ -1,3 +1,4 @@
+% !TEX root = ../XMU.tex
 \NeedsTeXFormat{LaTeX2e}
 
 \RequirePackage{ expl3 , xparse, xtemplate, l3keys2e }
@@ -7,7 +8,7 @@
 \def\IfXeTeXTF#1#2{\csname sys_if_engine_xetex:TF\endcsname{#1}{#2}}
 
 \IfXeTeXTF{
-%  \PassOptionsToClass{fontset=none}{ctexbook}
+	% \PassOptionsToClass{fontset=none}{ctexbook}
 	\PassOptionsToPackage{no-math}{fontspec}
 	\PassOptionsToPackage{utf8}{inputenc}
 }{}
@@ -16,11 +17,11 @@
 	\PassOptionsToClass{UTF8}{ctexbook}
 		\msg_new:nnn { engine } { msg } { Don't~use~pdfLaTeX~to~compile~the~final~TeX~files.}
 		\msg_warning:nn { engine } { msg }
-} {}
+}{}
 
 
-	
-	
+
+
 \ProvidesClass{ XMUthesis }
 
 \PassOptionsToPackage{subfigure}{tocloft}
@@ -28,16 +29,22 @@
 \PassOptionsToPackage{para}{threeparttable}
 \PassOptionsToPackage{sort&compress}{natbib}
 
+
+% \RequirePackage{gbt7714}
+
 \newif\iffontadvance\fontadvancefalse % for font control
+\newif\ifcitenumbers\citenumbersfalse
 
 \keys_define:nn { XMUthesis }{
 	bibstyle              .choice:                                             ,
-	bibstyle              .default:n = super                                   ,
-	bibstyle / super      .code:n = \PassOptionsToPackage{super}{gbt7714}      ,
-	bibstyle / numbers    .code:n = \PassOptionsToPackage{numbers}{gbt7714}    ,
-	bibstyle / authoryear .code:n = \PassOptionsToPackage{authoryear}{gbt7714} ,
-	bibstyle / unknown    .code:n = \msg_error:nnxxx { XMUthesis } { unknown-choice } { bibstyle } { super, numbers, authoryear } { The~choice~' #1 '~is~invalid~for~bibstyle	}, 
-	
+	bibstyle              .default:n = numerical                                   ,
+	bibstyle / numerical      .code:n = \bibliographystyle{gbt7714-numerical}      ,
+	bibstyle / numbers    .code:n = \citenumberstrue
+    ,
+	bibstyle / authoryear .code:n = \bibliographystyle{gbt7714-author-year}
+	,
+	bibstyle / unknown    .code:n = \msg_error:nnxxx { XMUthesis } { unknown-choice } { bibstyle } { numerical, numbers, authoryear } { The~choice~' #1 '~is~invalid~for~bibstyle	}, 
+
 	font           .choice:           ,	
 	font           .default:n = empty ,
 	font / adobe   .code:n = \PassOptionsToClass{fontset = #1}{ctexbook} ,
@@ -65,9 +72,11 @@
 \ProcessKeysOptions { XMUthesis }
 
 
-\LoadClass [ 12pt, openright,  ] {ctexbook} % twoside,
+\LoadClass [ zihao=-4 , openright,  ] {ctexbook} % twoside,
 
-\sys_if_engine_pdftex:TF {\RequirePackage{microtype,amsfonts}} {}
+\sys_if_engine_pdftex:T {
+	\RequirePackage{microtype,amsfonts}
+}
 
 \RequirePackage{
     amsmath        ,
@@ -91,9 +100,9 @@
     listings       ,
     setspace       ,
     pifont         ,
-    tikz           ,
+	tikz           ,
+	gbt7714		   ,
     float          ,
-    gbt7714        ,
     hyperref       ,
     algorithm      ,
     algpseudocode  ,
@@ -112,7 +121,7 @@
 	partial    = upright ,
 	}
 }{}
-	
+
 \geometry{	
 	left   = 2cm ,
 	right  = 2cm ,
@@ -134,6 +143,10 @@
 	\RequirePackage[sort&compress]{natbib}
 	\RequirePackage{gbt7714} 
 	} { }
+
+\ifcitenumbers
+\citestyle{numbers}
+\fi
 
 \iffontadvance
 
@@ -179,7 +192,7 @@
 		StylisticSet       = 8] {XITSMath-Regular}
 %	    } { }
 
-\fi 
+\fi
 
 
 
@@ -190,7 +203,7 @@
 \renewcommand{\chaptermark}[1]{\markboth{#1}{#1}}
 \fancyhf{}  % cleans original header&footer
 \fancyhead[CE]{\zihao{-5} \xmutitle}
-\fancyhead[CO]{\zihao{-5} \leftmark }  %\leftmark \chaptermark
+\fancyhead[CO]{\zihao{-5} \leftmark}  %\leftmark \chaptermark
 \fancyfoot[C]{\thepage}
 
 \renewcommand{\headrulewidth}{0pt}
@@ -221,7 +234,6 @@
 
 \newlistof{indice}{tce}{}
 \setlength{\cftbeforetcetitleskip}{-30pt}
-
 \setlength{\cftbeforechapskip}{12pt}
 \setlength{\cftbeforesecskip}{10pt}
 \setlength{\cftbeforesubsecskip}{5pt}
@@ -253,42 +265,57 @@
 
 
 \let\oldchapter\chapter
-\RenewDocumentCommand\chapter{ s m g }
-{
-\IfBooleanTF  {#1}
-{ \oldchapter*{#2} \IfNoValueF {#3} {#3}}
-{ \oldchapter{#2} \IfNoValueF {#3} {\captce{#3} }}
+\RenewDocumentCommand\chapter{ s m g }{
+	\IfBooleanTF {#1} {
+		\oldchapter*{#2}
+		\IfNoValueF {#3} {#3}
+	}{
+			\oldchapter{#2}
+			\IfNoValueF {#3} {
+				\captce{#3} 
+		}
+	}
 }
 
 \let\oldsection\section
-\RenewDocumentCommand\section{ s m g }
-{
-\IfBooleanTF  {#1}
-{ \oldsection*{#2} \IfNoValueF {#3} {#3}}
-{ \oldsection{#2} \IfNoValueF {#3} {\sectce{#3} }}
+\RenewDocumentCommand\section{ s m g }{
+	\IfBooleanTF  {#1}{
+		\oldsection*{#2} 
+		\IfNoValueF {#3} {#3}
+	}{
+		\oldsection{#2}
+		\IfNoValueF {#3} {
+			\sectce{#3}
+		}
+	}
 }
 
 \let\oldsubsection\subsection
-\RenewDocumentCommand\subsection{ s m g }
-{
-\IfBooleanTF  {#1}
-{ \oldsubsection*{#2} \IfNoValueF {#3} {#3}}
-{ \oldsubsection{#2} \IfNoValueF {#3} {\ssectce{#3} }}
+\RenewDocumentCommand\subsection{ s m g }{
+	\IfBooleanTF  {#1}{
+		\oldsubsection*{#2} 
+		\IfNoValueF {#3} {#3}
+	}{
+		\oldsubsection{#2}
+		\IfNoValueF {#3} {
+			\ssectce{#3} 
+		}
+	}
 }
 
 \let\origdoublepage\cleardoublepage
-\newcommand{\clearemptydoublepage}{%
+\newcommand{\clearemptydoublepage}{
 	\clearpage
-	{\pagestyle{empty}\origdoublepage}%
-}
+	{\pagestyle{empty}\origdoublepage}}
+
 \let\cleardoublepage\clearemptydoublepage
 
 
 \NewDocumentCommand\xmutableofcontents{}{
-\cleardoublepage
-\tableofcontents
-\cleardoublepage
-\listofindice
+	\cleardoublepage
+	\tableofcontents
+	\cleardoublepage
+	\listofindice
 }
 
 \makeatother
@@ -340,29 +367,31 @@
 \makeatletter
 \def\algbackskip{\hskip-\ALG@thistlm} %\def\BState{\State\hskip-\ALG@thistlm} % both works fine, but latter one redefines \BState
 
-\renewcommand\maketitle{\pagestyle{plain}
-\begin{center}
-\vskip \stretch{4}
-\includegraphics[width=8cm]{xmu-flag}\\
-\vskip \stretch{4}
+\renewcommand\maketitle{
+	\pagestyle{empty}
+	\begin{center}
+		\vspace{4ex}
+		\includegraphics[width=8cm]{xmu-flag}\par
+		\vspace{4ex}
 
 {
-	\rmfamily\zihao{-2}
-	\the\degree  \quad 毕\quad 业\quad 论\quad 文\quad （~设\quad 计~）
-}\\ \vskip\stretch{2} 
-{
-	\rmfamily\zihao{3}（\the\majorordouble） \\
-} \vskip \stretch{3}
+	\rmfamily\zihao{-2}\the\degree  \quad 毕\quad 业\quad 论\quad 文\quad （~设\quad 计~)\par\vspace{2ex}
+}
 
-{\sffamily\zihao{2}\xmutitle 
-}\vskip \stretch{3}
+{
+	\rmfamily\zihao{3}（\the\majorordouble)\par \vspace{3ex}
+} 
+
+{
+	\sffamily\zihao{2}\xmutitle \par\vspace{3ex}
+}
 
 { 
-	\rmfamily \bfseries \zihao{3}\the\englishtitle
-}\vskip \stretch{2}
+	\rmfamily\bfseries\zihao{3} \the\englishtitle \par\vspace{5ex}
+}
 	
-	\vskip \stretch{1}
-	{ \rmfamily \zihao{4} % \sffamily \heiti 
+
+	{ \rmfamily \zihao{4}
 		\begin{tabular}{rl} 
 			姓\qquad 名： & \xmuauthor         \\
 			学\qquad 号： & \the\studentnumber \\
@@ -373,11 +402,11 @@
 			校外指导教师： & \the\otheradvisor  \\
 		\end{tabular}%
 	}
-	\vskip \stretch{2}
+	\vspace{2ex}
 	\rmfamily\mdseries\zihao{4}
-	\vskip \stretch{5.5}
+	\par\vspace{7ex}
 	\xmudate
-	\vskip \stretch{2}
+	\vspace{2ex}
 \end{center}
 }
 
