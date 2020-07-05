@@ -199,17 +199,14 @@
 
 
 \makeatletter
+\RenewDocumentCommand\chaptermark{m}{\markboth{#1}{#1}}
 
-\renewcommand{\chaptermark}[1]{\markboth{#1}{#1}}
 \fancyhf{}  % cleans original header&footer
-\fancyhead[CE]{\zihao{-5} \xmutitle}
+\fancyhead[CE]{\zihao{-5} \l__xmu_title_tl}
 \fancyhead[CO]{\zihao{-5} \leftmark}  %\leftmark \chaptermark
 \fancyfoot[C]{\thepage}
 
-\renewcommand{\headrulewidth}{0pt}
-\let\oldmainmatter\mainmatter
-
-\renewcommand\mainmatter{\oldmainmatter\renewcommand{\headrulewidth}{1pt}}
+\RenewDocumentCommand\headrulewidth{}{0pt}
 
 
 \ctexset{
@@ -238,17 +235,16 @@
 \setlength{\cftbeforesecskip}{10pt}
 \setlength{\cftbeforesubsecskip}{5pt}
 \setlength{\cftbeforetoctitleskip}{-30pt}
-\renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}} % for chapters
-\renewcommand{\cftchapfont}{\zihao{4}\sffamily}% Chapter font
-\renewcommand{\cftsecfont}{\zihao{-3}\sffamily}% Section font 
-\renewcommand{\cftsubsecfont}{\zihao{-3}\rmfamily}%subsection font
-\renewcommand{\cfttoctitlefont}{\hfill\zihao{-3}\sffamily  目\quad 录\hfill}%\phantom{mmmmmmmmm}
-\renewcommand{\cftaftertoctitle}{\hfill}
+\RenewDocumentCommand\cftchapleader{}{\cftdotfill{\cftdotsep}} % for chapters
+\RenewDocumentCommand\cftchapfont{}{\zihao{4}\sffamily}% Chapter font
+\RenewDocumentCommand\cftsecfont{}{\zihao{-3}\sffamily}% Section font 
+\RenewDocumentCommand\cftsubsecfont{}{\zihao{-3}\rmfamily}%subsection font
+\RenewDocumentCommand\cfttoctitlefont{}{\hfill\zihao{-3}\sffamily  目\quad 录\hfill}%\phantom{mmmmmmmmm}
+\RenewDocumentCommand\cftaftertoctitle{}{\hfill}
+\RenewDocumentCommand\cfttcetitlefont{}{\hfill\zihao{-3}\rmfamily\bfseries Table~of~Contents\hfill}%\phantom{mmmmmmm}
+\RenewDocumentCommand\cftaftertcetitle{}{\hfill}
 
-\renewcommand{\cfttcetitlefont}{\hfill\zihao{-3}\rmfamily\bfseries Table~of~Contents\hfill}%\phantom{mmmmmmm}
-\renewcommand{\cftaftertcetitle}{\hfill}
-
-\newcommand\captce[1]{%
+\NewDocumentCommand\captce { m } {
 \if@mainmatter
 	\addcontentsline{tce}{chapter}{
 		\rmfamily\bfseries \protect\makebox[5em][l]{Chapter~\thechapter}#1}
@@ -256,12 +252,19 @@
 		\addcontentsline{tce}{chapter}{
 \rmfamily\bfseries\protect\makebox[0em][l]{}#1}
 \fi 
-    }
+}
 
-\newcommand\sectce[1]{%
-	\addcontentsline{tce}{section}{ \rmfamily\bfseries\protect\makebox[2.8em][l]{\thesection}#1}}
-\newcommand\ssectce[1]{%
-\addcontentsline{tce}{subsection}{\protect\makebox[3em][l]{\thesubsection}#1}}
+\NewDocumentCommand\sectce { m } {
+	\addcontentsline{tce}{section}{
+		\rmfamily\bfseries\protect\makebox[2.8em][l]{\thesection}#1
+	}
+}
+
+\NewDocumentCommand\ssectce { m } {
+	\addcontentsline{tce}{subsection}{
+		\protect\makebox[3em][l]{\thesubsection}#1
+	}
+}
 
 
 \let\oldchapter\chapter
@@ -304,9 +307,10 @@
 }
 
 \let\origdoublepage\cleardoublepage
-\newcommand{\clearemptydoublepage}{
+\NewDocumentCommand\clearemptydoublepage{}{
 	\clearpage
-	{\pagestyle{empty}\origdoublepage}}
+	{\pagestyle{empty}\origdoublepage}
+}
 
 \let\cleardoublepage\clearemptydoublepage
 
@@ -316,6 +320,8 @@
 	\tableofcontents
 	\cleardoublepage
 	\listofindice
+	\mainmatter
+	\RenewDocumentCommand\headrulewidth{}{1pt}
 }
 
 \makeatother
@@ -335,7 +341,45 @@
 % --------------------------- endnotes settings ----------------------
 % required package(s):
 % - pifont
-\renewcommand\thefootnote{\ding{\numexpr171+\value{footnote}}} %改变注脚的格式
+\RenewDocumentCommand\thefootnote{}{\ding{\numexpr171+\value{footnote}}} %改变注脚的格式
+
+\NewDocumentCommand\somewords{}{
+	ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxuy 
+	\par
+	中文字体
+	\par
+}
+
+\NewDocumentCommand\showfont{}{
+	{
+		\begin{center}
+			\textbf{字体展示}
+		\end{center}
+			\par
+			\( \hbar ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxuy \)
+			\par
+			% $ \symbf{\hbar ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxuy} $
+			
+			\somewords
+			
+			{\bfseries \somewords}
+			
+			\itshape \somewords
+			
+			\sffamily \somewords
+			
+			\bfseries \somewords
+			% \newpage
+			
+			\itshape \somewords
+			
+			\ttfamily \somewords
+			
+			\bfseries \somewords
+			
+			\itshape \somewords
+	}
+}
 
 % --------------------------- code inserting settings ----------------------
 % required package(s):
@@ -367,7 +411,7 @@
 \makeatletter
 \def\algbackskip{\hskip-\ALG@thistlm} %\def\BState{\State\hskip-\ALG@thistlm} % both works fine, but latter one redefines \BState
 
-\renewcommand\maketitle{
+\DeclareDocumentCommand\maketitle{}{
 	\frontmatter
 	\pagestyle{empty}
 	\begin{center}
@@ -376,37 +420,37 @@
 		\vspace{4ex}
 
 {
-	\rmfamily\zihao{-2}\the\degree  \quad 毕\quad 业\quad 论\quad 文\quad （~设\quad 计~)\par\vspace{2ex}
+	\rmfamily\zihao{-2}\l__xmu_degree_tl \quad 毕\quad 业\quad 论\quad 文\quad （~设\quad 计~)\par\vspace{2ex}
 }
 
 {
-	\rmfamily\zihao{3}（\the\majorordouble)\par \vspace{3ex}
+	\rmfamily\zihao{3}（\l__xmu_majorordouble_tl)\par \vspace{3ex}
 } 
 
 {
-	\sffamily\zihao{2}\xmutitle \par\vspace{3ex}
+	\sffamily\zihao{2}\l__xmu_title_tl \par\vspace{3ex}
 }
 
 { 
-	\rmfamily\bfseries\zihao{3} \the\englishtitle \par\vspace{5ex}
+	\rmfamily\bfseries\zihao{3} \l__xmu_englishtitle_tl\par\vspace{5ex}
 }
 	
 
 	{ \rmfamily \zihao{4}
 		\begin{tabular}{rl} 
-			姓\qquad 名： & \xmuauthor         \\
-			学\qquad 号： & \the\studentnumber \\
-			学\qquad 院： & \the\department    \\
-			专\qquad 业： & \the\major         \\
-			年\qquad 级： & \the\class         \\
-			校内指导教师： & \the\advisor       \\
-			校外指导教师： & \the\otheradvisor  \\
+			姓\qquad 名： & \l__xmu_author_tl         \\
+			学\qquad 号： & \l__xmu_studentnumber_tl \\
+			学\qquad 院： & \l__xmu_department_tl    \\
+			专\qquad 业： & \l__xmu_major_tl         \\
+			年\qquad 级： & \l__xmu_class_tl         \\
+			校内指导教师： & \l__xmu_advisor_tl       \\
+			校外指导教师： & \l__xmu_otheradvisor_tl  \\
 		\end{tabular}%
 	}
 	\vspace{2ex}
 	\rmfamily\mdseries\zihao{4}
 	\par\vspace{7ex}
-	\xmudate
+	\l__xmu_date_tl
 	\vspace{2ex}
 \end{center}
 \chapter*{厦门大学本科学位论文诚信承诺书}
@@ -417,20 +461,20 @@
 	
 	本人呈交的学位论文是在导师指导下独立完成的研究成果。本人在论文写作中参考其他个人或集体已经发表的研究成果，均在文中以适当方式明确标明，并符合相关法律规范及《厦门大学本科毕业论文（设计）规范》。
 	\par
-	该学位论文为（\the\team%
+	该学位论文为（\l__xmu_team_tl%
 	）课题（组）的研究成果，获得
 	（%
-	\the\fundteam）课题（组）经费或实验室的资助，
+	\l__xmu_fundteam_tl）课题（组）经费或实验室的资助，
 	在（%
-	\the\lab）实验室完成。（请在以上括号内填写课题或课题组负责人或
+	\l__xmu_lab_tl）实验室完成。（请在以上括号内填写课题或课题组负责人或
 	实验室名称，未有此项声明内容的，可以不作特别声明。）
 	\par	
 	另外，本人承诺辅修专业毕业论文（设计）（如有）的内容与主修专业不存在相同与相近情况。
 	\par
 	\vspace{30pt}
 	
-	\hfill 学生声明（签名）：\hspace*{4cm}\\
-	\vspace{-10pt} 
+	\hfill 学生声明（签名）：\hspace*{4cm}
+	\par\vspace{2ex}
 	\hfill 年\hspace{26pt}月\hspace{26pt}日\hspace*{2cm}
 }	
 \end{doublespace}
@@ -450,7 +494,7 @@
 % first: type
 % second: singular cross reference
 % third: plural cross reference
-\renewcommand{\citep}[1]{{\color{blue}\citeauthor{#1}(\citeyearpar{#1})}}
+\RenewDocumentCommand\citep{m}{{\color{blue}\citeauthor{#1}(\citeyearpar{#1})}}
 \crefformat{figure}{#2图~#1#3}
 \crefrangeformat{figure}{图~(#3#1#4)\;$\sim$\;(#5#2#6)}
 \crefmultiformat{figure}{图~(#2#1#3)}{和~(#2#1#3)}{，(#2#1#3)}{和~(#2#1#3)}
@@ -475,28 +519,52 @@
 
 %%============================关键词===========================%%
 
-%%中文关键词。
-\newcommand\keywords[1]{%
-	\vspace{2ex}\noindent{\sffamily \bfseries 关键词：} #1}
+%%关键词。
+
+\NewDocumentCommand\keywords { s m } {
+	\vspace{2ex}\noindent{\sffamily \bfseries 
+	\IfBooleanTF {#1} {
+		关键词：
+	}{
+		Keywords:~
+	}
+	} #2
+}
 
 
-%%英文关键词。
-\newcommand\englishkeywords[1]{%
-\noindent{\sffamily \bfseries Keywords:~} #1} %	\vspace{2ex}
-	
+\tl_new:N \l__xmu_author_tl
+\tl_new:N \l__xmu_title_tl
+\tl_new:N \l__xmu_date_tl
+\tl_new:N \l__xmu_class_tl
+\tl_new:N \l__xmu_studentnumber_tl
+\tl_new:N \l__xmu_department_tl
+\tl_new:N \l__xmu_major_tl
+\tl_new:N \l__xmu_advisor_tl
+\tl_new:N \l__xmu_otheradvisor_tl
+\tl_new:N \l__xmu_team_tl
+\tl_new:N \l__xmu_fundteam_tl
+\tl_new:N \l__xmu_degree_tl
+\tl_new:N \l__xmu_englishtitle_tl
+\tl_new:N \l__xmu_majorordouble_tl
+\tl_new:N \l__xmu_lab_tl
 
-%\newtoks\xmudate
-%\newtoks\xmuauthor
-%\newtoks\xmutitle
-\newtoks\class
-\newtoks\studentnumber
-\newtoks\department
-\newtoks\major
-\newtoks\advisor
-\newtoks\otheradvisor
-\newtoks\team
-\newtoks\fundteam
-\newtoks\degree
-\newtoks\englishtitle
-\newtoks\majorordouble
-\newtoks\lab
+\keys_define:nn { xmu }{
+	author        .tl_set:N  = \l__xmu_author_tl        ,
+	title         .tl_set:N  = \l__xmu_title_tl         ,
+	date          .tl_set:N  = \l__xmu_date_tl          ,
+	class         .tl_set:N  = \l__xmu_class_tl         ,
+	studentnumber .tl_set:N  = \l__xmu_studentnumber_tl ,
+	department    .tl_set:N  = \l__xmu_department_tl    ,
+	major         .tl_set:N  = \l__xmu_major_tl         ,
+	advisor       .tl_set:N  = \l__xmu_advisor_tl       ,
+	otheradvisor  .tl_set:N  = \l__xmu_otheradvisor_tl  ,
+	team          .tl_set:N  = \l__xmu_team_tl          ,
+	fundteam      .tl_set:N  = \l__xmu_fundteam_tl      ,
+	degree        .tl_set:N  = \l__xmu_degree_tl        ,
+	englishtitle  .tl_set:N  = \l__xmu_englishtitle_tl  ,
+	majorordouble .tl_set:N  = \l__xmu_majorordouble_tl ,
+	lab           .tl_set:N  = \l__xmu_lab_tl           ,
+}
+
+\NewDocumentCommand \XMUsetup { m }{
+\keys_set:nn { xmu } { #1 }}
