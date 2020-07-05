@@ -1,10 +1,6 @@
 ![](https://img.shields.io/badge/Language-TeX-red.svg) ![](https://img.shields.io/github/stars/CamuseCao/XMU-Undergraduate-thesis-template.svg?style=social) ![](https://img.shields.io/github/release/CamuseCao/XMU-Undergraduate-thesis-template.svg?label=version)  ![](https://img.shields.io/github/last-commit/CamuseCao/XMU-Undergraduate-thesis-template.svg?style=social&logo=Tinder) ![](https://img.shields.io/github/repo-size/CamuseCao/XMU-Undergraduate-thesis-template.svg) ![](https://img.shields.io/github/languages/code-size/CamuseCao/XMU-Undergraduate-thesis-template.svg) ![](https://img.shields.io/github/followers/CamuseCao.svg?label=Followers) ![](https://img.shields.io/github/downloads/CamuseCao/XMU-Undergraduate-thesis-template/v0.11/total.svg?style=plastic) 
 
 
-
-![]()
-
-
 # 厦门大学模板使用说明
 
 [TOC]
@@ -21,7 +17,7 @@
 
 ## 模板使用说明
 
-为了正确使用该模板，请按照提示安装好可使用的`TeX`发行版本。因为论文内容比较多，因此采取了分文件的方式来构成该文档。主文件是`XMU.tex`。`Figure`s文件夹是存放图片的文件夹，该文件夹已经加入图片文件夹的位置，插入图片是无需多加路径，直接用文件名即可。关于`Setting`文件夹只需要把里面的`Information.tex`正确填入即可。而你需要编辑的仅有`Body`文件夹下的文件。
+为了正确使用该模板，请按照提示安装好可使用的`TeX`发行版本。因为论文内容比较多，因此采取了分文件的方式来构成该文档。主文件是`XMU.tex`。`Figure`文件夹是存放图片的文件夹，该文件夹已经加入图片文件夹的位置，插入图片是无需多加路径，直接用文件名即可。关于`Setting`文件夹是放置模板和宏包的文件夹，使用者最好不要更改里面的东西。而你需要编辑的仅有`Body`文件夹下的文件。
 
 当你需要毕业论文的打印时。可以打开`Cover`文件夹，封面的制作程序已经做好了，使用它应该能的到你想要的`a3`封面，你可以自己再做调整。
 
@@ -31,7 +27,7 @@
 
 ## 几点说明
 
-- 该模板应该能够在`Linux`、`Mac`和`Windows`模板运行，但是需要注意字体问题，未了获得较好的字体设置，记得下载对应字体并放在指定的位置，字体下载参看`fonts/ReadMe.txt`文件。
+- 该模板应该能够在`Linux`、`Mac`和`Windows`模板运行，但是需要注意字体问题，为了获得较好的字体设置，记得下载对应字体并放在指定的位置，字体下载参看`fonts/ReadMe.txt`文件。
 
 -  在使用该模板之前，请把原始编译出来的文档读一下，对于你的使用是很有帮助的。
 
@@ -47,7 +43,6 @@
 
 `Overleaf` 项目由于使用者过少，并且国内访问难度过大，暂时停止更新。
 
-[^_^]:  `Overleaf`在线编译的项目的地址 ：[Github下载](https://github.com/CamuseCao/XMU-Thesis-Overleaf)    [Overleaf查看与下载](https://www.overleaf.com/2128697983jhmpkzxdzmry) 
+<!-- [^_^]:  `Overleaf`在线编译的项目的地址 ：[Github下载](https://github.com/CamuseCao/XMU-Thesis-Overleaf)    [Overleaf查看与下载](https://www.overleaf.com/2128697983jhmpkzxdzmry)  -->
 
-[^_^]:  (`Overleaf`项目的地址请勿随意编辑，方便大家的观看。你可以把它拷到你自己的项目下尽情玩耍。 )
-
+<!-- [^_^]:  (`Overleaf`项目的地址请勿随意编辑，方便大家的观看。你可以把它拷到你自己的项目下尽情玩耍。 ) -->
