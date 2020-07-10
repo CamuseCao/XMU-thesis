@@ -1,9 +1,9 @@
 % !TEX root = ../XMU.tex
 \NeedsTeXFormat{LaTeX2e}
 
-\RequirePackage{ expl3 , xparse, xtemplate, l3keys2e }
+\RequirePackage{ expl3, xparse, xtemplate, l3keys2e, scrlfile }
 
-\RequirePackage{nag}
+\RequirePackage[l2tabu, orthodox]{nag}
 \ExplSyntaxOn
 \def\IfXeTeXTF#1#2{\csname sys_if_engine_xetex:TF\endcsname{#1}{#2}}
 
@@ -13,11 +13,11 @@
 	\PassOptionsToPackage{utf8}{inputenc}
 }{}
 
-\sys_if_engine_pdftex:TF {
+\sys_if_engine_pdftex:T {
 	\PassOptionsToClass{UTF8}{ctexbook}
 		\msg_new:nnn { engine } { msg } { Don't~use~pdfLaTeX~to~compile~the~final~TeX~files.}
 		\msg_warning:nn { engine } { msg }
-}{}
+}
 
 
 
@@ -29,17 +29,14 @@
 \PassOptionsToPackage{para}{threeparttable}
 \PassOptionsToPackage{sort&compress}{natbib}
 
-
-\newif\iffontadvance\fontadvancefalse % for font control
-\newif\ifcitenumbers\citenumbersfalse
+\bool_set_false:N \l__xmu_advanced_font_bool
 
 \keys_define:nn { XMUthesis }{
 	bibstyle              .choice:                                             ,
 	bibstyle              .default:n = numerical                                   ,
-	bibstyle / numerical      .code:n = \bibliographystyle{gbt7714-numerical}      ,
-	bibstyle / numbers    .code:n = \citenumberstrue
-    ,
-	bibstyle / authoryear .code:n = \bibliographystyle{gbt7714-author-year}
+	bibstyle / numerical      .code:n =       ,
+	bibstyle / numbers    .code:n = \AfterPackage{gbt7714}{\citestyle{numbers}}  ,
+	bibstyle / authoryear .code:n = \AfterPackage{gbt7714}{\bibliographystyle{gbt7714-author-year}}
 	,
 	bibstyle / unknown    .code:n = \msg_error:nnxxx { XMUthesis } { unknown-choice } { bibstyle } { numerical, numbers, authoryear } { The~choice~' #1 '~is~invalid~for~bibstyle	}, 
 
@@ -58,7 +55,7 @@
 			}
 			\msg_warning:nn { ubuntu font } { msg },
 	font / advance  .code:n    = \PassOptionsToClass{fontset =none}{ctexbook}
-	\fontadvancetrue,
+	\bool_set_true:N \l__xmu_advanced_font_bool,
 	font / empty    .code:n    = \msg_new:nnn { font } { msg } {
 		You~are~using~the~default~fonts,~you~can~change~it~by~font=adobe,~windows,~mac,~advance~and~so~on.
 		}
@@ -132,18 +129,7 @@
 }
 
 
-\keys_if_exist:nnTF { XMUthesis } { bibstyle } { 
-	\RequirePackage[sort&compress]{natbib}
-	\RequirePackage{gbt7714} 
-	} { }
-
-\ifcitenumbers
-\citestyle{numbers}
-\fi
-
-\iffontadvance
-
-%\keys_if_choice_exist:nnnTF { XMUthesis } { font } { advance }  {
+\bool_if:NT \l__xmu_advanced_font_bool{
 	\setmonofont[
 		Extension          = .otf      ,
 		Path               = fonts/    ,
@@ -183,9 +169,7 @@
 		Path               = fonts/        ,
 		BoldFont           = XITSMath-Bold ,
 		StylisticSet       = 8] {XITSMath-Regular}
-%	    } { }
-
-\fi
+}
 
 
 
