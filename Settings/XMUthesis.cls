@@ -32,13 +32,13 @@
 \bool_set_false:N \l__xmu_advanced_font_bool
 
 \keys_define:nn { XMUthesis }{
-	bibstyle              .choice:                                             ,
-	bibstyle              .default:n = numerical                                   ,
-	bibstyle / numerical      .code:n =       ,
-	bibstyle / numbers    .code:n = \AfterPackage{gbt7714}{\citestyle{numbers}}  ,
-	bibstyle / authoryear .code:n = \AfterPackage{gbt7714}{\bibliographystyle{gbt7714-author-year}}
-	,
-	bibstyle / unknown    .code:n = \msg_error:nnxxx { XMUthesis } { unknown-choice } { bibstyle } { numerical, numbers, authoryear } { The~choice~' #1 '~is~invalid~for~bibstyle	}, 
+	bibstyle                  .choice:               ,
+	bibstyle                  .default:n = numerical ,
+	bibstyle / numerical      .code:n =                                                                 ,
+	bibstyle / numbers        .code:n = \AfterPackage{gbt7714}{\citestyle{numbers}}                     ,
+	bibstyle / authoryear     .code:n = \AfterPackage{gbt7714}{\bibliographystyle{gbt7714-author-year}} ,
+	bibstyle / unknown        .code:n = \msg_error:nnxxx { XMUthesis } { unknown-choice } { bibstyle }  
+						{ numerical, numbers, authoryear } { The~choice~' #1 '~is~invalid~for~bibstyle} ,
 
 	font           .choice:           ,	
 	font           .default:n = empty ,
@@ -51,17 +51,23 @@
 	font / windows .code:n = \PassOptionsToClass{fontset = #1}{ctexbook} ,
 	font / ubuntu  .code:n = \PassOptionsToClass{fontset = #1}{ctexbook} 
 		\msg_new:nnn { ubuntu font } { msg } {
-			You~are~using~the~default~fonts,~so~you~better~change~it~by~font=adobe,~or~advance.~If~you~choose~them,~you~should~download~the~necessary~font~and~put~them~in~the~right~place.
+			You~are~using~the~default~fonts,~so~you~better~change~it~by~font=adobe,
+			~or~advance.~If~you~choose~them,
+			~you~should~download~the~necessary~font~and~put~them~in~the~right~place.
 			}
 			\msg_warning:nn { ubuntu font } { msg },
 	font / advance  .code:n    = \PassOptionsToClass{fontset =none}{ctexbook}
 	\bool_set_true:N \l__xmu_advanced_font_bool,
 	font / empty    .code:n    = \msg_new:nnn { font } { msg } {
-		You~are~using~the~default~fonts,~you~can~change~it~by~font=adobe,~windows,~mac,~advance~and~so~on.
+		You~are~using~the~default~fonts,~you~can~change~it~by~font=adobe,
+		~windows,~mac,~advance~and~so~on.
 		}
 		\msg_warning:nn { font } { msg },
-	font / unknown  .code:n = \msg_error:nnxxx { XMUthesis } { unknown-choice }
-	{ font }{ empty, adobe, fandol, founder, mac, macnew, macold, ubuntu, windows, advance }{ The~choice~' #1 '~is~invalid~for~font },
+	font / unknown  .code:n = \msg_error:nnxxx { XMUthesis } { unknown-choice }{ font }{
+		empty, adobe, fandol, founder, mac, macnew, macold, ubuntu, windows, advance 
+		}{ 
+			The~choice~' #1 '~is~invalid~for~font 
+	},
 }
 
 \ProcessKeysOptions { XMUthesis }
