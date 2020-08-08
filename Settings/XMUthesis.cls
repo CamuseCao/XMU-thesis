@@ -400,11 +400,11 @@
 		\vspace{4ex}
 
 {
-	\rmfamily\zihao{-2}\l__xmu_degree_tl \quad 毕\quad 业\quad 论\quad 文\quad （~设\quad 计~)\par\vspace{2ex}
+	\rmfamily\zihao{-2}\l__xmu_degree_tl \quad 毕\quad 业\quad 论\quad 文\quad （~设\quad 计~）\par\vspace{2ex}
 }
 
 {
-	\rmfamily\zihao{3}（\l__xmu_majorordouble_tl)\par \vspace{3ex}
+	\rmfamily\zihao{3}（\l__xmu_majorordouble_tl）\par \vspace{3ex}
 } 
 
 {
