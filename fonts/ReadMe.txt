@@ -22,7 +22,9 @@ For font=adobe, download them and install them to your system.
 ├── AdobeFangsongStd-Regular.otf 
 ├── AdobeKaitiStd-Regular.otf
 ├── AdobeHeitiStd-Regular.otf 
-├── AdobeSongStd-Lightotf
+├── AdobeSongStd-Light.otf
+├── AdobeFangsongStd-Regular.otf
+
 
 For font=founder, download them and install them to your system.
 ├──  FZXH1K.TTF
@@ -31,4 +33,4 @@ For font=founder, download them and install them to your system.
 ├──  FZXBSK.TTF
 ├──  FZHTK.TTF
 ├──  FZFSK.TTF
-and so on. texdoc ctex , page 122 see more detail.
+and so on. texdoc ctex , page 126 see more detail.
