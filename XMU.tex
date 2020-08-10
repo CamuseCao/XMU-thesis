@@ -1,6 +1,6 @@
 % !TeX TXS-program:compile = txs:///latexmk/{}[-pdfxe -synctex=1 -interaction=nonstopmode -silent -outdir=Temp %.tex] 
 %
-\documentclass[bibstyle=numerical,font=empty]{Settings/XMUthesis}% numerical authoryear
+\documentclass[degree=undergraduate,bibstyle=numerical,font=empty]{Settings/XMUthesis}% numerical authoryear
 % \documentclass[bibstyle=numbers,font=advance]{Settings/XMUthesis}
 
 \XMUsetup{
@@ -35,17 +35,18 @@
 \input{Body/Chapter1}
 \input{Body/Chapter2}
 
-\backmatter
 % \nocite{*} 
 \bibliography{Body/Reference}
 
-\chapter{附录A}{Appendix A}
+\appendix
+\chapter{代码}{Codes}
+\section{代码实现}{Code implementation}
+\subsection{画图}{Plot}
 \input{Body/Appendix}
-\chapter{附录B}{Appendix B}
-
+\chapter{字体}{Font}
 \showfont
-
-\chapter{附录 C}{Appendix C}
+\backmatter
+\chapter{校徽}{School badge}
 \begin{figure}[htbp!]
 \centering
 \caption{厦大校徽}
