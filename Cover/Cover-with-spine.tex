@@ -2,33 +2,24 @@
 \usepackage[a3paper,left=0cm,right=0cm,top=0cm,bottom=0cm,landscape]
 {geometry}
 \usepackage{graphicx}
+\def\xmuspace{\hbox{}\vfill\hbox{}\par}
 \begin{document}
 \hspace{0.471\textwidth}
 \noindent
     \begin{minipage}{0.85\ccwd}\zihao{-5} % 0.85 just fine
-        \vspace*{25ex} 
-    
-        论文名称
-    
-        \vspace{25ex} 
-        
-        作者姓名 
-        
-        \vspace{25ex} 
-    
-        指导教师 
-        
-        \vspace{25ex} 
-        
-        张三
-        
-        \vspace{25ex} 
-        
-        厦门大学
-    
-        \vspace{25ex} 
-    \end{minipage}
+    \xmuspace
+    论文名称
+    \xmuspace
+    作者姓名 
+    \xmuspace
+    指导教师 
+    \xmuspace
+    张三
+    \xmuspace
+    厦门大学
+    \xmuspace
+\end{minipage}
 \begin{minipage}{0.5\textwidth}
-\includegraphics[width=\textwidth]{../XMU.pdf}
+    \includegraphics[width=\textwidth]{../XMU.pdf}
 \end{minipage}%
 \end{document}
