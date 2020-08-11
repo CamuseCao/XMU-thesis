@@ -1,24 +1,33 @@
 % !TeX TXS-program:compile = txs:///latexmk/{}[-pdfxe -synctex=1 -interaction=nonstopmode -silent -outdir=Temp %.tex] 
 %
-\documentclass[bibstyle=numerical,font=empty]{Settings/XMUthesis}% numerical authoryear
+\documentclass[degree=doctor,bibstyle=numerical,font=empty]{Settings/XMUthesis}% numerical authoryear ,nottoc,notabs,notbib,undergraduate
 % \documentclass[bibstyle=numbers,font=advance]{Settings/XMUthesis}
 
 \XMUsetup{
-    author        = 酸奶                   ,
-    title         = 你的论文题目             ,
-    date          = \today                 , %二〇一九年二月二十八日
-    class         = 2015级                 ,
-    studentnumber = 1972015xxxxxx          ,
-    department    = 物理科学与技术学院        ,
-    major         = 微电子科学与工程          ,
-    advisor       = 校内指导老师 \quad 职称   ,
-    otheradvisor  = 校外指导老师 \quad 职称   ,
-    team          = 物理科学与技术学院~理论物理 ,
-    fundteam      = 物理科学与技术学院~理论物理 ,
-    degree        = 本\quad 科              ,
-    englishtitle  = Your English Title     ,
-    majorordouble = 主修                    , % 辅修
-    lab           = 实验室                   ,
+    author                  = 酸奶                        ,
+    title                   = 你的论文题目                ,
+    date                    = \today                      , % 二〇一九年二月二十八日
+    class                   = 2015级                      ,
+    studentnumber           = 1972015xxxxxx               ,
+    department              = 物理科学与技术学院          ,
+    major                   = 微电子科学与工程            ,
+    advisor                 = 校内指导老师 \quad 职称     ,
+    otheradvisor            = 校外指导老师 \quad 职称     ,
+    team                    = 物理科学与技术学院~理论物理 ,
+    fundteam                = 物理科学与技术学院~理论物理 ,
+    degree                  = 本\quad 科                  ,
+    englishtitle            = Your English Title          ,
+    majorordouble           = 主修                        , % 辅修
+    lab                     = 实验室                      ,
+    % 以下几项本科生无需填写，也不用删除
+    classified_code         =  1234                       , % 分类号
+	security_classification =  公开                       , % 内部 秘密 机密 公开 等
+	UDC                     =  5                          , % Universal Decimal Classification
+	submit_date             =  2020 年 8 月 10 日         , % 论文提交日期
+	defense_date            =  2020 年 8 月 11 日         , % 论文答辩日期
+	conferred_date          =  2020 年 8 月 21 日         , % 学位授予日期
+	chairman                =  张三                       , % 答辩委员会主席
+	referee                 =  李四                       , % 评阅人
 }
 
 \usepackage{Settings/XMU-logo}
@@ -35,17 +44,18 @@
 \input{Body/Chapter1}
 \input{Body/Chapter2}
 
-\backmatter
 % \nocite{*} 
 \bibliography{Body/Reference}
 
-\chapter{附录A}{Appendix A}
+\appendix
+\chapter{代码}{Codes}
+\section{代码实现}{Code implementation}
+\subsection{画图}{Plot}
 \input{Body/Appendix}
-\chapter{附录B}{Appendix B}
-
+\chapter{字体}{Font}
 \showfont
-
-\chapter{附录 C}{Appendix C}
+\backmatter
+\chapter{校徽}{School badge}
 \begin{figure}[htbp!]
 \centering
 \caption{厦大校徽}

@@ -30,8 +30,26 @@
 \PassOptionsToPackage{sort&compress}{natbib}
 
 \bool_set_false:N \l__xmu_advanced_font_bool
+\bool_set_false:N \l__xmu_overleaf_font_bool
+\bool_set_false:N \l__xmu_undergraduate_bool
+\bool_set_false:N \l__xmu_master_bool
+\bool_set_false:N \l__xmu_doctor_bool
+
+\bool_set_true:N \l__xmu_toc_toc_bool
+\bool_set_true:N \l__xmu_toc_abs_bool
+\bool_set_true:N \l__xmu_toc_ref_bool
 
 \keys_define:nn { XMUthesis }{
+	degree                 .choice:                   ,
+	degree                 .default:n = undergraduate ,
+	degree / undergraduate .code:n = \bool_set_true:N \l__xmu_undergraduate_bool ,
+    degree / master        .code:n = \bool_set_true:N \l__xmu_master_bool        ,
+	degree / doctor        .code:n = \bool_set_true:N \l__xmu_doctor_bool        ,
+
+	nottoc .code:n = \bool_set_false:N \l__xmu_toc_toc_bool ,
+	notabs .code:n = \bool_set_false:N \l__xmu_toc_abs_bool ,
+	notbib .code:n = \bool_set_false:N \l__xmu_toc_ref_bool ,
+
 	bibstyle                  .choice:               ,
 	bibstyle                  .default:n = numerical ,
 	bibstyle / numerical      .code:n =                                                                 ,
@@ -55,9 +73,11 @@
 			~or~advance.~If~you~choose~them,
 			~you~should~download~the~necessary~font~and~put~them~in~the~right~place.
 			}
-			\msg_warning:nn { ubuntu font } { msg },
+			\msg_warning:nn { ubuntu font } { msg } ,
+	font / overleaf .code:n    = \PassOptionsToClass{fontset =none}{ctexbook}
+		\bool_set_true:N \l__xmu_overleaf_font_bool ,
 	font / advance  .code:n    = \PassOptionsToClass{fontset =none}{ctexbook}
-	\bool_set_true:N \l__xmu_advanced_font_bool,
+		\bool_set_true:N \l__xmu_advanced_font_bool ,
 	font / empty    .code:n    = \msg_new:nnn { font } { msg } {
 		You~are~using~the~default~fonts,~you~can~change~it~by~font=adobe,
 		~windows,~mac,~advance~and~so~on.
@@ -79,6 +99,33 @@
 	\RequirePackage{microtype,amsfonts}
 }
 
+\NewDocumentCommand\degree{ m m m }{
+    \IfBooleanTF{\l__xmu_undergraduate_bool}{
+        #1
+    }{
+        \IfBooleanTF{\l__xmu_master_bool}{
+            #2
+        }{
+            #3
+        }
+    }
+}
+
+\NewDocumentCommand\undergratuateTF{ m m }{
+    \IfBooleanTF{\l__xmu_undergraduate_bool}{
+		#1
+	}{
+		#2
+	}
+}
+
+\undergratuateTF{
+
+}{
+	\RequirePackage{xeCJKfntef}
+}
+\RequirePackage[UseMSWordMultipleLineSpacing,MSWordLineSpacingMultiple=1.5]{zhlineskip}
+
 \RequirePackage{
     amsthm         ,
     physics        ,
@@ -94,11 +141,13 @@
     caption        ,
     threeparttable ,
     subfig         ,
-    tocloft        ,
+	tocloft        ,
+	etoolbox       ,
+	% tocbibind      ,
     xcolor         ,
     listings       ,
 	gbt7714		   ,
-    float          ,
+    % float          ,
     hyperref       ,
     algorithm      ,
     algpseudocode  ,
@@ -123,8 +172,13 @@
 	right  = 2cm ,
 	top    = 4cm ,
 	bottom = 3cm ,
-}  
-\captionsetup{font={small,bf}}
+}
+\bool_if:NTF \l__xmu_undergraduate_bool{
+	\captionsetup{font={small,bf}}
+}{
+	\captionsetup{font={normalsize,bf}}
+}
+
 \hypersetup{
 %	bookmarks=true            ,
 	bookmarksnumbered = false ,
@@ -177,11 +231,17 @@
 		StylisticSet       = 8] {XITSMath-Regular}
 }
 
+\bool_if:NT \l__xmu_overleaf_font_bool{
+	% \setmainfont{Noto~Serif}
+	% \setsansfont{Noto~Sans}
+	% \setmonofont{Noto~Mono}
+	\setCJKmainfont{Noto~Serif~CJK~SC}
+	\setCJKsansfont{Noto~Sans~CJK~SC}
+	\setCJKmonofont{Noto~Sans~Mono~CJK~SC}
+	% \setmathfont{XITSMath}
+}
 
 
-
-
-\makeatletter
 \RenewDocumentCommand\chaptermark{m}{\markboth{#1}{#1}}
 
 \fancyhf{}  % cleans original header&footer
@@ -194,8 +254,6 @@
 
 \ctexset{
 	today          =	big,  % format date
-	bibname        =	{参考文献},
-	contentsname   =	{},
 	chapter        = 	{
 	format         = 	\centering\zihao{-3}\sffamily,
 	beforeskip     = 	-15pt,
@@ -207,45 +265,74 @@
 		afterskip  = 	10pt,
 						},
 	subsection 	   = 	{
-		format     = 	\zihao{-3}\sffamily,
+		format     = 	\zihao{4}\sffamily,
 						},
 }
 
 
-\newlistof{indice}{tce}{}
-\setlength{\cftbeforetcetitleskip}{-30pt}
-\setlength{\cftbeforechapskip}{12pt}
-\setlength{\cftbeforesecskip}{10pt}
-\setlength{\cftbeforesubsecskip}{5pt}
-\setlength{\cftbeforetoctitleskip}{-30pt}
-\RenewDocumentCommand\cftchapleader{}{\cftdotfill{\cftdotsep}} % for chapters
-\RenewDocumentCommand\cftchapfont{}{\zihao{4}\sffamily}% Chapter font
-\RenewDocumentCommand\cftsecfont{}{\zihao{-3}\sffamily}% Section font 
-\RenewDocumentCommand\cftsubsecfont{}{\zihao{-3}\rmfamily}%subsection font
-\RenewDocumentCommand\cfttoctitlefont{}{\hfill\zihao{-3}\sffamily  目\quad 录\hfill}%\phantom{mmmmmmmmm}
-\RenewDocumentCommand\cftaftertoctitle{}{\hfill}
-\RenewDocumentCommand\cfttcetitlefont{}{\hfill\zihao{-3}\rmfamily\bfseries Table~of~Contents\hfill}%\phantom{mmmmmmm}
-\RenewDocumentCommand\cftaftertcetitle{}{\hfill}
+\newlistof{indice}{tce}{Table~of~Contents}
 
+\setlength{\cftbeforetcetitleskip}{-30pt}
+\setlength{\cftbeforechapskip}{8pt}
+\setlength{\cftbeforesecskip}{6pt}
+\setlength{\cftbeforesubsecskip}{4pt}
+\setlength{\cftbeforetoctitleskip}{-30pt}
+\setlength{\cftsecnumwidth}{3.2em}
+\setlength{\cftsubsecindent}{4.5em}
+\RenewDocumentCommand\cftchapleader{}{\cftdotfill{\cftdotsep}} % for chapters
+% Add \thispagestyle{plain} to the font setting to force the pagestyle in toc always be plain, or it maybe influence by my slfe-define \cleanrdoublepage 
+\bool_if:NTF \l__xmu_undergraduate_bool{
+	\RenewDocumentCommand\cftchapfont{}{\thispagestyle{plain}\zihao{4}\sffamily}% Chapter font
+	\RenewDocumentCommand\cftsecfont{}{\thispagestyle{plain}\zihao{-3}\sffamily}% Section font 
+	\RenewDocumentCommand\cftsubsecfont{}{\thispagestyle{plain}\zihao{-3}\rmfamily}%subsection font
+}{
+	\RenewDocumentCommand\cftchapfont{}{\thispagestyle{plain}\zihao{4}\sffamily\bfseries}% Chapter font
+	\RenewDocumentCommand\cftsecfont{}{\thispagestyle{plain}\zihao{-4}\sffamily\bfseries}% Section font 
+	\RenewDocumentCommand\cftsubsecfont{}{\thispagestyle{plain}\zihao{-4}\rmfamily}%subsection font
+}
+
+% \RenewDocumentCommand\cfttoctitlefont{}{\hfill\zihao{-3}\sffamily  目\quad 录\hfill}%\phantom{mmmmmmmmm}
+% \RenewDocumentCommand\cftaftertoctitle{}{\hfill}
+\RenewDocumentCommand\cfttoctitlefont{}{\hspace*{\fill}\zihao{-3}\sffamily}
+\RenewDocumentCommand\cftaftertoctitle{}{\hspace*{\fill}}
+% \RenewDocumentCommand\cfttcetitlefont{}{\hfill\zihao{-3}\rmfamily\bfseries Table~of~Contents\hfill}%\phantom{mmmmmmm}
+% \RenewDocumentCommand\cftaftertcetitle{}{\hfill}
+\RenewDocumentCommand\cfttcetitlefont{}{\hspace*{\fill}\zihao{-3}\rmfamily\bfseries}
+\RenewDocumentCommand\cftaftertcetitle{}{\hspace*{\fill}}
+
+\let\oldappendix\appendix
+\bool_set_false:N \l__xmu_appendix_bool
+\RenewDocumentCommand\appendix{}{
+	\oldappendix
+	\bool_set_true:N \l__xmu_appendix_bool
+}
+
+\makeatletter
 \NewDocumentCommand\captce { m } {
-\if@mainmatter
-	\addcontentsline{tce}{chapter}{
-		\rmfamily\bfseries \protect\makebox[5em][l]{Chapter~\thechapter}#1}
+	\if@mainmatter
+	\bool_if:NTF \l__xmu_appendix_bool{
+		\addcontentsline{tce}{chapter}{
+			\rmfamily\bfseries \protect\makebox[5em][l]{Appendix~\thechapter}~\;\;#1}
+	}{
+		\addcontentsline{tce}{chapter}{
+			\rmfamily\bfseries \protect\makebox[5em][l]{Chapter~\thechapter}#1}
+	}
     \else
 		\addcontentsline{tce}{chapter}{
-\rmfamily\bfseries\protect\makebox[0em][l]{}#1}
+		\rmfamily\bfseries\protect\makebox[0em][l]{}#1}
 \fi 
 }
+\makeatother
 
 \NewDocumentCommand\sectce { m } {
 	\addcontentsline{tce}{section}{
-		\rmfamily\bfseries\protect\makebox[2.8em][l]{\thesection}#1
+		\rmfamily\bfseries\protect\makebox[2.3em][l]{\thesection}#1
 	}
 }
 
 \NewDocumentCommand\ssectce { m } {
 	\addcontentsline{tce}{subsection}{
-		\protect\makebox[3em][l]{\thesubsection}#1
+		\protect\makebox[2.3em][l]{\thesubsection}#1
 	}
 }
 
@@ -289,10 +376,11 @@
 	}
 }
 
-\let\origdoublepage\cleardoublepage
+\let\oldcleardoublepage\cleardoublepage
 \NewDocumentCommand\clearemptydoublepage{}{
-	\clearpage
-	{\pagestyle{empty}\origdoublepage}
+	\clearpage % don't delete it, even it's follewed by \cleardoublepage
+	% {\pagestyle{empty}\origdoublepage}
+	\thispagestyle{empty}\oldcleardoublepage
 }
 
 \let\cleardoublepage\clearemptydoublepage
@@ -300,9 +388,22 @@
 
 \NewDocumentCommand\xmutableofcontents{}{
 	\cleardoublepage
-	\tableofcontents
+	\bool_if:NTF \l__xmu_toc_toc_bool{
+		\addcontentsline{toc}{chapter}{\protect 目录}\captce{目录}
+		\tableofcontents
+		% \pagestyle{plain}
+		\cleardoublepage
+		\addcontentsline{toc}{chapter}{\protect Table~of~Contents}\captce{Table~of~Contents}
+		\listofindice
+		% \pagestyle{plain}
+	}{
+		\tableofcontents
+		% \pagestyle{plain}
+		\cleardoublepage
+		\listofindice
+		% \pagestyle{plain}
+	}
 	\cleardoublepage
-	\listofindice
 	\mainmatter
 	\RenewDocumentCommand\headrulewidth{}{1pt}
 }
@@ -390,79 +491,21 @@
 % - algpseudocode[noend]
 \makeatletter
 \def\algbackskip{\hskip-\ALG@thistlm} %\def\BState{\State\hskip-\ALG@thistlm} % both works fine, but latter one redefines \BState
-
-\DeclareDocumentCommand\maketitle{}{
-	\frontmatter
-	\pagestyle{empty}
-	\begin{center}
-		\vspace{4ex}
-		\includegraphics[width=8cm]{xmu-flag}\par
-		\vspace{4ex}
-
-{
-	\rmfamily\zihao{-2}\l__xmu_degree_tl \quad 毕\quad 业\quad 论\quad 文\quad （~设\quad 计~）\par\vspace{2ex}
-}
-
-{
-	\rmfamily\zihao{3}（\l__xmu_majorordouble_tl）\par \vspace{3ex}
-} 
-
-{
-	\sffamily\zihao{2}\l__xmu_title_tl \par\vspace{3ex}
-}
-
-{ 
-	\rmfamily\bfseries\zihao{3} \l__xmu_englishtitle_tl\par\vspace{5ex}
-}
-	
-
-	{ \rmfamily \zihao{4}
-		\begin{tabular}{rl} 
-			姓\qquad 名： & \l__xmu_author_tl        \\
-			学\qquad 号： & \l__xmu_studentnumber_tl \\
-			学\qquad 院： & \l__xmu_department_tl    \\
-			专\qquad 业： & \l__xmu_major_tl         \\
-			年\qquad 级： & \l__xmu_class_tl         \\
-			校内指导教师： & \l__xmu_advisor_tl        \\
-			校外指导教师： & \l__xmu_otheradvisor_tl   \\
-		\end{tabular}%
-	}
-	\vspace{2ex}
-	\rmfamily\zihao{4}%\mdseries
-	\par\vspace{7ex}
-	\l__xmu_date_tl
-	\vspace{2ex}
-\end{center}
-\chapter*{厦门大学本科学位论文诚信承诺书}
-\setcounter{page}{1}
-
-{\fontsize{14pt}{28pt}\selectfont
-	
-	本人呈交的学位论文是在导师指导下独立完成的研究成果。本人在论文写作中参考其他个人或集体已经发表的研究成果，均在文中以适当方式明确标明，并符合相关法律规范及《厦门大学本科毕业论文（设计）规范》。
-	\par
-	该学位论文为（\l__xmu_team_tl%
-	）课题（组）的研究成果，获得
-	（%
-	\l__xmu_fundteam_tl）课题（组）经费或实验室的资助，
-	在（%
-	\l__xmu_lab_tl）实验室完成。（请在以上括号内填写课题或课题组负责人或
-	实验室名称，未有此项声明内容的，可以不作特别声明。）
-	\par	
-	另外，本人承诺辅修专业毕业论文（设计）（如有）的内容与主修专业不存在相同与相近情况。
-	\par
-	\vspace{30pt}
-	
-	\hfill 学生声明（签名）：\hspace*{4cm}
-	\par\vspace{2ex}
-	\hfill 年\hspace{26pt}月\hspace{26pt}日\hspace*{2cm}
-}
-}
-
 \makeatother
 
-
-
-
+\DeclareDocumentCommand\maketitle{}{
+\frontmatter
+\pagestyle{empty}
+	\bool_if:NTF \l__xmu_undergraduate_bool{
+		\input{Settings/Contents/undergraduate-titlepage.tex}
+		\input{Settings/Contents/undergraduate-commitment.tex}
+	}{
+		\input{Settings/Contents/master-or-doctor-titlepage.tex}
+		\input{Settings/Contents/Certification-statement.tex}
+		\input{Settings/Contents/Copyright-declaration.tex}
+	}
+\cleardoublepage
+}
 
 % --------------------------- reference settings ------------------------
 % required packages:
@@ -486,6 +529,16 @@
 % equation, chapter, section, etc.
 % \creflabelformat{htypei}{hformati}
 
+\bool_if:NT \l__xmu_toc_ref_bool{
+	% \AfterEndEnvironment{thebibliography}{
+	\AtBeginEnvironment{thebibliography}{
+		\cleardoublepage % with \cleardoublepage will get the right page number
+		\addcontentsline{toc}{chapter}{\protect 参考文献}
+		% \captce{Reference}
+		\addcontentsline{tce}{chapter}{
+		\rmfamily\bfseries\protect\makebox[0em][l]{}Reference}
+	}
+}
 % --------------------------- equations&principles settings ------------------------
 % required packages:
 % - amsthm
@@ -494,12 +547,33 @@
 \theoremstyle{definition}
 
 
+\NewDocumentEnvironment {abstract} { s }{
+    \bool_if:NTF \l__xmu_toc_abs_bool{
+        \IfBooleanTF {#1}{
+			\chapter*{摘要}
+			\addcontentsline{toc}{chapter}{\protect 摘要}
+			\captce{\bfseries 摘要}
+			}{
+				\chapter*{\bfseries Abstract}
+				\addcontentsline{toc}{chapter}{\protect Abstract}
+				\captce{\bfseries Abstract}
+		}
+    }{
+        \IfBooleanTF {#1}{
+            \chapter*{摘要}
+            }{
+                \chapter*{\bfseries Abstract}
+        }
+    }
+}{
+}
+
 %%============================关键词===========================%%
 
 %%关键词。
 
 \NewDocumentCommand\keywords { s m } {
-	\vspace{2ex}\noindent{\sffamily \bfseries 
+	\par\vspace{2ex}\noindent{\sffamily \bfseries 
 	\IfBooleanTF {#1} {
 		关键词：
 	}{
@@ -524,23 +598,39 @@
 \tl_new:N \l__xmu_englishtitle_tl
 \tl_new:N \l__xmu_majorordouble_tl
 \tl_new:N \l__xmu_lab_tl
+\tl_new:N \l__xmu_classified_code_tl
+\tl_new:N \l__xmu_security_classification_tl
+\tl_new:N \l__xmu_UDC_tl
+\tl_new:N \l__xmu_submit_date_tl
+\tl_new:N \l__xmu_defense_date_tl
+\tl_new:N \l__xmu_conferred_date_tl
+\tl_new:N \l__xmu_chairman_tl
+\tl_new:N \l__xmu_referee_tl
 
 \keys_define:nn { xmu }{
-	author        .tl_set:N  = \l__xmu_author_tl        ,
-	title         .tl_set:N  = \l__xmu_title_tl         ,
-	date          .tl_set:N  = \l__xmu_date_tl          ,
-	class         .tl_set:N  = \l__xmu_class_tl         ,
-	studentnumber .tl_set:N  = \l__xmu_studentnumber_tl ,
-	department    .tl_set:N  = \l__xmu_department_tl    ,
-	major         .tl_set:N  = \l__xmu_major_tl         ,
-	advisor       .tl_set:N  = \l__xmu_advisor_tl       ,
-	otheradvisor  .tl_set:N  = \l__xmu_otheradvisor_tl  ,
-	team          .tl_set:N  = \l__xmu_team_tl          ,
-	fundteam      .tl_set:N  = \l__xmu_fundteam_tl      ,
-	degree        .tl_set:N  = \l__xmu_degree_tl        ,
-	englishtitle  .tl_set:N  = \l__xmu_englishtitle_tl  ,
-	majorordouble .tl_set:N  = \l__xmu_majorordouble_tl ,
-	lab           .tl_set:N  = \l__xmu_lab_tl           ,
+	author                  .tl_set:N  = \l__xmu_author_tl                  ,
+	title                   .tl_set:N  = \l__xmu_title_tl                   ,
+	date                    .tl_set:N  = \l__xmu_date_tl                    ,
+	class                   .tl_set:N  = \l__xmu_class_tl                   ,
+	studentnumber           .tl_set:N  = \l__xmu_studentnumber_tl           ,
+	department              .tl_set:N  = \l__xmu_department_tl              ,
+	major                   .tl_set:N  = \l__xmu_major_tl                   ,
+	advisor                 .tl_set:N  = \l__xmu_advisor_tl                 ,
+	otheradvisor            .tl_set:N  = \l__xmu_otheradvisor_tl            ,
+	team                    .tl_set:N  = \l__xmu_team_tl                    ,
+	fundteam                .tl_set:N  = \l__xmu_fundteam_tl                ,
+	degree                  .tl_set:N  = \l__xmu_degree_tl                  ,
+	englishtitle            .tl_set:N  = \l__xmu_englishtitle_tl            ,
+	majorordouble           .tl_set:N  = \l__xmu_majorordouble_tl           ,
+	lab                     .tl_set:N  = \l__xmu_lab_tl                     ,
+	classified_code         .tl_set:N  = \l__xmu_classified_code_tl         ,
+	security_classification .tl_set:N  = \l__xmu_security_classification_tl ,
+	UDC                     .tl_set:N  = \l__xmu_UDC_tl                     ,
+	submit_date             .tl_set:N  = \l__xmu_submit_date_tl             ,
+	defense_date            .tl_set:N  = \l__xmu_defense_date_tl            ,
+	conferred_date          .tl_set:N  = \l__xmu_conferred_date_tl          ,
+	chairman                .tl_set:N  = \l__xmu_chairman_tl                ,
+	referee                 .tl_set:N  = \l__xmu_referee_tl                 ,
 }
 
 \NewDocumentCommand \XMUsetup { m }{

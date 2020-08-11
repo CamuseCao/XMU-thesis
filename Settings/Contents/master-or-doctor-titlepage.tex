@@ -1,0 +1,50 @@
+%% !TEX root = ../mwe.tex
+% !TEX root = ../XMU.tex
+\ExplSyntaxOn
+\begin{center}
+	{
+		\vspace*{-5ex}
+		% \raggedright
+		\rmfamily\bfseries\zihao{-4}
+		学校编码：10384\hfill 分类号\CJKunderline{\l__xmu_classified_code_tl}\quad 密级 \CJKunderline{\l__xmu_security_classification_tl}\par 
+		学号：\l__xmu_studentnumber_tl\hfill UDC\;\CJKunderline{\l__xmu_UDC_tl}\par\vspace{6ex}
+		\centering\includegraphics[width=5cm]{xmu-flag}\par\vspace{4ex}
+	}
+	{
+		\rmfamily\bfseries\zihao{-2}
+		\bool_if:NTF \l__xmu_master_bool{
+			硕\quad 士\quad 学\quad 位\quad 论\quad 文
+			}{
+			博\quad 士\quad 学\quad 位\quad 论\quad 文
+		}
+		\par\vspace{3ex}
+	}
+	{
+		\sffamily\bfseries\zihao{2}\l__xmu_title_tl\par\vspace{2ex}
+	}
+	{
+		\rmfamily\bfseries\zihao{3}\l__xmu_englishtitle_tl\par\vspace{2ex}
+	}
+	{
+		\ttfamily\zihao{-2}\l__xmu_author_tl\par\vspace{2ex}
+	}
+	{
+		\ttfamily\zihao{4}
+		\begin{tabular}{rl} 
+			指导教师姓名：& \l__xmu_advisor_tl \\
+			专\hspace{0.66\ccwd} 业\hspace{0.66\ccwd} 名\hspace{0.66\ccwd} 称：& \l__xmu_major_tl \\
+			论文提交日期：& \l__xmu_submit_date_tl\\
+			论文答辩时间：& \l__xmu_defense_date_tl\\
+			学位授予日期：& \l__xmu_conferred_date_tl\\   
+		\end{tabular}%
+		\par\vspace{1cm}
+	}
+	{
+		\zihao{4}
+		答辩委员会主席：\l__xmu_chairman_tl\par
+		评阅人：\l__xmu_referee_tl\par 
+		\l__xmu_date_tl\par 
+	}
+\end{center}
+
+\ExplSyntaxOff

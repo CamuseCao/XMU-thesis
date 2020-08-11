@@ -5,9 +5,13 @@
 
 为了使用该模板，需要安装一个TeX的发行版本。可以选择 \TeX{live} 或者 Mik\TeX{} ,他们都是跨平台的。而 \TeX{live} 打包了比较多的宏包，较为庞大，Mik\TeX{} 则是临时下载没有的宏包。这里我推荐使用 Mik\TeX{} 。但是对于 Mac，推荐使用 Mac\TeX{} ，它是为 Mac 定制的发行版本，应该比较合适。特别提醒 CTeX 套装无法运行该模板。关于编译方式需选择 Xe\LaTeX{},否则无法正常编译该模板。
 
+目前模板已经支持本科生、硕士生和博士生。这里以博士生为例，在使用的时候加上全局选项申明，即 \verb|\documentclass[degree=doctor]{Settings/XMUthesis}| 。对于本科生和硕士生分别为 \verb|undergraduate| 和 \verb|master| 。模板会根据此选项自动调节。
+
+目录中选择自动加入目录、摘要、参看文献的部分。可以在全局选项上分别用 \verb|nottoc, notabs,| \verb|notbib| 来去除这三个部分，例如可以用 \verb|\documentclass[notabs]{Settings/XMUthesis}| 让摘要不出现在目录中。
+
 参考文献使用 bibtex 的方式实现，根据 gbt7714-2015 的要求，有三种格式可以选择，分别是 numerical, numbers, authoryear 。大家根据学院的要求选择，本模板默认采用 super 的格式。可以通过  \verb|\documentclass[bibstyle=numbers]{Settings/XMUthesis}| 来进行选择。
 
-字体的话考虑到不同系统的问题，不同系统采用了不同的自己配置，本模板基本采用 ctex 文档类提供的接口来配置字体。通过 \verb|\documentclass[font=empty]{Settings/XMUthesis}| 的方式调用。可以选择的包括 \verb|empty, adobe, fandol, founder, mac, macnew, macold, | \\ \verb|ubuntu,windows| 等。选择 \verb|adobe, fandol, founder| 的需要自行安装字体，不同选项所需的字体可以查看\verb|fonts/ReadMe.txt| 。 empty 选项可以自己根据系统判断自己的配置，该功能是 ctex 宏集实现的，本模板只是统一提供一个接口，其它几个可以根据自己的系统选择。详情可以通过 \verb|texdoc ctex| 第七页自行查看。如果对字体不满意的，可以选择 \verb|empty| 选项，然后自己配置字体。
+字体的话考虑到不同系统的问题，不同系统采用了不同的自己配置，本模板基本采用 ctex 文档类提供的接口来配置字体。通过 \verb|\documentclass[font=empty]{Settings/XMUthesis}| 的方式调用。可以选择的包括 \verb|empty, adobe, fandol, founder, mac, macnew, macold, | \\ \verb|ubuntu,windows| 等。选择 \verb|adobe, founder| 的需要自行安装字体，不同选项所需的字体可以查看 \verb|fonts/ReadMe.txt| 。 empty 选项可以自己根据系统判断自己的配置，该功能是 ctex 宏集实现的，本模板只是统一提供一个接口，其它几个可以根据自己的系统选择。详情可以通过 \verb|texdoc ctex| 第七页自行查看。如果对字体不满意的，可以选择 \verb|empty| 选项，然后自己配置字体。
 
 由于学校要求英文使用 Times New Roman 和 Arial 字体，对于 Linux 用户，它们常常不是默认安装在系统中的字体，因此需要用户自行安装这两个字体。
 
