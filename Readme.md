@@ -1,4 +1,4 @@
-![](https://img.shields.io/badge/Language-TeX-red.svg) ![](https://img.shields.io/github/stars/CamuseCao/XMU-Undergraduate-thesis-template.svg?style=social) ![](https://img.shields.io/github/release/CamuseCao/XMU-Undergraduate-thesis-template.svg?label=version)  ![](https://img.shields.io/github/last-commit/CamuseCao/XMU-Undergraduate-thesis-template.svg?style=social&logo=Tinder) ![](https://img.shields.io/github/repo-size/CamuseCao/XMU-Undergraduate-thesis-template.svg) ![](https://img.shields.io/github/languages/code-size/CamuseCao/XMU-Undergraduate-thesis-template.svg) ![](https://img.shields.io/github/followers/CamuseCao.svg?label=Followers) ![](https://img.shields.io/github/downloads/CamuseCao/XMU-Undergraduate-thesis-template/v0.11/total.svg?style=plastic) 
+![](https://img.shields.io/badge/Language-TeX-red.svg) ![](https://img.shields.io/github/stars/CamuseCao/XMU-thesis.svg?style=social) ![](https://img.shields.io/github/release/CamuseCao/XMU-thesis.svg?label=version)  ![](https://img.shields.io/github/last-commit/CamuseCao/XMU-thesis.svg?style=social&logo=Tinder) ![](https://img.shields.io/github/repo-size/CamuseCao/XMU-thesis.svg) ![](https://img.shields.io/github/languages/code-size/CamuseCao/XMU-thesis.svg) ![](https://img.shields.io/github/followers/CamuseCao.svg?label=Followers) ![](https://img.shields.io/github/downloads/CamuseCao/XMU-thesis/v0.11/total.svg?style=plastic)
 
 
 # 厦门大学模板使用说明
@@ -39,7 +39,7 @@
 
 邮箱： [camusecao@gmail.com](mailto:camusecao@gmail.com)
 
-该项目github项目的地址是 : [Link](https://github.com/CamuseCao/XMU-Undergraduate-thesis-template)
+该项目github项目的地址是 : [XMU-thesis](https://github.com/CamuseCao/XMU-thesis)
 
 <!-- `Overleaf` 项目由于使用者过少，并且国内访问难度过大，暂时停止更新。 -->
 
