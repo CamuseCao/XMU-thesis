@@ -30,9 +30,14 @@
 \PassOptionsToPackage{sort&compress}{natbib}
 
 \bool_set_false:N \l__xmu_advanced_font_bool
+\bool_set_false:N \l__xmu_overleaf_font_bool
 \bool_set_false:N \l__xmu_undergraduate_bool
 \bool_set_false:N \l__xmu_master_bool
 \bool_set_false:N \l__xmu_doctor_bool
+
+\bool_set_true:N \l__xmu_toc_toc_bool
+\bool_set_true:N \l__xmu_toc_abs_bool
+\bool_set_true:N \l__xmu_toc_ref_bool
 
 \keys_define:nn { XMUthesis }{
 	degree                 .choice:                   ,
@@ -40,6 +45,10 @@
 	degree / undergraduate .code:n = \bool_set_true:N \l__xmu_undergraduate_bool ,
     degree / master        .code:n = \bool_set_true:N \l__xmu_master_bool        ,
 	degree / doctor        .code:n = \bool_set_true:N \l__xmu_doctor_bool        ,
+
+	nottoc .code:n = \bool_set_false:N \l__xmu_toc_toc_bool ,
+	notabs .code:n = \bool_set_false:N \l__xmu_toc_abs_bool ,
+	notbib .code:n = \bool_set_false:N \l__xmu_toc_ref_bool ,
 
 	bibstyle                  .choice:               ,
 	bibstyle                  .default:n = numerical ,
@@ -64,9 +73,11 @@
 			~or~advance.~If~you~choose~them,
 			~you~should~download~the~necessary~font~and~put~them~in~the~right~place.
 			}
-			\msg_warning:nn { ubuntu font } { msg },
+			\msg_warning:nn { ubuntu font } { msg } ,
+	font / overleaf .code:n    = \PassOptionsToClass{fontset =none}{ctexbook}
+		\bool_set_true:N \l__xmu_overleaf_font_bool ,
 	font / advance  .code:n    = \PassOptionsToClass{fontset =none}{ctexbook}
-	\bool_set_true:N \l__xmu_advanced_font_bool,
+		\bool_set_true:N \l__xmu_advanced_font_bool ,
 	font / empty    .code:n    = \msg_new:nnn { font } { msg } {
 		You~are~using~the~default~fonts,~you~can~change~it~by~font=adobe,
 		~windows,~mac,~advance~and~so~on.
@@ -131,11 +142,12 @@
     threeparttable ,
     subfig         ,
 	tocloft        ,
+	etoolbox       ,
 	% tocbibind      ,
     xcolor         ,
     listings       ,
 	gbt7714		   ,
-    float          ,
+    % float          ,
     hyperref       ,
     algorithm      ,
     algpseudocode  ,
@@ -219,8 +231,15 @@
 		StylisticSet       = 8] {XITSMath-Regular}
 }
 
-
-
+\bool_if:NT \l__xmu_overleaf_font_bool{
+	% \setmainfont{Noto~Serif}
+	% \setsansfont{Noto~Sans}
+	% \setmonofont{Noto~Mono}
+	\setCJKmainfont{Noto~Serif~CJK~SC}
+	\setCJKsansfont{Noto~Sans~CJK~SC}
+	\setCJKmonofont{Noto~Sans~Mono~CJK~SC}
+	% \setmathfont{XITSMath}
+}
 
 
 \RenewDocumentCommand\chaptermark{m}{\markboth{#1}{#1}}
@@ -252,9 +271,6 @@
 
 
 \newlistof{indice}{tce}{Table~of~Contents}
-% \renewcommand{\listofindice}{\begingroup
-% \tocfile{Table~of~Contents}{tce}
-% \endgroup}
 
 \setlength{\cftbeforetcetitleskip}{-30pt}
 \setlength{\cftbeforechapskip}{8pt}
@@ -264,14 +280,15 @@
 \setlength{\cftsecnumwidth}{3.2em}
 \setlength{\cftsubsecindent}{4.5em}
 \RenewDocumentCommand\cftchapleader{}{\cftdotfill{\cftdotsep}} % for chapters
+% Add \thispagestyle{plain} to the font setting to force the pagestyle in toc always be plain, or it maybe influence by my slfe-define \cleanrdoublepage 
 \bool_if:NTF \l__xmu_undergraduate_bool{
-	\RenewDocumentCommand\cftchapfont{}{\zihao{4}\sffamily}% Chapter font
-	\RenewDocumentCommand\cftsecfont{}{\zihao{-3}\sffamily}% Section font 
-	\RenewDocumentCommand\cftsubsecfont{}{\zihao{-3}\rmfamily}%subsection font
+	\RenewDocumentCommand\cftchapfont{}{\thispagestyle{plain}\zihao{4}\sffamily}% Chapter font
+	\RenewDocumentCommand\cftsecfont{}{\thispagestyle{plain}\zihao{-3}\sffamily}% Section font 
+	\RenewDocumentCommand\cftsubsecfont{}{\thispagestyle{plain}\zihao{-3}\rmfamily}%subsection font
 }{
-	\RenewDocumentCommand\cftchapfont{}{\zihao{4}\sffamily\bfseries}% Chapter font
-	\RenewDocumentCommand\cftsecfont{}{\zihao{-4}\sffamily\bfseries}% Section font 
-	\RenewDocumentCommand\cftsubsecfont{}{\zihao{-4}\rmfamily}%subsection font
+	\RenewDocumentCommand\cftchapfont{}{\thispagestyle{plain}\zihao{4}\sffamily\bfseries}% Chapter font
+	\RenewDocumentCommand\cftsecfont{}{\thispagestyle{plain}\zihao{-4}\sffamily\bfseries}% Section font 
+	\RenewDocumentCommand\cftsubsecfont{}{\thispagestyle{plain}\zihao{-4}\rmfamily}%subsection font
 }
 
 % \RenewDocumentCommand\cfttoctitlefont{}{\hfill\zihao{-3}\sffamily  目\quad 录\hfill}%\phantom{mmmmmmmmm}
@@ -359,10 +376,11 @@
 	}
 }
 
-\let\origdoublepage\cleardoublepage
+\let\oldcleardoublepage\cleardoublepage
 \NewDocumentCommand\clearemptydoublepage{}{
-	\clearpage
-	{\pagestyle{empty}\origdoublepage}
+	\clearpage % don't delete it, even it's follewed by \cleardoublepage
+	% {\pagestyle{empty}\origdoublepage}
+	\thispagestyle{empty}\oldcleardoublepage
 }
 
 \let\cleardoublepage\clearemptydoublepage
@@ -370,9 +388,22 @@
 
 \NewDocumentCommand\xmutableofcontents{}{
 	\cleardoublepage
-	\tableofcontents
+	\bool_if:NTF \l__xmu_toc_toc_bool{
+		\addcontentsline{toc}{chapter}{\protect 目录}\captce{目录}
+		\tableofcontents
+		% \pagestyle{plain}
+		\cleardoublepage
+		\addcontentsline{toc}{chapter}{\protect Table~of~Contents}\captce{Table~of~Contents}
+		\listofindice
+		% \pagestyle{plain}
+	}{
+		\tableofcontents
+		% \pagestyle{plain}
+		\cleardoublepage
+		\listofindice
+		% \pagestyle{plain}
+	}
 	\cleardoublepage
-	\listofindice
 	\mainmatter
 	\RenewDocumentCommand\headrulewidth{}{1pt}
 }
@@ -466,12 +497,12 @@
 \frontmatter
 \pagestyle{empty}
 	\bool_if:NTF \l__xmu_undergraduate_bool{
-		\input{Settings/undergraduate-titlepage.tex}
-		\input{Settings/undergraduate-commitment.tex}
+		\input{Settings/Contents/undergraduate-titlepage.tex}
+		\input{Settings/Contents/undergraduate-commitment.tex}
 	}{
-		\input{Settings/master-or-doctor-titlepage.tex}
-		\input{Settings/Certification-statement.tex}
-		\input{Settings/Copyright-declaration.tex}
+		\input{Settings/Contents/master-or-doctor-titlepage.tex}
+		\input{Settings/Contents/Certification-statement.tex}
+		\input{Settings/Contents/Copyright-declaration.tex}
 	}
 \cleardoublepage
 }
@@ -498,6 +529,16 @@
 % equation, chapter, section, etc.
 % \creflabelformat{htypei}{hformati}
 
+\bool_if:NT \l__xmu_toc_ref_bool{
+	% \AfterEndEnvironment{thebibliography}{
+	\AtBeginEnvironment{thebibliography}{
+		\cleardoublepage % with \cleardoublepage will get the right page number
+		\addcontentsline{toc}{chapter}{\protect 参考文献}
+		% \captce{Reference}
+		\addcontentsline{tce}{chapter}{
+		\rmfamily\bfseries\protect\makebox[0em][l]{}Reference}
+	}
+}
 % --------------------------- equations&principles settings ------------------------
 % required packages:
 % - amsthm
@@ -505,6 +546,27 @@
 \newtheorem{law}{定律}[section]
 \theoremstyle{definition}
 
+
+\NewDocumentEnvironment {abstract} { s }{
+    \bool_if:NTF \l__xmu_toc_abs_bool{
+        \IfBooleanTF {#1}{
+			\chapter*{摘要}
+			\addcontentsline{toc}{chapter}{\protect 摘要}
+			\captce{\bfseries 摘要}
+			}{
+				\chapter*{\bfseries Abstract}
+				\addcontentsline{toc}{chapter}{\protect Abstract}
+				\captce{\bfseries Abstract}
+		}
+    }{
+        \IfBooleanTF {#1}{
+            \chapter*{摘要}
+            }{
+                \chapter*{\bfseries Abstract}
+        }
+    }
+}{
+}
 
 %%============================关键词===========================%%
 
