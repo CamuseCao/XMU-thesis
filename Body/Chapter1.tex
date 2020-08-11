@@ -5,7 +5,9 @@
 
 为了使用该模板，需要安装一个TeX的发行版本。可以选择 \TeX{live} 或者 Mik\TeX{} ,他们都是跨平台的。而 \TeX{live} 打包了比较多的宏包，较为庞大，Mik\TeX{} 则是临时下载没有的宏包。这里我推荐使用 Mik\TeX{} 。但是对于 Mac，推荐使用 Mac\TeX{} ，它是为 Mac 定制的发行版本，应该比较合适。特别提醒 CTeX 套装无法运行该模板。关于编译方式需选择 Xe\LaTeX{},否则无法正常编译该模板。
 
-目前模板已经支持本科生、硕士生和博士生。以博士生为例，在使用的时候用 \verb|\documentclass[degree=doctor]{Settings/XMUthesis}| 申明。对于本科生和硕士生分别为 \verb|undergraduate| 和 \verb|master| 。模板会根据此选项自动调节。
+目前模板已经支持本科生、硕士生和博士生。这里以博士生为例，在使用的时候加上全局选项申明，即 \verb|\documentclass[degree=doctor]{Settings/XMUthesis}| 。对于本科生和硕士生分别为 \verb|undergraduate| 和 \verb|master| 。模板会根据此选项自动调节。
+
+目录中选择自动加入目录、摘要、参看文献的部分。可以在全局选项上分别用 \verb|nottoc, notabs,| \verb|notbib| 来去除这三个部分，例如可以用 \verb|\documentclass[notabs]{Settings/XMUthesis}| 让摘要不出现在目录中。
 
 参考文献使用 bibtex 的方式实现，根据 gbt7714-2015 的要求，有三种格式可以选择，分别是 numerical, numbers, authoryear 。大家根据学院的要求选择，本模板默认采用 super 的格式。可以通过  \verb|\documentclass[bibstyle=numbers]{Settings/XMUthesis}| 来进行选择。
 
