@@ -13,7 +13,7 @@
 
 为了使用该模板，需要安装一个 `TeX` 的发行版本。可以选择 `Texlive` 或者 `Miktex` ,他们都是跨平台的。而 `Texlive` 打包了比较多的宏包，较为庞大， `Miktex` 则是临时下载没有的宏包。这里我推荐使用 `Miktex` 。但是对于 Mac ，推荐使用 `MacTeX` ，它是为 Mac 定制的发行版本，应该比较合适。特别提醒 `CTeX` 套装无法运行该模板。你可以选择卸载 `CTeX` 套装，安装我推荐的发行版本，或者不使用该模板。关于编译方式需选择 `XeLaTeX` ,否则无法正常编译该模板,如果熟悉 `latexmk` 的可以用它来编译，这更好。
 
-如果你不想在本地安装 `TeX` 的发行版本，其实可以使用 [Overleaf](https://www.overleaf.com) 在线编译平台，同样请使用 `XeLaTeX` 编译。如果想在线编译请选择我的另外一个项目去编译。我会在最后附上地址。能在 Overleaf 编译多亏了他们支持人员 LianTze Lim 的帮助，在此表示感谢。 大家如果在这个平台上使用遇到什么技术问题可以发邮件向[支持人员](mailto:support@overleaf.com)请教，很可能回复的是林前辈哦，请大家不要发邮件问怎么样才能访问该网站。~~关于打开该网址的正确姿势是找到一个靠谱的梯子，然后爬上去。~~
+如果你不想在本地安装 `TeX` 的发行版本，其实可以使用 [Overleaf](https://www.overleaf.com) 在线编译平台，同样请使用 `XeLaTeX` 编译。如果想在线编译请查看 [XMU-thesis](https://www.overleaf.com/read/ptthxfctspxh)。虽然现在默认的选项能编译，但是使用的是 fandol 字体，严重缺字，请保证开启 `font=overleaf` 选项让大多数简体字都能显示正常。能在 Overleaf 编译多亏了他们支持人员 LianTze Lim 的帮助，在此表示感谢。 大家如果在这个平台上使用遇到什么技术问题可以发邮件向[支持人员](mailto:support@overleaf.com)请教，很可能回复的是林前辈哦，请大家不要发邮件问怎么样才能访问该网站。~~关于打开该网址的正确姿势是找到一个靠谱的梯子，然后爬上去。~~
 
 ## 模板使用说明
 
@@ -31,7 +31,7 @@
 
 -  在使用该模板之前，请把原始编译出来的文档读一下，对于你的使用是很有帮助的。
 
-- 由于本人水平有限，因此该模板写的并不好，但是应该勉强能够满足毕业论文的要求。需注意仍然可能有许多错误的地方，希望各位使用者如果能发现错误之处能够提出。可以给我法邮件或者直接在 `github`上面提 `issue` 。欢迎大家的参与，共同完善母校的模板。
+- 由于本人水平有限，因此该模板写的并不好，但是应该勉强能够满足毕业论文的要求。需注意仍然可能有许多错误的地方，希望各位使用者如果能发现错误之处能够提出。可以给我法邮件或者直接在 `github`上面提 [issue](https://github.com/CamuseCao/XMU-thesis/issues/new) 。欢迎大家的参与，共同完善母校的模板。
 
 - 由于本人是一名理科生，对文科的同学毕业论文的额外需求可能了解不多。虽说文科生用这个模板的可能性比较小，如果有人用，有额外的需求也可以提出。
 
@@ -39,10 +39,6 @@
 
 邮箱： [camusecao@gmail.com](mailto:camusecao@gmail.com)
 
-该项目github项目的地址是 : [XMU-thesis](https://github.com/CamuseCao/XMU-thesis)
+该项目 github 项目的地址是 : [XMU-thesis](https://github.com/CamuseCao/XMU-thesis)
 
-<!-- `Overleaf` 项目由于使用者过少，并且国内访问难度过大，暂时停止更新。 -->
-
-<!-- [^_^]:  `Overleaf`在线编译的项目的地址 ：[Github下载](https://github.com/CamuseCao/XMU-Thesis-Overleaf)    [Overleaf查看与下载](https://www.overleaf.com/2128697983jhmpkzxdzmry)  -->
-
-<!-- [^_^]:  (`Overleaf`项目的地址请勿随意编辑，方便大家的观看。你可以把它拷到你自己的项目下尽情玩耍。 ) -->
+该项目的 Overleaf 项目地址是： [XMU-thesis](https://www.overleaf.com/read/ptthxfctspxh)
