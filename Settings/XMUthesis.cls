@@ -406,6 +406,7 @@
 	\cleardoublepage
 	\mainmatter
 	\RenewDocumentCommand\headrulewidth{}{1pt}
+	\pagestyle{fancy}
 }
 
 \makeatother
