@@ -20,6 +20,14 @@
     \xmuspace
 \end{minipage}
 \begin{minipage}{0.5\textwidth}
-    \includegraphics[width=\textwidth]{../XMU.pdf}
+    \IfFileExists{../example/demo.pdf}{
+        \includegraphics[width=\textwidth]{../example/demo.pdf}
+        }{
+            \IfFileExists{../example/temp/demo.pdf}{
+                \includegraphics[width=\textwidth]{../example/temp/demo.pdf}
+            }{
+                Plese choose the right picture place!!!
+            }
+        }
 \end{minipage}%
 \end{document}
