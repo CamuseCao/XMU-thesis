@@ -88,8 +88,9 @@ and the derived files           xmuthesis.cls,
 %</driver|class>
 %
 %<*driver>
-\ProvidesFile{\jobname.dtx}[2020/10/6 v0.41 XMU thesis]
+\ProvidesFile{\jobname.dtx}[2020/10/09 v0.4.1 XMU thesis]
 \documentclass{ctxdoc}% l3doc ctxdoc
+\OnlyDescription
 \begin{document}
     \DocInput{\jobname.dtx}
     \IndexLayout
@@ -335,7 +336,7 @@ and the derived files           xmuthesis.cls,
 % \midrule
 % author                       & 作者           & 酸奶                                    \\
 % title                        & 题目           & 你的论文题目                            \\
-% date                         & 日期           & \verb|\today| 或 二〇一九年二月二十八日 \\
+% date                         & 日期           & \verb|\today| 或~二〇一九年二月二十八日 \\
 % class                        & 年级           & 2015级                                  \\
 % studentnumber                & 学号           & 1972015xxxxxx                           \\
 % department                   & 学院           & 物理科学与技术学院                      \\
@@ -471,6 +472,7 @@ and the derived files           xmuthesis.cls,
 % \end{ctexexam}
 % \end{function}
 %
+% 模板封面页在 \verb|figs/xmu-flag.pdf| 不存在是会调用 \verb|xmulogo| 宏包生成相应的图片。建议像 Github 项目地址一样创建 \verb|figs| 文件，并且放入 \verb|xmu-flag.pdf| 。这样可以节约编译的时间。
 % \section{一些建议}
 %
 %\subsection{致谢} 
@@ -523,7 +525,7 @@ and the derived files           xmuthesis.cls,
 %
 % 单位书写推荐用 \verb|siunitx| 宏包。
 %
-% 数学和物理的学生强烈推荐学习使用 \verb|physical| 宏包。
+% 数学和物理的学生强烈推荐学习使用 \verb|physics| 宏包。
 %
 % \subsection{数字}
 %
@@ -668,7 +670,7 @@ and the derived files           xmuthesis.cls,
 
 
 
-\ProvidesClass{ xmuthesis }
+\ProvidesClass{ xmuthesis }[2020/10/04 v0.4.1 XMU thesis]
 
 \PassOptionsToPackage{subfigure}{tocloft}
 \PassOptionsToPackage{noend}{algpseudocode}
@@ -1495,7 +1497,7 @@ and the derived files           xmuthesis.cls,
 %<*logo>
 %    \begin{macrocode}
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{XMU-logo}%[2019/6/7]
+\ProvidesPackage{xmulogo}[2019/06/07 v0.4.1 xmulogo]
 
 \RequirePackage{xparse,tikz,xcolor}
 \usetikzlibrary{shapes,decorations.pathmorphing}%snakes

@@ -37,7 +37,7 @@
         \msg_warning:nn { engine } { msg }
 }
 
-\ProvidesClass{ xmuthesis }
+\ProvidesClass{ xmuthesis }[2020/10/04 v0.4.1 XMU thesis]
 
 \PassOptionsToPackage{subfigure}{tocloft}
 \PassOptionsToPackage{noend}{algpseudocode}
