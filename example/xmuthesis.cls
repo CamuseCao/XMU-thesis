@@ -295,13 +295,16 @@
 \RenewDocumentCommand\cftchapleader{}{\cftdotfill{\cftdotsep}} % for chapters
 \bool_if:NTF \l__xmu_undergraduate_bool{
     \RenewDocumentCommand\cftchapfont{}{
-        \thispagestyle{plain}\zihao{4}\sffamily
+        %\thispagestyle{plain}
+        \zihao{4}\sffamily
     }% Chapter font
     \RenewDocumentCommand\cftsecfont{}{
-        \thispagestyle{plain}\zihao{-3}\sffamily
+        %\thispagestyle{plain}
+        \zihao{-3}\sffamily
     }% Section font
     \RenewDocumentCommand\cftsubsecfont{}{
-        \thispagestyle{plain}\zihao{-3}\rmfamily
+        %\thispagestyle{plain}
+        \zihao{-3}\rmfamily
     }%subsection font
 }{
     \RenewDocumentCommand\cftchapfont{}{
@@ -425,6 +428,7 @@
     \cleardoublepage
     \mainmatter
     \RenewDocumentCommand\headrulewidth{}{1pt}
+    \pagestyle{fancy}
 }
 
 \makeatother
@@ -701,18 +705,30 @@
 \crefrangeformat{equation}{~(#3#1#4)\;$\sim$\;(#5#2#6)}
 \crefmultiformat{equation}{~(#2#1#3)}{ 和~(#2#1#3)}{，(#2#1#3)}{ 和~(#2#1#3)}
 
-\bool_if:NT \l__xmu_toc_ref_bool{
+\fancypagestyle{reference}{
+    \fancyhf{}
+    \fancyhead[C]{参考文献}%
+    \fancyfoot[C]{\thepage}
+}
+
+\bool_if:NTF \l__xmu_toc_ref_bool{
     \AddToHook{env/thebibliography/begin}{
         \cleardoublepage % with \cleardoublepage will get the right page number
+        \pagestyle{reference}
         \addcontentsline{toc}{chapter}{\protect 参考文献}
         % \captce{Reference}
         \addcontentsline{tce}{chapter}{
         \rmfamily\bfseries\protect\makebox[0em][l]{}Reference}
     }
+}{
+    \AddToHook{env/thebibliography/begin}{
+        \pagestyle{reference}
+    }
 }
 
 \AddToHook{env/thebibliography/end}{
     \cleardoublepage
+    \pagestyle{fancy}
 }
 \newtheorem{theory}{定理}[section]
 \newtheorem{law}{定律}[section]

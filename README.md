@@ -1,4 +1,4 @@
-![](https://img.shields.io/badge/Language-TeX-red.svg) ![](https://img.shields.io/github/stars/CamuseCao/XMU-thesis.svg?style=social) ![](https://img.shields.io/github/release/CamuseCao/XMU-thesis.svg?label=version)  ![](https://img.shields.io/github/last-commit/CamuseCao/XMU-thesis.svg?style=social&logo=Tinder) ![](https://img.shields.io/github/repo-size/CamuseCao/XMU-thesis.svg) ![](https://img.shields.io/github/languages/code-size/CamuseCao/XMU-thesis.svg) ![](https://img.shields.io/github/followers/CamuseCao.svg?label=Followers) ![](https://img.shields.io/github/downloads/CamuseCao/XMU-thesis/v0.4/total.svg?style=plastic)
+![](https://img.shields.io/badge/Language-TeX-red.svg) ![](https://img.shields.io/github/stars/CamuseCao/XMU-thesis.svg?style=social) ![](https://img.shields.io/github/release/CamuseCao/XMU-thesis.svg?label=version) ![CTAN Version](https://img.shields.io/ctan/v/xmuthesis.svg)  ![](https://img.shields.io/github/last-commit/CamuseCao/XMU-thesis.svg?style=social&logo=Tinder) ![](https://img.shields.io/github/repo-size/CamuseCao/XMU-thesis.svg) ![](https://img.shields.io/github/languages/code-size/CamuseCao/XMU-thesis.svg) ![](https://img.shields.io/github/followers/CamuseCao.svg?label=Followers) ![](https://img.shields.io/github/downloads/CamuseCao/XMU-thesis/v0.4/total.svg?style=plastic) ![License](https://img.shields.io/ctan/l/xmuthesis.svg)
 
 ---
 
@@ -30,7 +30,7 @@ Overleaf 项目地址是： [XMU-thesis](https://www.overleaf.com/read/ptthxfcts
 
 ---
 
-# xmuthesis A LaTeX template for XMU
+# xmuthesis  A LaTeX template for XiaMen university thesis's writing
 
 xmuthesis is designed for XMU thesis's writing, created and maintained by CamuseCao.
 
