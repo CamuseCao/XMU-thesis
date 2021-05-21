@@ -185,11 +185,11 @@
     }
 }{}
 
-\geometry{
-    left   = 2cm ,
+\geometry{ % 页边距设置，左边距和上边距不小于25mm，下边距和右边距不小于20mm
+    left   = 2.5cm ,
     right  = 2cm ,
-    top    = 4cm ,
-    bottom = 3cm ,
+    top    = 2.5cm ,
+    bottom = 2cm ,
 }
 \bool_if:NTF \l__xmu_undergraduate_bool{
     \captionsetup{font={small,bf}}
@@ -197,11 +197,11 @@
     \captionsetup{font={normalsize,bf}}
 }
 
-\hypersetup{
+\hypersetup{ % 超链接的格式的颜色
     bookmarksnumbered = false ,
     linkcolor         = black ,
     citecolor         = blue  ,
-    urlcolor          = green ,
+    urlcolor          = blue ,
     colorlinks                ,
 }
 
@@ -257,34 +257,38 @@
     % \setmathfont{XITSMath}
 }
 
-\RenewDocumentCommand\chaptermark{m}{\markboth{#1}{#1}}
+\setCJKfamilyfont{zhsong}[AutoFakeBold = {2.17}]{SimSun}
+\renewcommand*{\songti}{\CJKfamily{zhsong}}
 
+% 设置页眉页脚格式
+\RenewDocumentCommand\chaptermark{m}{\markboth{第 \chinese{chapter} 章\quad #1}{#1}} % 页眉使用第一章+标题的形式，和下面那行二选一注释掉
+%\RenewDocumentCommand\chaptermark{m}{\markboth{\arabic{chapter}\quad #1}{#1}} % 页眉使用阿拉伯字母 +标题的形式
 \fancyhf{}  % cleans original header&footer
-\fancyhead[CE]{\zihao{-5} \l__xmu_title_tl}
-\fancyhead[CO]{\zihao{-5} \leftmark}  %\leftmark \chaptermark
-\fancyfoot[C]{\thepage}
+\fancyhead[CE]{\zihao{-5} \l__xmu_title_tl} % 偶数页论文题目
+\fancyhead[CO]{\zihao{-5} \leftmark}  %\leftmark \chaptermark % 奇数页章节题目
+\fancyfoot[C]{\thepage} %页码
+\RenewDocumentCommand\headrulewidth{}{0pt} % 页眉横线的宽度设置
 
-\RenewDocumentCommand\headrulewidth{}{0pt}
-
+% 修改章节标题格式的地方
 \ctexset{
     today          =    big,  % format date
-    chapter        =     {
-    format         =     \centering\zihao{-3}\sffamily,
-    beforeskip     =     -15pt,
-    afterskip      =     30pt,
-    pagestyle      =      fancy,},%
-    section        =     {
-        format     =     \zihao{4}\sffamily,
+	%chapter/number = \arabic{chapter}, % 将章节编号使用阿拉伯数字，如果希望使用中文一二三则注释掉
+    chapter        =     { % 章的格式设置
+    format         =     \centering\zihao{-3}\heiti, % 章节编号使用第一、二、三章，并且居中（非学校格式要求，但更优雅），如果修改请同样修改上面页眉的格式，和下面那行二选一注释掉
+    %format         =     \zihao{-3}\heiti,name           =    {,}, % 将章节编号顶格，并且编号使用1，2，3（学校格式要求），如果修改请同样修改上面页眉的格式
+    beforeskip     =     -20pt, % 章前间距
+    afterskip      =     20pt, % 章后间距
+    pagestyle      =      fancy,},
+    section        =     { % 节的格式设置
+        format     =     \zihao{4}\heiti,
         beforeskip =     10pt,
         afterskip  =     10pt,
                         },
-    subsection        =     {
-        format     =     \zihao{4}\sffamily,
+    subsection        =     { % 三级标题的格式设置
+        format     =     \zihao{4}\heiti,
                         },
 }
-
 \newlistof{indice}{tce}{Table~of~Contents}
-
 \setlength{\cftbeforetcetitleskip}{-30pt}
 \setlength{\cftbeforechapskip}{8pt}
 \setlength{\cftbeforesecskip}{6pt}
@@ -293,21 +297,23 @@
 \setlength{\cftsecnumwidth}{3.2em}
 \setlength{\cftsubsecindent}{4.5em}
 \RenewDocumentCommand\cftchapleader{}{\cftdotfill{\cftdotsep}} % for chapters
+
+% 目录相关设置
 \bool_if:NTF \l__xmu_undergraduate_bool{
-    \RenewDocumentCommand\cftchapfont{}{
+    \RenewDocumentCommand\cftchapfont{}{ % 中文目录
         %\thispagestyle{plain}
-        \zihao{4}\sffamily
+        \zihao{4}\heiti
     }% Chapter font
     \RenewDocumentCommand\cftsecfont{}{
         %\thispagestyle{plain}
-        \zihao{-3}\sffamily
+        \zihao{-4}\heiti
     }% Section font
     \RenewDocumentCommand\cftsubsecfont{}{
         %\thispagestyle{plain}
-        \zihao{-3}\rmfamily
+        \zihao{-4}\rmfamily
     }%subsection font
 }{
-    \RenewDocumentCommand\cftchapfont{}{
+    \RenewDocumentCommand\cftchapfont{}{ % 英文目录
         \thispagestyle{plain}\zihao{4}\sffamily\bfseries
     }% Chapter font
     \RenewDocumentCommand\cftsecfont{}{
@@ -318,7 +324,7 @@
     }%subsection font
 }
 
-\RenewDocumentCommand\cfttoctitlefont{}{\hspace*{\fill}\zihao{-3}\sffamily}
+\RenewDocumentCommand\cfttoctitlefont{}{\hspace*{\fill}\zihao{-3}\heiti}
 \RenewDocumentCommand\cftaftertoctitle{}{\hspace*{\fill}}
 \RenewDocumentCommand\cfttcetitlefont{}{\hspace*{\fill}\zihao{-3}\rmfamily\bfseries}
 \RenewDocumentCommand\cftaftertcetitle{}{\hspace*{\fill}}
@@ -328,6 +334,10 @@
 \RenewDocumentCommand\appendix{}{
     \oldappendix
     \bool_set_true:N \l__xmu_appendix_bool
+	\fancyhf{} % 附录页眉的设置
+	\fancyhead[CE]{\zihao{-5} \l__xmu_title_tl}
+    \fancyhead[CO]{\zihao{-5}附录 \thechapter \quad \rightmark}%
+    \fancyfoot[C]{\thepage}
 }
 
 \makeatletter
@@ -402,7 +412,8 @@
 \NewDocumentCommand\clearemptydoublepage{}{
     \clearpage % don't delete it, even it's follewed by \cleardoublepage
     % {\pagestyle{empty}\origdoublepage}
-    \thispagestyle{empty}\oldcleardoublepage
+    %\thispagestyle{empty}
+	\oldcleardoublepage
 }
 
 \let\cleardoublepage\clearemptydoublepage
@@ -427,7 +438,7 @@
     }
     \cleardoublepage
     \mainmatter
-    \RenewDocumentCommand\headrulewidth{}{1pt}
+    \RenewDocumentCommand\headrulewidth{}{0.5pt}
     \pagestyle{fancy}
 }
 
@@ -511,31 +522,33 @@
     \bool_if:NTF \l__xmu_undergraduate_bool{
 \begin{center}
     \IfFileExists{figs/xmu-flag.pdf}{
-        \includegraphics[width=8cm]{xmu-flag}
+        \includegraphics[width=6cm]{xmu-flag}
         }{\xmulogo[0.32]}
     \par
-    \vspace{1ex}
+    \vspace{10ex}
 
     {
-    \rmfamily\zihao{-2}\l__xmu_degree_tl
+    \textbf{\songti\zihao{-2} \l__xmu_degree_tl
     \quad 毕\quad 业\quad 论\quad 文\quad
-    （~设\quad 计~）\par\vspace{1ex}
+    （~设\quad 计~）}\par\vspace{1.5ex}
     }
 
     {
-    \rmfamily\zihao{3}（\l__xmu_majorordouble_tl）\par
+    \textbf{\songti\zihao{3}（\l__xmu_majorordouble_tl）}\par\vspace{2ex}
     }
 
     {
-    \sffamily\zihao{2}\l__xmu_title_tl \par\vspace{1ex}
+    \heiti\zihao{2}\l__xmu_title_tl \par\vspace{1ex}
     }
 
     {
-    \rmfamily\bfseries\zihao{3} \l__xmu_englishtitle_tl\par\vspace{3ex}
+    \bfseries\rmfamily\zihao{3} \l__xmu_englishtitle_tl\par\vspace{5ex}
     }
 
     { \rmfamily \zihao{4}
+		\renewcommand\arraystretch{1.2}
         \begin{tabular}{rl}
+
                 姓 \qquad 名：& \l__xmu_author_tl        \\
                 学 \qquad 号：& \l__xmu_studentnumber_tl \\
                 学 \qquad 院：& \l__xmu_department_tl    \\
@@ -545,14 +558,16 @@
                 校外指导教师：& \l__xmu_otheradvisor_tl  \\
         \end{tabular}%
     }
-    \vspace{2ex}
+    \vspace{1ex}
     \rmfamily\zihao{4}
-    \par\vspace{4ex}
+    \par\vspace{8ex}
     \l__xmu_date_tl
     \vspace{2ex}
 \end{center}
 
-\chapter*{厦门大学本科学位论文诚信承诺书}
+\chapter*{\centerline{厦门大学本科学位论文诚信承诺书}}
+\pagestyle{plain}
+\pagenumbering{Roman}
 \setcounter{page}{1}
 
 {\fontsize{14pt}{21pt}\selectfont
@@ -567,7 +582,7 @@
     （请在以上括号内填写课题或课题组负责人或
     实验室名称，未有此项声明内容的，可以不作特别声明。）
     \par
-    另外，本人承诺辅修专业毕业论文（设计）
+    本人承诺辅修专业毕业论文（设计）
     （如有）的内容与主修专业不存在相同与相近情况。
     \par
     \vspace{30pt}
@@ -705,11 +720,26 @@
 \crefrangeformat{equation}{~(#3#1#4)\;$\sim$\;(#5#2#6)}
 \crefmultiformat{equation}{~(#2#1#3)}{ 和~(#2#1#3)}{，(#2#1#3)}{ 和~(#2#1#3)}
 
+% 参考文献的页眉设置
 \fancypagestyle{reference}{
     \fancyhf{}
-    \fancyhead[C]{参考文献}%
+	\fancyhead[CE]{\zihao{-5} \l__xmu_title_tl}
+    \fancyhead[CO]{\zihao{-5} 参考文献}%
     \fancyfoot[C]{\thepage}
 }
+
+% 这边这部分代码，用来调参考文献的间距
+\let\oldthebibliography\thebibliography
+\let\endoldthebibliography\endthebibliography
+\renewenvironment{thebibliography}[1]{
+  \begin{oldthebibliography}{#1}
+    \setlength{\itemsep}{0em}
+    \setlength{\parskip}{0em}
+}
+{
+  \end{oldthebibliography}
+}
+
 
 \bool_if:NTF \l__xmu_toc_ref_bool{
     \AddToHook{env/thebibliography/begin}{
@@ -737,19 +767,19 @@
 \NewDocumentEnvironment {abstract} { s }{
     \bool_if:NTF \l__xmu_toc_abs_bool{
         \IfBooleanTF {#1}{
-            \chapter*{摘要}
+            \chapter*{\centerline{摘要}}
             \addcontentsline{toc}{chapter}{\protect 摘要}
             \captce{\bfseries 摘要}
             }{
-                \chapter*{\bfseries Abstract}
+                \chapter*{\centerline{\bfseries Abstract}}
                 \addcontentsline{toc}{chapter}{\protect Abstract}
                 \captce{\bfseries Abstract}
         }
     }{
         \IfBooleanTF {#1}{
-            \chapter*{摘要}
+            \chapter*{\centerline{摘要}}
             }{
-                \chapter*{\bfseries Abstract}
+                \chapter*{\centerline{\bfseries Abstract}}
         }
     }
 }{
@@ -824,22 +854,22 @@
 
 %% <!--
 %% Copyright (C) 2019 by CamuseCao <https://camusecao.top>
-%% 
+%%
 %% This work may be distributed and/or modified under the
 %% conditions of the LaTeX Project Public License (LPPL), either
 %% version 1.3c of this license or (at your option) any later
 %% version.  The latest version of this license is in the file:
-%% 
+%%
 %% http://www.latex-project.org/lppl.txt
-%% 
+%%
 %% This work is "maintained" (as per LPPL maintenance status) by
 %% CamuseCao.
-%% 
+%%
 %% This work consists of the file  xmuthesis.dtx
 %% and the derived files           xmuthesis.cls,
 %%                                 xmuthesis.pdf and
 %%                                 xmulogo.sty.
-%% 
+%%
 %% -->
 %%
 %% End of file `xmuthesis.cls'.

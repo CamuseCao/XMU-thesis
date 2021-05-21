@@ -1,5 +1,5 @@
 % \documentclass[degree=doctor,bibstyle=numerical,font=empty]{xmuthesis}
-\documentclass[degree=undergraduate,bibstyle=numerical,font=empty]{xmuthesis}
+\documentclass[notabs,nottoc,degree=undergraduate,bibstyle=numerical,font=empty]{xmuthesis}
 \xmusetup{
     author                  = 酸奶                        ,
     title                   = 你的论文题目                ,
@@ -37,7 +37,7 @@
     \keywords*{关键词1；关键词2；关键词3}
 \end{abstract}
 \begin{abstract}
-    English abstract. 
+    English abstract.
     \keywords{keyword1; keyword2; keyword3}
 \end{abstract}
 \xmutableofcontents % 双语目录
@@ -47,11 +47,10 @@
 同一章的第二页
 \newpage
 同一章的第三页
-\nocite{*} 
+\nocite{*}
+\zihao{5}
 \bibliography{Reference}
 \appendix
 \chapter{附录}{appendix}
 附录
-\backmatter
-后记
 \end{document}
